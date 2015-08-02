@@ -1,0 +1,2 @@
+# GitBot
+Automate git actions
