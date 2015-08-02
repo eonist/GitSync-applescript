@@ -4,10 +4,12 @@
 
 ##How to install:
 1. Download and install [Git](http://git-scm.com/download/mac)
-2. Download the [GitBot](https://github.com/eonist/GitBot/archive/master.zip)
+2. Download [GitBot](https://github.com/eonist/GitBot/archive/master.zip)
 
 ##FAQ:
 **- Where does GitBot store passwords?** GitBot does not store passwords, GitBot requests passwords from keychain
+
+**- How can i trust GitHub with my password?** You can always compile the .app yourself. Download the GitBot from the link provided, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
 **- Do i need to close the app when I do git work in other apps?** Yes, its advisable to avoid git conflicts.
 
