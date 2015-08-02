@@ -1,5 +1,5 @@
 ##Features:
-- Automates common Git tasks such as commit, push and pull on a repeating interval
+- Automates common Git tasks such as **commit**, **push** and **pull** on a repeating interval
 - Written in .applescript for 100% transparency, all code is open source
 
 ##How to install:
