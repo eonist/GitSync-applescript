@@ -9,7 +9,7 @@
 ##FAQ:
 **- Where does GitBot store passwords?** GitBot does not store passwords, GitBot requests passwords from keychain
 
-**- How can i trust GitHub with my password?** You can always compile the .app yourself. Download the GitBot from the link provided, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
+**- How can i trust GitBot with my password?** You can always compile the .app yourself. Download the GitBot from the link provided, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
 **- Do i need to close the app when I do git work in other apps?** Yes, its advisable to avoid git conflicts.
 
