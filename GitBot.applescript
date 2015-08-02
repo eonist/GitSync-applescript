@@ -9,11 +9,8 @@ property current_time : 0
 property the_interval : 60 --static value
 property repo_list : null --Stores all values in repositories.xml
 
---// :TODO: we have a problem with hasCommited, we really need the git assert method for this, git checkout maybe ? Try this in terminal first
 --Todo: make the commit message more human like: Deleted two files, modified the Utils.php and added index.html,nthis is also to aviid github blocking the app for suspisiouse robo activity, that they dont likevery much
---Todo: Clean up the code, comments
---Todo: RoboGit, GitBot to a public repo, create a small webbsite for it, create a description on how to use it, keep commiting to the project, video?
---// :TODO:  when things go avery, dont halt the flow, simply note it in a log file, and try again in the next interval
+--TODO:  when things go avery, dont halt the flow, simply note it in a log file, and try again in the next interval
 log "beginning of script"
 (*
  * This will be called on init and then every 30 seconds or the time you specifiy in the return value
@@ -65,7 +62,6 @@ on pull_interval(repo_item)
 	set pull_call_back to GitUtil's pull(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
 	log "pull_call_back: " & pull_call_back
 end pull_interval
-
 (*
  * Initiates the commit process
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
