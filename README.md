@@ -9,11 +9,11 @@
 ##FAQ:
 **- Where does GitBot store passwords?** GitBot does not store passwords, GitBot requests passwords from keychain
 
-**- How can I trust GitBot with my password?** You can always compile the .app yourself. Download the GitBot from the link provided, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
+**- How can I trust GitBot with my password?** You can always compile the .app yourself. Download the GitBot from the link provided above, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
 **- Do I need to close the app when I do git work in other apps?** Yes, its advisable to avoid git conflicts.
 
-**- Do I need to close the app down if I changed the repositories.xml file?** Yes, all changes to the settings.xml file take effect at the opening of the app. 
+**- Do I need to close the app down if I changed the repositories.xml file?** Yes, all changes to the repositories.xml file take effect at the opening of the app. 
 
 **- Is the application heavy on the systems cpu?** You should be fine with a reasonable amount of repos and reasonably sized repos. The app does not parse through each repo and each file for changes, but instead rely on GIT's own "git status" call to figure out if a change has taken place.
 
