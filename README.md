@@ -19,6 +19,6 @@
 
 **- Can the application auto start after reboots?** Yes, right click on the icon in the dock and hit start app on startup.
 
-**- What if there are conflicts while GitBot tries to commit, push or pull?** GitBot takes a non-destructive approch when conflicts occur. If gitbot stumble upon a conflict gitbot will try again in the next intervall until the user shuts gitbot down and resolves the issue via terminal, or the github app etc. then open github again and gitbot will continue operations as usual.
+**- What if there are conflicts while GitBot tries to commit, push or pull?** GitBot takes a non-destructive approch when conflicts occur. If gitbot stumbles upon a conflict gitbot will try again in the next intervall until the user shuts gitbot down and resolves the issue via terminal, or the github app etc. then open github again and gitbot will continue operations as usual.
 
 **- What was the motivation behind building GitBot?** I use [Textmate](http://textmate.com) alot on my IPhone and IPad. Textmate can edit code you have stored on a ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
