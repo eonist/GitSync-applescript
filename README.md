@@ -1,10 +1,10 @@
 ##Features:
 - Automates common Git tasks such as commit, push and pull on a repeating interval
-- Written in applescript for 100% transparency, all code is opensource
+- Written in .applescript for 100% transparency, all code is open source
 
 ##How to install:
 1. Download and install [Git](http://git-scm.com/download/mac)
-2. Download [GitBot](https://github.com/eonist/GitBot/archive/master.zip)
+2. Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip)
 
 ##FAQ:
 **- Where does GitBot store passwords?** GitBot does not store passwords, GitBot requests passwords from keychain
@@ -21,4 +21,4 @@
 
 **- What if there are conflicts while GitBot tries to commit, push or pull?** GitBot takes a non-destructive approch when conflicts occur. If gitbot stumble upon a conflict gitbot will try again in the next intervall until the user shuts gitbot down and resolves the issue via terminal, or the github app etc. then open github again and gitbot will continue operations as usual.
 
-**- What was the motivation behind building GitBot?** I use [Textmate](http://textmate.com) alot on my IPhone and IPad. It can edit code you have stored on a ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
+**- What was the motivation behind building GitBot?** I use [Textmate](http://textmate.com) alot on my IPhone and IPad. Textmate can edit code you have stored on a ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
