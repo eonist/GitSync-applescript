@@ -1,0 +1,4 @@
+<repositories>
+    <repository local-path="~/test/" remote-path="github.com/eonist/test.git" commit-interval-in-minutes="1" push-interval-in-minutes="3" pull-interval-in-minutes="5" keychain-item-name="github eonist" remote-account-name="eonist"/>
+	<repository local-path="~/test/" remote-path="github.com/eonist/test.git" commit-interval-in-minutes="1" push-interval-in-minutes="3" pull-interval-in-minutes="5" keychain-item-name="github eonist" remote-account-name="eonist"/>
+</repositories>
