@@ -3,8 +3,8 @@
 - Written in .applescript for 100% transparency, all code is open source
 
 ##How to install:
-- Download and install [Git](http://git-scm.com/download/mac)
-- Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip)
+- Download and install [Git](http://git-scm.com/download/mac) then follow the instalation guide
+- Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip) then follow the setup guide
 
 ##FAQ:
 **Q: Where does GitBot store passwords?** <br/>
