@@ -9,9 +9,7 @@ property current_time : 0
 property the_interval : 60 --static value
 property repo_list : null --Stores all values in repositories.xml
 
---Todo: make the commit message more human like: Deleted two files, modified the Utils.php and added index.html,nthis is also to aviid github blocking the app for suspisiouse robo activity, that they dont likevery much
---TODO:  when things go avery, dont halt the flow, simply note it in a log file, and try again in the next interval
-log "beginning of script"
+log "beginning of the script"
 (*
  * This will be called on init and then every 30 seconds or the time you specifiy in the return value
  *)
@@ -25,49 +23,53 @@ on idle {}
 	return 60 --the_interval --return new idle time in seconds
 end idle
 (*
- * Called on every interval, defaultnis every 60 seconds
+ * Handles the process of comitting, pushing and pulling for multiple repositories
  * Note: while testing you can call this manually, since idle will only work when you run it from an .app
- * Todo: Do we need login and pass for pulling? - for private repos, yes
  *)
 on handle_interval()
 	log "handle_interval()"
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
-	
 	repeat with repo_item in repo_list --iterate over every repo item
-		if (current_time_in_min mod (commit_int of repo_item) = 0) then commit_interval(repo_item) --is true on every interval defined in the repo item
-		if (current_time_in_min mod (push_int of repo_item) = 0) then push_interval(repo_item)
-		if (current_time_in_min mod (pull_int of repo_item) = 0) then pull_interval(repo_item)
+		if (current_time_in_min mod (commit_int of repo_item) = 0) then handle_commit_interval(repo_item) --is true every time spesified by the user
+		if (current_time_in_min mod (push_int of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
+		if (current_time_in_min mod (pull_int of repo_item) = 0) then handle_pull_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 end handle_interval
---Commit interval
-on commit_interval(repo_item)
+(*
+ * Handles the process of making a commit for a single repository
+ *)
+on handle_commit_interval(repo_item)
 	log "COMMIT() a repo with remote path: " & remote_path of repo_item
-	log init_commit_process(local_path of repo_item) --if there were no commits false will be returned
+	log do_commit(local_path of repo_item) --if there were no commits false will be returned
 	--log "has_commited: " & has_commited
-end commit_interval
---Push interval
-on push_interval(repo_item)
+end handle_commit_interval
+(*
+ * Handles the process of making a push for a single repository 
+ *)
+on handle_push_interval(repo_item)
 	set has_commits to length of GitUtil's cherry(local_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item)) > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
 		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
 		log "push_call_back: " & push_call_back
 	end if
-end push_interval
---Pull interval
-on pull_interval(repo_item)
+end handle_push_interval
+(*
+ * Handles the process of making a pull for a single repository 
+ *)
+on handle_pull_interval(repo_item)
 	log "PULL() a repo with remote path: " & remote_path of repo_item
 	set pull_call_back to GitUtil's pull(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
 	log "pull_call_back: " & pull_call_back
-end pull_interval
+end handle_pull_interval
 (*
- * Initiates the commit process
+ * This method compiles checks if a commit is due, and if so, compiles a commit message and then tries to commit
+ * Returns true if a commit was made, false if no commit was made or an error occured
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
- * Todo: consider Creating a Title text and a description text for each commit
  *)
-on init_commit_process(local_repo_path) --rename to init_commit_process
+on do_commit(local_repo_path)
 	set status_list to Util's compile_staus_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
 	Util's process_status_list(status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
@@ -81,16 +83,15 @@ on init_commit_process(local_repo_path) --rename to init_commit_process
 		log "error: " & errMsg
 	end try
 	return true --return true to indicate that the commit completed
-end init_commit_process
+end do_commit
 
-log "end of script"
+log "end of the script"
 (*
  * A collection of utility methods for GitBot
  *)
 script Util
 	(*
  	 * Translates the git status message into a list, also adds some context to the status items
- 	 * Todo: sequence_status_msg ? Find synonym for this
  	 * Note the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
  	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
@@ -146,10 +147,8 @@ script Util
 		return the_repo_list
 	end compile_repo_list
 	(*
-    * Compile a commit message
-    * Todo: C - Copied in index, is also a state, try to research how to trigger this
-	 * Todo: also add i - ignored, try to trigger this
-    *)
+    	 * Compile a commit message
+    	 *)
 	on compile_commit_msg(status_list)
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
@@ -213,7 +212,6 @@ script Util
 	end compile_status_list
 	(*
 	 * Note: if the status list is empty then ther eis nothing to process
-	 * Todo: Move to util class
 	 *)
 	on process_status_list(local_repo_path, status_list)
 		repeat with status_item in status_list
