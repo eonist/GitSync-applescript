@@ -5,13 +5,13 @@ property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder 
 property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "xml:XMLParser.applescript"))
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 
-property current_time : 0
-property the_interval : 60 --static value
-property repo_list : null --Stores all values in repositories.xml
+property current_time : 0 --keeps track of the time passed
+property the_interval : 60 --static value, increases the time by this value on every interval
+property repo_list : null --Stores all values the in repositories.xml
 
 log "beginning of the script"
 (*
- * This will be called on init and then every 30 seconds or the time you specifiy in the return value
+ * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  *)
 on idle {}
 	log "idle()"
@@ -20,7 +20,7 @@ on idle {}
 	set repo_list to Util's compile_repo_list(((path to desktop) as string) & "repositories.xml") --try to avoid calling this on every intervall
 	handle_interval() --move this out of this method when debuggin
 	--
-	return 60 --the_interval --return new idle time in seconds
+	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
  * Handles the process of comitting, pushing and pulling for multiple repositories
@@ -91,7 +91,7 @@ log "end of the script"
  *)
 script Util
 	(*
- 	* Returns a repo_list derived from a XML file
+ 	* Returns a repo_list with values derived from an XML file
  	* @param file_path is in HSF not POSIX
  	* Todo: if the interval values is not set, then use default values
  	*)
@@ -161,7 +161,7 @@ script Util
 	 *)
 	on compile_status_list(local_repo_path) --rename to compile_status_list and move to priv class,needs one param, the local path
 		set the_status to GitUtil's status(local_repo_path, "-s")
-		set the_status_list to TextParser's every_paragraph(the_status)--store each line as a list
+		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
 		if (length of the_paragraphs = 0) then
 			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
@@ -184,7 +184,7 @@ script Util
 		repeat with the_status in the_status_list
 			set the_items to TextParser's split(the_status, space)
 			if (first item in the_items is not equal to "") then --Changes to be committed
-				set cmd to first item in the_items--rename to type
+				set cmd to first item in the_items --rename to type
 				if (cmd = "??") then
 					set state to "Untracked files"
 				else
@@ -196,7 +196,7 @@ script Util
 			end if
 			set file_name to the last item in the_items
 			log state & ", " & cmd & ", " & file_name --logs the file named added changed etc
-			set status_item to {state:state, cmd:cmd, file_name:file_name}--store the individual parts in an accociative 
+			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative 
 			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record
 		end repeat
 		return status_list
