@@ -115,8 +115,9 @@ script Util
 		return the_repo_list
 	end compile_repo_list
 	(*
-    * Compile a commit message
-    *)
+	 * Compile a commit message
+	 * Todo: impliment the commands: i and c
+   	 *)
 	on compile_commit_msg(status_list)
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
@@ -141,25 +142,24 @@ script Util
 			set commit_msg to commit_msg & "New files added: " & num_of_new_files
 		end if
 		if (num_of_modified_files > 0) then
-			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --add comma	
+			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --append comma	
 			set commit_msg to commit_msg & "Files modified: " & num_of_modified_files
 		end if
 		if (num_of_deleted_files > 0) then
-			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --add comma
+			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --append comma
 			set commit_msg to commit_msg & "Files deleted: " & num_of_deleted_files
 		end if
 		if (num_of_renamed_files > 0) then
-			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --add comma
+			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --append comma
 			set commit_msg to commit_msg & "Files renamed: " & num_of_renamed_files
 		end if
 		return commit_msg
 	end compile_commit_msg
 	(*
 	 * 
-	 * Note: -s simplifies the ret msg or you can also use --porcelain which does the same
-	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it, see print screen to understand this
+	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
 	 *)
-	on compile_status_list(local_repo_path) --rename to compile_status_list and move to priv class,needs one param, the local path
+	on compile_status_list(local_repo_path)
 		set the_status to GitUtil's status(local_repo_path, "-s")
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
