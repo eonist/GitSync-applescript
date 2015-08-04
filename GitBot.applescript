@@ -116,7 +116,7 @@ script Util
 	end compile_repo_list
 	(*
 	 * Compile a commit message
-	 * Todo: impliment the commands: i and c
+	 * Todo: Implement the commands: i and c
    	 *)
 	on compile_commit_msg(status_list)
 		set num_of_new_files to 0
