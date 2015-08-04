@@ -91,38 +91,6 @@ log "end of the script"
  *)
 script Util
 	(*
- 	 * Translates the git status message into a list, also adds some context to the status items
- 	 * Note the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
- 	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
- 	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
- 	 *)
-	on translate_status_message(the_paragraphs)
-		set status_list to {}
-		repeat with the_paragraph in the_paragraphs
-			--log the_paragraph
-			set the_items to TextParser's split(the_paragraph, space)
-			--log length of the_items
-			--log first item in the_items
-			if (first item in the_items is not equal to "") then --Changes to be committed
-				set cmd to first item in the_items
-				if (cmd = "??") then
-					set state to "Untracked files"
-				else
-					set state to "Changes to be committed"
-				end if
-			else
-				set cmd to second item in the_items --Changes not staged for commit:
-				set state to "Changes not staged for commit"
-			end if
-			set file_name to the last item in the_items
-			log state & ", " & cmd & ", " & file_name --logs the file named added changed etc
-			set status_item to {state:state, cmd:cmd, file_name:file_name}
-			set status_list to ListModifier's add_list(status_list, status_item) --add an accociative list to a list
-		end repeat
-		--log "tidy_status_list: " & tidy_status_list
-		return tidy_status_list
-	end translate_status_message
-	(*
  	* Returns a repo_list derived from a XML file
  	* @param file_path is in HSF not POSIX
  	* Todo: if the interval values is not set, then use default values
@@ -147,8 +115,8 @@ script Util
 		return the_repo_list
 	end compile_repo_list
 	(*
-    	 * Compile a commit message
-    	 *)
+    * Compile a commit message
+    *)
 	on compile_commit_msg(status_list)
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
@@ -187,31 +155,55 @@ script Util
 		return commit_msg
 	end compile_commit_msg
 	(*
+	 * 
 	 * Note: -s simplifies the ret msg or you can also use --porcelain which does the same
 	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it, see print screen to understand this
 	 *)
 	on compile_status_list(local_repo_path) --rename to compile_status_list and move to priv class,needs one param, the local path
-		set retMSG2 to GitUtil's status(local_repo_path, "-s") --do shell script "cd " & local_repo_path & ";" & git_path & "git status"
-		--log "retMSG2: " & retMSG2
-		set the_paragraphs to TextParser's every_paragraph(retMSG2)
-		--set the_current_status_state to second item in the_paragraphs
-		--log "the_current_status_state: " & the_current_status_state
-		--log "len: " & length of the_paragraphs
-		--if (length of the_paragraphs > 4) then
-		--log "item: " & fourth item in the_paragraphs
-		--end if
-		set status_list to {}
+		set the_status to GitUtil's status(local_repo_path, "-s")
+		set the_status_list to TextParser's every_paragraph(the_status)--store each line as a list
+		set transformed_list to {}
 		if (length of the_paragraphs = 0) then
 			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
 		else
-			set status_list to my Util's translate_status_message(the_paragraphs)
+			set status_list to my transform_status_list(the_status_list)
 		end if
 		--
 		log "len of status_list: " & (length of status_list)
 		return status_list
 	end compile_status_list
 	(*
-	 * Note: if the status list is empty then ther eis nothing to process
+ 	 * Transforms the "compact git status list" by adding more context to each item
+ 	 * Returns a list with records that contain staus type, file name and state
+ 	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
+ 	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
+ 	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
+ 	 *)
+	on transform_status_list(the_status_list)
+		set transformed_list to {}
+		repeat with the_status in the_status_list
+			set the_items to TextParser's split(the_status, space)
+			if (first item in the_items is not equal to "") then --Changes to be committed
+				set cmd to first item in the_items--rename to type
+				if (cmd = "??") then
+					set state to "Untracked files"
+				else
+					set state to "Changes to be committed"
+				end if
+			else
+				set cmd to second item in the_items --Changes not staged for commit:
+				set state to "Changes not staged for commit"
+			end if
+			set file_name to the last item in the_items
+			log state & ", " & cmd & ", " & file_name --logs the file named added changed etc
+			set status_item to {state:state, cmd:cmd, file_name:file_name}--store the individual parts in an accociative 
+			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record
+		end repeat
+		return status_list
+	end transform_status_list
+	(*
+	 * This method iterates over the status items and git add's the item unless ots already added (aka staged for commit)
+	 * Note: if the status list is empty then there is nothing to process
 	 *)
 	on process_status_list(local_repo_path, status_list)
 		repeat with status_item in status_list

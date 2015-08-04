@@ -29,4 +29,4 @@ A: Yes, right click on the icon in the dock and hit start app on startup.
 A: GitBot takes a non-destructive approch when conflicts occur. If gitbot stumbles upon a conflict gitbot will try again in the next intervall until the user shuts gitbot down and resolves the issue via terminal, or the github app etc. then open GitBot again and it will continue operations as usual.
 
 **Q: What was the motivation behind building GitBot?** <br/>
-A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Textastic can edit code you have stored on a ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
+A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
