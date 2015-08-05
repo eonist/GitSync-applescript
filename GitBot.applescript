@@ -8,7 +8,7 @@ property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folde
 property current_time : 0 --keeps track of the time passed
 property the_interval : 60 --static value, increases the time by this value on every interval
 property repo_list : null --Stores all values the in repositories.xml
-
+set the_db_path to (path to resource "queries.db" in bundle (path to me) in directory "database")
 log "beginning of the script"
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
