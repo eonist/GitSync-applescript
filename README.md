@@ -43,5 +43,8 @@ A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Te
 - [ ] Research git ignore
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
 - [ ] **Bonus:** Humanise commit messages
+<<<<<<< HEAD
 
 Rename project to GitSync?
+=======
+>>>>>>> origin/master
