@@ -3,8 +3,8 @@
 - Written in .applescript for 100% transparency, all code is open source
 
 ##How to install:
-- Download and install [Git](http://git-scm.com/download/mac) (23mb) then follow the instalation guide
-- Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip) (0.5mb) then follow the setup guide
+- Download and install [Git](http://git-scm.com/download/mac) then follow the instalation guide
+- Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip) then follow the setup guide
 
 ##FAQ:
 **Q: Where does GitBot store passwords?** <br/>
@@ -41,5 +41,6 @@ A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Te
 - [ ] Add support for ssh authentication
 - [ ] Move repositories.xml into the app
 - [ ] Research git ignore
+
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
 - [ ] **Bonus:** Humanise commit messages
