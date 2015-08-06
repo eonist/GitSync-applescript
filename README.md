@@ -44,4 +44,4 @@ A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Te
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
 - [ ] **Bonus:** Humanise commit messages
 - [ ] Rename project to GitSync?
-- [ ] Test project with a fresh git install, DisplayObject we need to setup the shell stuff?
+- [ ] Test project with a fresh git install, do we need to setup the shell stuff?
