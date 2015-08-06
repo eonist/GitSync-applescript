@@ -41,6 +41,5 @@ A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Te
 - [ ] Add support for ssh authentication
 - [ ] Move repositories.xml into the app
 - [ ] Research git ignore
-
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
 - [ ] **Bonus:** Humanise commit messages
