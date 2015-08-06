@@ -43,6 +43,10 @@ A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Te
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
 - [ ] Rename project to GitSync?
+<<<<<<< HEAD
 - [ ] Test project with a fresh git install, DisplayObject we need to setup the shell stuff?
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
 - [ ] **Bonus:** Humanise commit messages
+=======
+- [ ] Test project with a fresh git install, do we need to setup the shell stuff?
+>>>>>>> origin/master
