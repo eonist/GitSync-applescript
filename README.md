@@ -32,16 +32,17 @@ A: GitBot takes a non-destructive approch when conflicts occur. If gitbot stumbl
 A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
 
 ###Todo's:
-- [ ] Retrieve the remote account name from keychain
+- [x] Move repositories.xml into the app
+- [x] The export of xml data to repositories.xml
 - [ ] The setup wizard
+- [ ] Retrieve the remote account name from keychain
 - [ ] Implement the commands: i and c
 - [ ] The separation of Title and Description in a Commit msg
 - [ ] Stress-test when GitBot gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
-- [ ] Move repositories.xml into the app
 - [ ] Research git ignore
-- [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
-- [ ] **Bonus:** Humanise commit messages
 - [ ] Rename project to GitSync?
 - [ ] Test project with a fresh git install, DisplayObject we need to setup the shell stuff?
+- [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
+- [ ] **Bonus:** Humanise commit messages

@@ -1,6 +1,6 @@
 --this class will be apart of the GitBot.applescript file as an internall class
-property wizard_list : {}--stores repo_setups created in the wizard
-property wizard_setup : {}--stores the input from the user
+property wizard_list : {} --stores repo_setups created in the wizard
+property wizard_setup : {} --stores the input from the user
 --Do you want to use a wizard to setup your first automated git project? (Yes, No)
 --wizard must be started from the idle{} method, to break the flow of the timer
 --the wizard is only available the first time you start the app
@@ -44,19 +44,18 @@ end enter_pull_interval
 --6. Keychain item name, open the keychain app and add a password item ("Github username")
 on enter_keychain_item()
 	set title to "Enter the name of the keychain item holding the git username and password"
-	set user_name to ""
-	set password to ""
-	wizard_setup = wizard_setup & {user_name:user_name,password:password}
-	ListModifier's add_list(wizard_list,wizard_setup)--add the accociative list to the list
+	set key_chain_item_name to ""
+	wizard_setup = wizard_setup & {key_chain_item_name:key_chain_item_name}
+	ListModifier's add_list(wizard_list, wizard_setup) --add the accociative list to the list
 end enter_keychain_item
 --Setup an additional repository? (Yes/No)
 on add_additional_repo()
 	--yes
-		--choose_local_path()
+	--choose_local_path()
 	--no
-		--set flag to never run wizard again
-		--write wizard_list to xml, then write xml to repositories.xml located inside the GitBot.app
-		--continue to execute idle{}
+	--set flag to never run wizard again
+	--write wizard_list to xml, then write xml to repositories.xml located inside the GitBot.app
+	--continue to execute idle{}
 end add_additional_repo
 (*
 Note:
