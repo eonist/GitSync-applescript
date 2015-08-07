@@ -4,14 +4,14 @@
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) then follow the instalation guide
-- Download and open [GitBot](https://github.com/eonist/GitBot/archive/master.zip) then follow the setup guide
+- Download and open [GitSync](https://github.com/eonist/GitSync/archive/master.zip) then follow the setup guide
 
 ##FAQ:
-**Q: Where does GitBot store passwords?** <br/>
-A: GitBot does not store passwords, GitBot requests passwords from keychain
+**Q: Where does GitSync store passwords?** <br/>
+A: GitSync does not store passwords, GitSync requests passwords from keychain
 
-**Q: How can I trust GitBot with my password?** <br/>
-A: You can always compile the .app yourself. Download the GitBot from the link provided above, open the GitBot.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
+**Q: How can I trust GitSync with my password?** <br/>
+A: You can always compile the .app yourself. Download the GitSync from the link provided above, open the GitSync.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
 **Q: Do I need to close the app when I do git work in other apps?** <br/>
 A: Yes, its advisable to avoid git conflicts.
@@ -25,24 +25,28 @@ A: You should be fine with a reasonable amount of repos and reasonably sized rep
 **Q: Can the application auto start after reboots?** <br/>
 A: Yes, right click on the icon in the dock and hit start app on startup.
 
-**Q: What if there are conflicts while GitBot tries to commit, push or pull?** <br/>
-A: GitBot takes a non-destructive approch when conflicts occur. If gitbot stumbles upon a conflict gitbot will try again in the next intervall until the user shuts gitbot down and resolves the issue via terminal, or the github app etc. then open GitBot again and it will continue operations as usual.
+**Q: What if there are conflicts while GitSync tries to commit, push or pull?** <br/>
+A: GitSync takes a non-destructive approach when conflicts occur. If GitSync stumbles upon a conflict GitSync will try again in the next interval until the user shuts GitSync down and resolves the issue via terminal, or the Github app etc. then open GitSync again and it will continue operations as usual.
 
-**Q: What was the motivation behind building GitBot?** <br/>
-A: I use [Textastic](http://www.textasticapp.com) alot on my IPhone and IPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of syncronizing to GitHub gets in the way of having fun coding. So voila GitBot saw the light of day. 
+**Q: What was the motivation behind building GitSync?** <br/>
+A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of synchronising to GitHub gets in the way of having fun coding. So voila GitSync saw the light of day. 
 
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
-- [ ] The setup wizard
+- [x] The setup wizard
+- [ ] Clean up the comments in the "setup wizard"
+- [ ] Implement the Setup wizard into the GitSync.applescript file
+- [ ] Replace the ok button in Setup wizard to a next button
+- [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
 - [ ] Retrieve the remote account name from keychain
 - [ ] Implement the commands: i and c
 - [ ] The separation of Title and Description in a Commit msg
-- [ ] Stress-test when GitBot gets into trouble
+- [ ] Stress-test when GitSync gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
 - [ ] Rename project to GitSync?
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
-- [ ] **Bonus:** Instal git on server, and use it as origin instead of github for private projects
+- [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
