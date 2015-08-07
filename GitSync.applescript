@@ -18,6 +18,7 @@ on idle {}
 	log "idle()"
 	--
 	set current_time to 0 --always reset this value on init
+	--Todo: is it possible to find the path of this applescript?
 	set repo_list to Util's compile_repo_list(((path to desktop) as string) & "repositories.xml") --try to avoid calling this on every intervall
 	handle_interval() --move this out of this method when debuggin
 	--
