@@ -35,9 +35,9 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
 - [x] The setup wizard
+- [x] Rename project to GitSync?
 - [ ] Clean up the comments in the "setup wizard"
 - [ ] Implement the Setup wizard into the GitSync.applescript file
-- [ ] Replace the ok button in Setup wizard to a next button
 - [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
 - [ ] Retrieve the remote account name from keychain
 - [ ] Implement the commands: i and c
@@ -46,7 +46,6 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
-- [ ] Rename project to GitSync?
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
