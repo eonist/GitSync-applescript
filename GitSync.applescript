@@ -12,10 +12,15 @@ property repo_list : null --Stores all values the in repositories.xml
 
 log "beginning of the script"
 
+--security find-generic-password -a John -g
+
+log (do shell script "2>&1 security find-generic-password -a John -g") --outputs pass and login credentials
+
 set current_time to 0 --always reset this value on init
 
-set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
+--set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
 --handle_interval() --move this out of this method when debuggin
+
 
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
