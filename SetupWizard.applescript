@@ -4,17 +4,16 @@ property FileParser : my ScriptLoader's load_script(alias ((path to scripts fold
 property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "xml:XMLParser.applescript"))
 property XMLModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "xml:XMLModifier.applescript"))
 
---this class will be apart of the GitBot.applescript file as an internall class
 property wizard_setup_list : {} --stores repo_setups created in the wizard
 property wizard_setup : {} --stores the input from the user
---Do you want to use a wizard to setup your first automated git project? (Yes, No)
---wizard must be started from the idle{} method, to break the flow of the timer
---the wizard is only available the first time you start the app
-SetupWizard's init_wizard()
+
+SetupWizard's init_wizard()--this class will be apart of the GitBot.applescript file as an internall class
 script SetupWizard
-	--
 	(*
- 	 * // :TODO: maybe reset wizard_list and wizard_setup
+ 	 * Note: The wizard is only available the first time you start the app
+ 	 * Note: wizard must be started from the idle{} method, to break the flow of the timer
+ 	 * TODO: maybe reset wizard_list and wizard_setup
+ 	 * Todo: The path to the git installation is also needed: /usr/local/git/bin/ (can this path be used inplace of ~/ ?)
  	 *)
 	on init_wizard()
 		set the_title to "Use a wizard to setup your first GitSync project?"
@@ -119,24 +118,17 @@ script SetupWizard
 			--continue to execute idle{}
 		end if
 	end add_additional_repo
-	--
+	(*
+ 	 * Returns an xml text comprised of the values stored in the repo_setup_list
+ 	 * @param repo_setup_list is an list that contains sudo acociative lists
+ 	 *)
 	on compile_repo_xml(repo_setup_list)
 		set repo_xml_text to XMLModifier's element_beginning("repositories") & return --beginning
 		repeat with repo_item in repo_setup_list
-			log (length of repo_item)
+			--log (length of repo_item)
 			set repo_xml_text to repo_xml_text & tab & XMLModifier's element_with_attribute("repository", "", repo_item) & return
 		end repeat
 		set repo_xml_text to repo_xml_text & XMLModifier's element_end("repositories") --end
 		return repo_xml_text
 	end compile_repo_xml
 end script
-(*
-Note:
-
-
-Note:
-The path to the git installation is also needed: /usr/local/git/bin/ (can this path be used inplace of ~/ ?)
-
-*)
-
-
