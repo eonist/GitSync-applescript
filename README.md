@@ -1,6 +1,6 @@
 ##Features:
 - Save time by letting GitSync **add**, **commit** and **push** updates to GitHub
-- Applescript is used to asure 100% transparency, all code is **Open Source**
+- Applescript is used to assure 100% transparency, all code is **Open Source**
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
@@ -12,6 +12,9 @@ A: GitSync does not store passwords, GitSync requests passwords from keychain
 
 **Q: How can I trust GitSync with my password?** <br/>
 A: You can always compile the .app yourself. Download the GitSync from the link provided above, open the GitSync.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
+
+**Q: what about commit messages?** <br/>
+A: The commit message is created based on the context of the change, and is seperated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
 
 **Q: Do I need to close the app when I do git work in other apps?** <br/>
 A: Yes, its advisable to avoid git conflicts.
@@ -25,7 +28,7 @@ A: You should be fine with a reasonable amount of repos and reasonably sized rep
 **Q: Can the application auto start after reboots?** <br/>
 A: Yes, right click on the icon in the dock and hit start app on startup.
 
-**Q: What if there are conflicts while GitSync tries to commit, push or pull?** <br/>
+**Q: What if there are conflicts while GitSync tries to commit and push ?** <br/>
 A: GitSync takes a non-destructive approach when conflicts occur. If GitSync stumbles upon a conflict GitSync will try again in the next interval until the user shuts GitSync down and resolves the issue via terminal, or the Github app etc. then open GitSync again and it will continue operations as usual.
 
 **Q: What was the motivation behind building GitSync?** <br/>
@@ -46,6 +49,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
+- [ ] Shorten the FAQ list
 - [ ] Maybe just have 1 interval instead of 3? , just a single Sync interval?
 - [ ] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
