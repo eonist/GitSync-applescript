@@ -1,6 +1,6 @@
 ##Features:
-- Automates common Git tasks such as **commit**, **push** and **pull** on a repeating interval
-- Written in .applescript for 100% transparency, all code is open source
+- Save time by letting GitSync **add**, **commit** and **push** updates to GitHub
+- Applescript is used to asure 100% transparency, all code is **Open Source**
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
@@ -47,6 +47,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
 - [ ] Maybe just have 1 interval instead of 3? , just a single Sync interval?
+- [ ] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
