@@ -40,6 +40,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] The setup wizard
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
+- [x] Solve the parent path of "path to me" (aka the parent of the script you are in)
 - [ ] Implement the Setup wizard into the GitSync.applescript file
 - [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
 - [ ] Retrieve the remote account name from keychain

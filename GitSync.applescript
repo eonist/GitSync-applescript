@@ -4,23 +4,28 @@ property ListModifier : my ScriptLoader's load_script(alias ((path to scripts fo
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
 property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "xml:XMLParser.applescript"))
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
+property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
 
 property current_time : 0 --keeps track of the time passed
 property the_interval : 60 --static value, increases the time by this value on every interval
 property repo_list : null --Stores all values the in repositories.xml
---// :TODO: is it possible to write to resource files: 
---set the_db_path to (path to resource "queries.db" in bundle (path to me) in directory "database")
+
 log "beginning of the script"
+
+set current_time to 0 --always reset this value on init
+
+set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
+--handle_interval() --move this out of this method when debuggin
+
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  *)
 on idle {}
 	log "idle()"
 	--
-	set current_time to 0 --always reset this value on init
-	--Todo: is it possible to find the path of this applescript?
-	set repo_list to Util's compile_repo_list(((path to desktop) as string) & "repositories.xml") --try to avoid calling this on every intervall
-	handle_interval() --move this out of this method when debuggin
+	(*
+	
+	*)
 	--
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -35,7 +40,7 @@ on handle_interval()
 	repeat with repo_item in repo_list --iterate over every repo item
 		if (current_time_in_min mod (commit_int of repo_item) = 0) then handle_commit_interval(repo_item) --is true every time spesified by the user
 		if (current_time_in_min mod (push_int of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
-		if (current_time_in_min mod (pull_int of repo_item) = 0) then handle_pull_interval(repo_item) --is true every time spesified by the user
+		--if (current_time_in_min mod (pull_int of repo_item) = 0) then handle_pull_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 end handle_interval
@@ -61,11 +66,13 @@ end handle_push_interval
 (*
  * Handles the process of making a pull for a single repository 
  *)
+(*
 on handle_pull_interval(repo_item)
 	log "PULL() a repo with remote path: " & remote_path of repo_item
 	set pull_call_back to GitUtil's pull(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
 	log "pull_call_back: " & pull_call_back
 end handle_pull_interval
+*)
 (*
  * This method compiles checks if a commit is due, and if so, compiles a commit message and then tries to commit
  * Returns true if a commit was made, false if no commit was made or an error occured
@@ -108,10 +115,11 @@ script Util
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
 			set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
 			set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
-			set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
+			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
 			set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
-			set key_value_pairs to {local_path:local_path, remote_path:remote_path, commit_int:commit_int, push_int:push_int, pull_int:pull_int, keychain_item_name:keychain_item_name, remote_account_name:remote_account_name}
+			--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?
+			set key_value_pairs to {local_path:local_path, remote_path:remote_path, commit_int:commit_int, push_int:push_int, keychain_item_name:keychain_item_name, remote_account_name:remote_account_name}
 			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
 		end repeat
 		return the_repo_list

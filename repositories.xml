@@ -1,4 +1,1 @@
-<repositories>
-    <repository local-path="~/test/" remote-path="github.com/eonist/test.git" commit-interval-in-minutes="1" push-interval-in-minutes="3" pull-interval-in-minutes="5" keychain-item-name="github eonist" remote-account-name="eonist"/>
-	<repository local-path="~/test/" remote-path="github.com/eonist/test.git" commit-interval-in-minutes="1" push-interval-in-minutes="3" pull-interval-in-minutes="5" keychain-item-name="github eonist" remote-account-name="eonist"/>
-</repositories>
+<repositories>	<repository local-path="~/Users/Kaleb/_projects/_code/_active/applescript/SqliteEdit/repo/app/" remote-path="github.com/user/project.git" commit-interval="5" push-interval="10" key-chain-item-name="github key"/></repositories>
