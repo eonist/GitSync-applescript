@@ -51,6 +51,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
 - [ ] Shorten the FAQ list
+- [ ] Make the .xml attributes simpler: remote,local,interval,keychain
 - [ ] Maybe just have 1 interval instead of 3? , just a single Sync interval?
 - [ ] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
