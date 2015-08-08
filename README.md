@@ -1,10 +1,10 @@
 ##Features:
 - Save time by letting GitSync **add**, **commit** and **push** updates to GitHub
-- Applescript is used to assure 100% transparency, all code is **Open Source**
+- Applescript is used to assure 100% transparency, all code is Open Source
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
-- Download and open [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
+- Download and run [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
 
 ##FAQ:
 **Q: Where does GitSync store passwords?** <br/>
