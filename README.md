@@ -41,13 +41,13 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
 - [x] Solve the parent path of "path to me" (aka the parent of the script you are in)
-- [ ] Implement the Setup wizard into the GitSync.applescript file
-- [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
 - [ ] Retrieve the remote account name from keychain
-- [ ] Implement the commands: i and c
 - [ ] The separation of Title and Description in a Commit msg
 - [ ] Stress-test when GitSync gets into trouble
+- [ ] Implement the Setup wizard into the GitSync.applescript file
 - [ ] Test if you are prompted for a password when requesting from a new keychain
+- [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
+- [ ] Implement the commands: i and c
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
 - [ ] Shorten the FAQ list
