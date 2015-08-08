@@ -3,8 +3,8 @@
 - Written in .applescript for 100% transparency, all code is open source
 
 ##How to install:
-- Download and install [Git](http://git-scm.com/download/mac) then follow the instalation guide
-- Download and open [GitSync](https://github.com/eonist/GitSync/archive/master.zip) then follow the setup guide
+- Download and install [Git](http://git-scm.com/download/mac) 
+- Download and open [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
 
 ##FAQ:
 **Q: Where does GitSync store passwords?** <br/>
@@ -46,6 +46,8 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore
+- [ ] Maybe just have 1 interval instead of 3? , just a single Sync interval?
+- [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
