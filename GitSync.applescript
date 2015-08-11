@@ -6,9 +6,9 @@ property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folde
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
 
-property current_time : 0 --keeps track of the time passed
+property current_time : 0 --keeps track of the time passed, remember to reset this value pn every init
 property the_interval : 60 --static value, increases the time by this value on every interval
-property repo_list : null --Stores all values the in repositories.xml
+property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 
 log "beginning of the script"
 
@@ -35,7 +35,7 @@ on idle {}
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
- * Handles the process of comitting, pushing and pulling for multiple repositories
+ * Handles the process of comitting, pushing for multiple repositories
  * Note: while testing you can call this manually, since idle will only work when you run it from an .app
  *)
 on handle_interval()
