@@ -40,18 +40,17 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] The setup wizard
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
-- [ ] Implement the Setup wizard into the GitSync.applescript file
-- [ ] In the wizard, implement a failsafe when the user enters the wrong type of data
-- [ ] Retrieve the remote account name from keychain
+- [ ] ~~Implement the Setup wizard into the GitSync.applescript file~~
+- [ ] ~~In the wizard, implement a failsafe when the user enters the wrong type of data~~
+- [ ] Retrieve the remote account name from keychain with shell and regexp capture groups
 - [ ] Implement the commands: i and c
-- [ ] The separation of Title and Description in a Commit msg
+- [ ] The separation of Title and Description in a Commit msg, build the parser and seqyencer for this
 - [ ] Stress-test when GitSync gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
-- [ ] Research git ignore
+- [ ] Research git ignore and how it works
 - [ ] Shorten the FAQ list
-- [ ] setting the interval should be optional, 1 or 3 min is default?
-- [ ] Maybe just have 1 interval instead of 3? , just a single Sync interval?
+- [ ] ~~Maybe just have 1 interval instead of 3? , just a single Sync interval?~~
 - [ ] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
