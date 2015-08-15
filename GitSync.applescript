@@ -109,7 +109,7 @@ script Util
  	* @param file_path is in HSF not POSIX
  	* Todo: if the interval values is not set, then use default values
  	*)
-	on compile_repo_list(file_path)
+	on compile_repo_list(file_path)-- rename to generate_repo_list?
 		log file_path
 		set theXMLRoot to XMLParser's root(file_path)
 		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
@@ -134,7 +134,7 @@ script Util
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * Todo: Implement the commands: i and c
     *)
-	on compile_commit_msg(status_list)
+	on compile_commit_msg(status_list)--rename to generate_commit_msg
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
 		set num_of_deleted_files to 0
