@@ -1,5 +1,6 @@
 ##Features:
-- Save time by letting GitSync **add**, **commit** and **push** updates to GitHub
+- Automaticly **add**, **commit** and **push** updates to GitHub or Bitbucket
+- Automaticly generate commit messages 
 - Applescript is used to assure 100% transparency, all code is Open Source
 
 ##How to install:
