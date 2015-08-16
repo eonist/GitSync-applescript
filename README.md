@@ -1,7 +1,7 @@
 ##Features:
 - Automaticly **add**, **commit** and **push** updates to GitHub or Bitbucket
 - Automaticly generate commit messages 
-- Applescript is used to assure 100% transparency, all code is Open Source
+- Free and Open Source
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
