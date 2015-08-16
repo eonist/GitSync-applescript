@@ -1,7 +1,7 @@
 ##Features:
 - Automaticly **add**, **commit** and **push** updates to GitHub or Bitbucket
 - Automaticly generate commit messages 
-- Free and Open Source
+- 100% Free and Open Source
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
