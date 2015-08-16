@@ -109,7 +109,7 @@ script Util
  	* @param file_path is in HSF not POSIX
  	* Todo: if the interval values is not set, then use default values
  	*)
-	on compile_repo_list(file_path)-- rename to generate_repo_list?
+	on compile_repo_list(file_path) -- rename to generate_repo_list?
 		log file_path
 		set theXMLRoot to XMLParser's root(file_path)
 		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
@@ -134,13 +134,13 @@ script Util
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * Todo: Implement the commands: i and c
     *)
-	on compile_commit_msg(status_list)--rename to generate_commit_msg
+	on compile_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
 		set num_of_deleted_files to 0
 		set num_of_renamed_files to 0
 		repeat with status_item in status_list
-			set cmd to cmd of status_item--Todo: rename to type or status_type
+			set cmd to cmd of status_item --Todo: rename to type or status_type
 			if (cmd = "M") then
 				set num_of_modified_files to num_of_modified_files + 1
 			else if (cmd = "D") then
@@ -176,8 +176,8 @@ script Util
 	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
 	 *)
 	on compile_status_list(local_repo_path)
-		set the_status to GitUtil's status(local_repo_path, "-s")-- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		set the_status_list to TextParser's every_paragraph(the_status)--store each line as a list
+		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
+		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
 		if (length of the_paragraphs = 0) then
 			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
