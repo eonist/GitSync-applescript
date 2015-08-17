@@ -16,6 +16,7 @@ log "beginning of the script"
 
 log (do shell script "2>&1 security find-generic-password -a John -g") --outputs pass and login credentials
 
+
 set current_time to 0 --always reset this value on init
 
 --set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
