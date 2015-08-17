@@ -1,7 +1,6 @@
 ##Features:
-- Automaticly **add**, **commit** and **push** updates to GitHub or Bitbucket
-- Automaticly generate commit messages 
-- 100% Free and Open Source
+- Automatically **add**, **commit** and **push** updates to GitHub or Bitbucket
+- Automatically generate commit messages 
 
 ##How to install:
 - Download and install [Git](http://git-scm.com/download/mac) 
@@ -15,7 +14,7 @@ A: GitSync does not store passwords, GitSync requests passwords from keychain
 A: You can always compile the .app yourself. Download the GitSync from the link provided above, open the GitSync.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
 **Q: what about commit messages?** <br/>
-A: The commit message is created based on the context of the change, and is seperated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
+A: The commit message is created based on the context of the change, and is separated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
 
 **Q: Do I need to close the app when I do git work in other apps?** <br/>
 A: Yes, its advisable to avoid git conflicts.
@@ -46,18 +45,20 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] ~~In the wizard, implement a failsafe when the user enters the wrong type of data~~
 - [ ] Retrieve the remote account name from keychain with shell and regexp capture groups
 - [ ] Implement the commands: i and c
-- [ ] The separation of Title and Description in a Commit msg, build the parser and seqyencer for this
+- [ ] The separation of Title and Description in a Commit msg, build the parser and sequencer for this
 - [ ] Stress-test when GitSync gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore and how it works
 - [ ] Shorten the FAQ list
 - [ ] use a fixed interval if no interval is provided in the repositories.xml file
-- [ ] Use Regular expresion when deriving the git status message
+- [ ] Use Regular expression when deriving the git status message
 - [ ] ~~Maybe just have 1 interval instead of 3? , just a single Sync interval?~~
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
+- [ ] Complete the KeychainParser and KeychainModifier classes
+- [ ] Create an UML activity diagram, And UML class diagram
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages

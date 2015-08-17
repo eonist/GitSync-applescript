@@ -12,10 +12,6 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 
 log "beginning of the script"
 
---security find-generic-password -a John -g
-
-log (do shell script "2>&1 security find-generic-password -a John -g") --outputs pass and login credentials
-
 
 set current_time to 0 --always reset this value on init
 
