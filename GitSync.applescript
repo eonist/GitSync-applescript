@@ -58,10 +58,12 @@ end handle_commit_interval
  * Handles the process of making a push for a single repository 
  *)
 on handle_push_interval(repo_item)
-	set has_commits to length of GitUtil's cherry(local_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item)) > 0
+	set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
+	set keychain_password to the_password of keychain_data
+	set has_commits to length of GitUtil's cherry(local_path of repo_item, account_name of keychain_data, keychain_password) > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
+		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, keychain_password)
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
@@ -119,9 +121,9 @@ script Util
 			set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
 			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
-			set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
-			--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?
-			set key_value_pairs to {local_path:local_path, remote_path:remote_path, commit_int:commit_int, push_int:push_int, keychain_item_name:keychain_item_name, remote_account_name:remote_account_name}
+			--set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
+			--Todo: use only 1 interval
+			set key_value_pairs to {local_path:local_path, remote_path:remote_path, commit_int:commit_int, push_int:push_int, keychain_item_name:keychain_item_name} --remote_account_name:remote_account_name--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
 			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
 		end repeat
 		return the_repo_list
