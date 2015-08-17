@@ -58,5 +58,6 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
+- [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
