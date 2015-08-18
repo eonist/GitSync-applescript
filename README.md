@@ -61,6 +61,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Shorten the FAQ list
+- [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Add a debug/production if statement that toggles the two modes
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
