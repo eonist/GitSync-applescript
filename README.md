@@ -60,9 +60,10 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Test with bitbucket private repo
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
-- [ ] Shorten the FAQ list
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Add a debug/production if statement that toggles the two modes
+- [ ] Create a log.txt file
+- [ ] Shorten the FAQ list
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
