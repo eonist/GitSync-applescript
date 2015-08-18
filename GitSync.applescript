@@ -75,7 +75,7 @@ end handle_push_interval
 on do_commit(local_repo_path)
 	set status_list to my Util's compile_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
-	Util's process_status_list(status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
+	my Util's process_status_list(status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 	set status_list to Util's compile_staus_list(local_repo_path) --get the new status
 	set commit_message to my Util's compile_commit_msg(status_list) --compile commit msg for the commit
 	log "commit_message: " & commit_message
@@ -169,7 +169,7 @@ script Util
 		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
-		if (length of the_paragraphs = 0) then
+		if (length of the_status_list = 0) then
 			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
 		else
 			set status_list to my transform_status_list(the_status_list)
@@ -205,7 +205,7 @@ script Util
 			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative 
 			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record
 		end repeat
-		return status_list
+		return transformed_list
 	end transform_status_list
 	(*
 	 * This method iterates over the status items and git add's the item unless ots already added (aka staged for commit)

@@ -43,9 +43,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] Clean up the comments in the "setup wizard"
 - [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [x] Retrieve the remote account name from keychain with shell and regexp capture groups
-- [ ] ~~Maybe just have 1 interval instead of 3? , just a single Sync interval?~~
-- [ ] ~~Implement the Setup wizard into the GitSync.applescript file~~
-- [ ] ~~In the wizard, implement a failsafe when the user enters the wrong type of data~~
+- [ ] Create more internal scripts in the GitSync.applescript file. Better naming
 - [ ] **use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
