@@ -1,10 +1,11 @@
 ##Features:
-- Automatically **add**, **commit** and **push** updates to GitHub or Bitbucket
-- Automatically generate commit messages 
+- Auto sync to GitHub or Bitbucket. 
+- Auto generates commit messages
 
 ##How to install:
-- Download and install [Git](http://git-scm.com/download/mac) 
-- Download and run [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
+1. Install [Git](http://git-scm.com/download/mac) 
+2. Run [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
+3. Enter "local-path", "remote-path", "keychain-name" into an xml. 
 
 ##FAQ:
 **Q: Where does GitSync store passwords?** <br/>
