@@ -16,8 +16,8 @@ log "beginning of the script"
 
 set current_time to 0 --always reset this value on init
 
---set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
---handle_interval() --move this out of this method when debuggin
+set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
+handle_interval() --move this out of this method when debuggin
 
 
 (*
@@ -41,9 +41,8 @@ on handle_interval()
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
 	repeat with repo_item in repo_list --iterate over every repo item
-		if (current_time_in_min mod (commit_int of repo_item) = 0) then handle_commit_interval(repo_item) --is true every time spesified by the user
-		if (current_time_in_min mod (push_int of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
-		--if (current_time_in_min mod (pull_int of repo_item) = 0) then handle_pull_interval(repo_item) --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_commit_interval(repo_item) --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 end handle_interval
@@ -51,7 +50,7 @@ end handle_interval
  * Handles the process of making a commit for a single repository
  *)
 on handle_commit_interval(repo_item)
-	log "COMMIT() a repo with remote path: " & remote_path of repo_item
+	log "COMMIT() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
 	log do_commit(local_path of repo_item) --if there were no commits false will be returned
 	--log "has_commited: " & has_commited
 end handle_commit_interval
@@ -69,22 +68,12 @@ on handle_push_interval(repo_item)
 	end if
 end handle_push_interval
 (*
- * Handles the process of making a pull for a single repository 
- *)
-(*
-on handle_pull_interval(repo_item)
-	log "PULL() a repo with remote path: " & remote_path of repo_item
-	set pull_call_back to GitUtil's pull(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, ShellUtil's keychain_password(keychain_item_name of repo_item))
-	log "pull_call_back: " & pull_call_back
-end handle_pull_interval
-*)
-(*
  * This method compiles checks if a commit is due, and if so, compiles a commit message and then tries to commit
  * Returns true if a commit was made, false if no commit was made or an error occured
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  *)
 on do_commit(local_repo_path)
-	set status_list to Util's compile_staus_list(local_repo_path) --get current status
+	set status_list to my Util's compile_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
 	Util's process_status_list(status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 	set status_list to Util's compile_staus_list(local_repo_path) --get the new status
@@ -110,7 +99,7 @@ script Util
  	* Todo: if the interval values is not set, then use default values
  	*)
 	on compile_repo_list(file_path) -- rename to generate_repo_list?
-		log file_path
+		log "file_path: " & file_path
 		set theXMLRoot to XMLParser's root(file_path)
 		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
 		set the_repo_list to {}
@@ -118,13 +107,14 @@ script Util
 			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
 			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
-			set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
-			set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
-			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
+			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
+			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
+			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
+			set interval to XMLParser's attribute_value_by_name(theXMLChild, "interval") --default is 30min
 			--set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
 			--Todo: use only 1 interval
-			set key_value_pairs to {local_path:local_path, remote_path:remote_path, commit_int:commit_int, push_int:push_int, keychain_item_name:keychain_item_name} --remote_account_name:remote_account_name--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
+			set key_value_pairs to {local_path:local_path, remote_path:remote_path, keychain_item_name:keychain_item_name, interval:interval} --remote_account_name:remote_account_name,commit_int:commit_int, push_int:push_int--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
 			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
 		end repeat
 		return the_repo_list
@@ -133,7 +123,7 @@ script Util
 	 * Compiles a commit message
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * Todo: Implement the commands: i and c
-    *)
+    	 *)
 	on compile_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
