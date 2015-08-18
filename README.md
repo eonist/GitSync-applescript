@@ -29,7 +29,7 @@ A: You should be fine with a reasonable amount of repos and reasonably sized rep
 **Q: Can the application auto start after reboots?** <br/>
 A: Yes, right click on the icon in the dock and hit start app on startup.
 
-**Q: What if there are conflicts while GitSync tries to commit and push ?** <br/>
+**Q: What if there are conflicts while GitSync tries to sync?** <br/>
 A: GitSync takes a non-destructive approach when conflicts occur. If GitSync stumbles upon a conflict GitSync will try again in the next interval until the user shuts GitSync down and resolves the issue via terminal, or the Github app etc. then open GitSync again and it will continue operations as usual.
 
 **Q: What was the motivation behind building GitSync?** <br/>
