@@ -85,7 +85,7 @@ on do_commit(local_repo_path)
 	set commit_message to my Util's compile_commit_msg(status_list) --compile commit msg for the commit
 	log "commit_message: " & commit_message
 	try
-		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is'nt implimented yet") --commit
+		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "error: " & errMsg

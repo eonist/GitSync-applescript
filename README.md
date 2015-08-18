@@ -49,7 +49,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
 - [ ] Create more internal scripts in the GitSync.applescript file. Better naming
 - [ ] Optional custom commit and push intervals
-- [ ] Contemplate having the title of the commit message be "Update by GitSync" and the Description be "Files moved:2, Files changed:1, Files deleted:4, and then even more descriptive bellow that, you have drafted the verbose version of the description somewhere"
+- [ ] Contemplate having the title of the commit message be "Update by GitSync" and the Description be "Files moved:2, Files changed:1, Files deleted:4, and then even more descriptive bellow that, you have drafted the verbose version of the description somewhere
 - [ ] Implement the commands: i and c
 - [ ] Stress-test when GitSync gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
