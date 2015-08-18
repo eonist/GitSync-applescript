@@ -16,8 +16,9 @@ log "beginning of the script"
 
 set current_time to 0 --always reset this value on init
 
-set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
+set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
 handle_interval() --move this out of this method when debuggin
+
 
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
@@ -25,7 +26,6 @@ handle_interval() --move this out of this method when debuggin
 on idle {}
 	log "idle()"
 	--
-	
 	--
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -85,7 +85,7 @@ on do_commit(local_repo_path)
 	set commit_message to my Util's compile_commit_msg(status_list) --compile commit msg for the commit
 	log "commit_message: " & commit_message
 	try
-		set commit_result to GitUtil's commit(local_repo_path, commit_message, "this is the description") --commit
+		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is'nt implimented yet") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "error: " & errMsg
