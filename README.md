@@ -33,7 +33,7 @@ A: Yes, right click on the icon in the dock and hit start app on startup.
 A: GitSync takes a non-destructive approach when conflicts occur. If GitSync stumbles upon a conflict GitSync will try again in the next interval until the user shuts GitSync down and resolves the issue via terminal, or the Github app etc. then open GitSync again and it will continue operations as usual.
 
 **Q: What was the motivation behind building GitSync?** <br/>
-A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of synchronising to GitHub gets in the way of having fun coding. So voila GitSync saw the light of day. 
+A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of synchronising to GitHub gets in the way of having fun coding. So voila GitSync saw the light of day. 
 
 ###Todo's:
 - [x] Move repositories.xml into the app
@@ -42,9 +42,9 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
 - [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
-- [x] Retrieve the remote account name from keychain with shell and regexp capture groups
+- [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
 - [x] Beta test it with live coding, will the magic work IRL
-- [ ] **use a fixed interval if no interval is provided in the repositories.xml file**
+- [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
 - [ ] Create more internal scripts in the GitSync.applescript file. Better naming
@@ -55,13 +55,13 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore and how it works
-- [ ] Shorten the FAQ list
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
+- [ ] Shorten the FAQ list
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
-- [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
+- [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
