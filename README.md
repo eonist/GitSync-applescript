@@ -41,24 +41,25 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my IPhone and IPad. T
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
 - [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
+- [x] Retrieve the remote account name from keychain with shell and regexp capture groups
+- [ ] ~~Maybe just have 1 interval instead of 3? , just a single Sync interval?~~
 - [ ] ~~Implement the Setup wizard into the GitSync.applescript file~~
 - [ ] ~~In the wizard, implement a failsafe when the user enters the wrong type of data~~
-- [x] Retrieve the remote account name from keychain with shell and regexp capture groups
-- [ ] Implement the commands: i and c
+- [ ] **use a fixed interval if no interval is provided in the repositories.xml file**
+- [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
+- [ ] Implement the commands: i and c
 - [ ] Stress-test when GitSync gets into trouble
 - [ ] Test if you are prompted for a password when requesting from a new keychain
 - [ ] Add support for ssh authentication
 - [ ] Research git ignore and how it works
 - [ ] Shorten the FAQ list
-- [ ] **use a fixed interval if no interval is provided in the repositories.xml file**
-- [ ] **Use Regular expression when deriving the git status message**
-- [ ] ~~Maybe just have 1 interval instead of 3? , just a single Sync interval?~~
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
+- [ ] Find a suitable download provider for a zip file, bitbucket? google this
+- [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
-- [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] **Bonus:** Instal git on server, and use it as origin instead of Github for private projects
 - [ ] **Bonus:** Humanise commit messages
