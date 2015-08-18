@@ -3,9 +3,9 @@
 - Auto generates commit messages
 
 ##How to install:
-1. Install [Git](http://git-scm.com/download/mac) 
-2. Run [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
-3. Enter "local-path", "remote-path", "keychain-name" into an xml. 
+1. Download [Git](http://git-scm.com/download/mac) 
+2. Download [GitSync](https://github.com/eonist/GitSync/archive/master.zip) 
+3. Enter "local-path", "remote-path", "keychain-name" into repositories.xml  
 
 ##FAQ:
 **Q: Where does GitSync store passwords?** <br/>
