@@ -19,16 +19,13 @@ set current_time to 0 --always reset this value on init
 set repo_list to Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall
 handle_interval() --move this out of this method when debuggin
 
-
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  *)
 on idle {}
 	log "idle()"
 	--
-	(*
 	
-	*)
 	--
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -50,7 +47,7 @@ end handle_interval
  * Handles the process of making a commit for a single repository
  *)
 on handle_commit_interval(repo_item)
-	log "COMMIT() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
+	log "handle_commit_interval() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
 	log do_commit(local_path of repo_item) --if there were no commits false will be returned
 	--log "has_commited: " & has_commited
 end handle_commit_interval
@@ -58,12 +55,20 @@ end handle_commit_interval
  * Handles the process of making a push for a single repository 
  *)
 on handle_push_interval(repo_item)
+	set the_keychain_item_name to keychain_item_name of repo_item
+	log "the_keychain_item_name: " & the_keychain_item_name
 	set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
 	set keychain_password to the_password of keychain_data
-	set has_commits to length of GitUtil's cherry(local_path of repo_item, account_name of keychain_data, keychain_password) > 0
+	log "keychain_password: " & keychain_password
+	set remote_account_name to account_name of keychain_data
+	log "remote_account_name: " & remote_account_name
+	log GitUtil's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
+	set cherry_result to GitUtil's cherry(local_path of repo_item, remote_account_name, keychain_password)
+	log "cherry_result: " & cherry_result
+	set has_commits to length of cherry_result > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name of repo_item, keychain_password)
+		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
@@ -75,12 +80,12 @@ end handle_push_interval
 on do_commit(local_repo_path)
 	set status_list to my Util's compile_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
-	my Util's process_status_list(status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
-	set status_list to Util's compile_staus_list(local_repo_path) --get the new status
+	my Util's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
+	set status_list to my Util's compile_status_list(local_repo_path) --get the new status
 	set commit_message to my Util's compile_commit_msg(status_list) --compile commit msg for the commit
 	log "commit_message: " & commit_message
 	try
-		set commit_result to GitUtil's commit(local_repo_path, commit_message) --commit
+		set commit_result to GitUtil's commit(local_repo_path, commit_message, "this is the description") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "error: " & errMsg
@@ -172,11 +177,12 @@ script Util
 		if (length of the_status_list = 0) then
 			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
 		else
-			set status_list to my transform_status_list(the_status_list)
+			set transformed_list to my transform_status_list(the_status_list)
 		end if
 		--
-		log "len of status_list: " & (length of status_list)
-		return status_list
+		log "len of the_status_list: " & (length of the_status_list)
+		log transformed_list
+		return transformed_list
 	end compile_status_list
 	(*
  	 * Transforms the "compact git status list" by adding more context to each item (a list with acociative lists, aka records)

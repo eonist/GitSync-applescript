@@ -1,1 +1,1 @@
-<repositories>	<repository local-path="~/_projects/_code/_active/applescript/SqliteEdit/repo/app/" remote-path="github.com/eonist/test.git" interval="2" keychain-item-name="flowerpower"/></repositories>
+<repositories>	<repository local-path="~/_projects/_code/_active/applescript/GitSync" remote-path="github.com/eonist/GitSync.git" interval="2" keychain-item-name="github"/></repositories>

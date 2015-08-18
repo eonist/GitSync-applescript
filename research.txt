@@ -1,0 +1,12 @@
+research:
+
+
+git fetch origin
+
+# See if there are any incoming changes
+git log HEAD..origin/master --oneline
+(I'm assuming origin/master is your remote tracking branch)
+
+If any commits are listed in the output above, then you have incoming changes -- you need to merge. If no commits are listed by git log then there is nothing to merge.
+
+Note that this will work even if you are on a feature branch -- that does not have a tracking remote, since if explicitly refers to origin/master instead of implicitly using the upstream branch remembered by Git.
