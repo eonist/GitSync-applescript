@@ -62,7 +62,8 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Add a debug/production if statement that toggles the two modes
-- [ ] Create a log.txt file
+- [ ] Create a log.txt file that logs the git activity, errors, etc
+- [ ] Research if you can change an applescript icon with an applescript
 - [ ] Shorten the FAQ list
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
