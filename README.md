@@ -43,7 +43,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Clean up the comments in the "setup wizard"
 - [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
-- [x] Beta test it with live coding, will the magic work IRL
+- [x] Beta test it with live coding
 - [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
@@ -61,7 +61,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Shorten the FAQ list
-- [ ] add a debug/production if statement that toggles the two modes
+- [ ] Add a debug/production if statement that toggles the two modes
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
