@@ -14,7 +14,7 @@ A: GitSync does not store passwords, GitSync requests passwords from keychain
 **Q: How can I trust GitSync with my password?** <br/>
 A: You can always compile the .app yourself. Download the GitSync from the link provided above, open the GitSync.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
 
-**Q: what about commit messages?** <br/>
+**Q: What about commit messages?** <br/>
 A: The commit message is created based on the context of the change, and is separated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
 
 **Q: Do I need to close the app when I do git work in other apps?** <br/>
