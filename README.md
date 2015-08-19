@@ -53,12 +53,12 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
 - [ ] **Self awareness when debugging / production**
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
+- [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
-- [ ] Create a LogEngine script that logs what GitSync has been up to log.txt
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo
 - [ ] Shorten the FAQ list
@@ -66,4 +66,3 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
-- [ ] **Bonus:** Humanise commit messages
