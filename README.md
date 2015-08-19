@@ -51,12 +51,12 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Stress-test when GitSync gets into trouble
 - [x] Research git ignore and how it works
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
+- [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] **Self awareness when debugging / production**
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
-- [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Research if you can change an applescript icon with an applescript
