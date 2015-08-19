@@ -54,7 +54,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] **Self awareness when debugging / production**
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
-- [ ] **The GitHub.app should a self contained a repo.xml 
+- [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Draw another OS X GUI sketch
