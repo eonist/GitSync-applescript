@@ -1,4 +1,4 @@
---Scripts:
+1 --Scripts:
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property TextParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "text:TextParser.applescript"))
 property ListModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "list:ListModifier.applescript"))
@@ -7,6 +7,8 @@ property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folde
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
 property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
+property RegExpUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "regexp:RegExpUtil.applescript"))
+
 --Properties:
 property current_time : 0 --keeps track of the time passed, remember to reset this value pn every init
 property the_interval : 60 --static value, increases the time by this value on every interval
@@ -86,7 +88,7 @@ on do_commit(local_repo_path)
 		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
-		log "error: " & errMsg
+		log "ERROR: " & errMsg
 	end try
 	return true --return true to indicate that the commit completed
 end do_commit
@@ -103,6 +105,7 @@ script CommitUtil
 	 *)
 	on generate_status_list(local_repo_path)
 		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
+		log "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
 		if (length of the_status_list = 0) then
@@ -163,24 +166,28 @@ script CommitUtil
  	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
  	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
+	 * @Param: the_status_list is a list with status messages like: {"?? test.txt"," M index.html","A home.html"}
  	 *)
 	on transform_status_list(the_status_list)
 		set transformed_list to {}
-		repeat with the_status in the_status_list
-			set the_items to TextParser's split(the_status, space)
-			if (first item in the_items is not equal to "") then --Changes to be committed
-				set cmd to first item in the_items --rename to type
+		repeat with the_status_item in the_status_list
+			log "the_status_item: " & the_status_item
+			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARD?]{1,2}) (.+)$") --returns 3 capturing groups
+			log "length of the_status_parts: " & (length of the_status_parts)
+			log the_status_parts
+			if ((second item in the_status_parts) = " ") then
+				set cmd to third item in the_status_parts --Changes not staged for commit:
+				set state to "Changes not staged for commit"
+			else -- Changes to be committed
+				set cmd to third item in the_status_parts --rename cmd to type
 				if (cmd = "??") then
 					set state to "Untracked files"
 				else
 					set state to "Changes to be committed"
 				end if
-			else
-				set cmd to second item in the_items --Changes not staged for commit:
-				set state to "Changes not staged for commit"
 			end if
-			set file_name to the last item in the_items
-			log state & ", " & cmd & ", " & file_name --logs the file named added changed etc
+			set file_name to the fourth item in the_status_parts
+			log "state: " & state & ", cmd: " & cmd & ", file_name: " & file_name --logs the file named added changed etc
 			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative 
 			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record to a list
 		end repeat
@@ -191,19 +198,20 @@ script CommitUtil
 	 * Note: if the status list is empty then there is nothing to process
 	 *)
 	on process_status_list(local_repo_path, status_list)
+		log "process_status_list()"
 		repeat with status_item in status_list
 			--log "len of status_item: " & (length of status_item)
 			set state to state of status_item
 			set cmd to cmd of status_item
 			set file_name to file_name of status_item
 			if state = "Untracked files" then --this is when there exists a new file
-				log "1"
+				log "1. " & file_name
 				GitUtil's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes not staged for commit" then --this is when you have not added a file that has changed to the next commit
-				log "2"
+				log "2. " & file_name
 				GitUtil's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
-				log "3"
+				log "3. "
 			end if
 		end repeat
 	end process_status_list
@@ -213,10 +221,10 @@ end script
  *)
 script RepoUtil
 	(*
- 	* Returns a repo_list with values derived from an XML file
- 	* @param file_path is in HSF not POSIX
- 	* Todo: if the interval values is not set, then use default values
- 	*)
+ 	 * Returns a repo_list with values derived from an XML file
+ 	 * @param file_path is in HSF not POSIX
+ 	 * Todo: if the interval values is not set, then use default values
+ 	 *)
 	on compile_repo_list(file_path) -- rename to generate_repo_list?
 		log "file_path: " & file_path
 		set theXMLRoot to XMLParser's root(file_path)
