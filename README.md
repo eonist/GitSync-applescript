@@ -4,9 +4,9 @@
 
 ##How to install:
 1. Install [Git](http://git-scm.com/download/mac) 
-2. Run [GitSync](https://github.com/eonist/GitSync/releases/download/0.9.1/GitSync.zip) 
+2. Run [GitSync](https://github.com/eonist/GitSync/releases/download/0.9.1/GitSync.app.zip) 
 3. Enter "local-path", "remote-path", "keychain-name" into repositories.xml  
-4. Read the [FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
+4. Read [FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
 
 ###Todo's:
 - [x] Move repositories.xml into the app
