@@ -97,6 +97,24 @@ log "end of the script"
  *)
 script CommitUtil
 	(*
+	 * Returns a descriptive status list of the current git changes
+	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
+	 *)
+	on generate_status_list(local_repo_path)
+		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
+		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
+		set transformed_list to {}
+		if (length of the_status_list = 0) then
+			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
+		else
+			set transformed_list to my transform_status_list(the_status_list)
+		end if
+		--
+		log "len of the_status_list: " & (length of the_status_list)
+		log transformed_list
+		return transformed_list
+	end generate_status_list
+	(*
 	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * Todo: Implement the commands: i and c
@@ -139,24 +157,6 @@ script CommitUtil
 		return commit_msg
 	end sequence_commit_msg
 	(*
-	 * Returns a descriptive status list of the current git changes
-	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
-	 *)
-	on generate_status_list(local_repo_path)
-		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
-		set transformed_list to {}
-		if (length of the_status_list = 0) then
-			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
-		else
-			set transformed_list to my transform_status_list(the_status_list)
-		end if
-		--
-		log "len of the_status_list: " & (length of the_status_list)
-		log transformed_list
-		return transformed_list
-	end generate_status_list
-	(*
  	 * Transforms the "compact git status list" by adding more context to each item (a list with acociative lists, aka records)
  	 * Returns a list with records that contain staus type, file name and state
  	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
@@ -181,12 +181,12 @@ script CommitUtil
 			set file_name to the last item in the_items
 			log state & ", " & cmd & ", " & file_name --logs the file named added changed etc
 			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative 
-			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record
+			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record to a list
 		end repeat
 		return transformed_list
 	end transform_status_list
 	(*
-	 * This method iterates over the status items and git add's the item unless ots already added (aka staged for commit)
+	 * Iterates over the status items and git add's the item unless ots already added (aka staged for commit)
 	 * Note: if the status list is empty then there is nothing to process
 	 *)
 	on process_status_list(local_repo_path, status_list)
