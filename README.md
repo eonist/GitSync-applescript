@@ -26,7 +26,7 @@
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [x] Use wiki for FAQ
-- [ ] **Self awareness when debugging / production**
+- [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
