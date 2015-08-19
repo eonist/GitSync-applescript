@@ -21,7 +21,7 @@ set current_time to 0 --always reset this value on init, applescript can has per
 on idle {}
 	log "idle()"
 	--
-	set repo_list to my Util's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
+	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
 	handle_interval() --move this out of this method when debuggin
 	--
 	return the_interval --the_interval --return new idle time in seconds
@@ -70,16 +70,16 @@ on handle_push_interval(repo_item)
 	end if
 end handle_push_interval
 (*
- * This method compiles checks if a commit is due, and if so, compiles a commit message and then tries to commit
+ * This method generates a git status list,and asserts if a commit is due, and if so, compiles a commit message and then tries to commit
  * Returns true if a commit was made, false if no commit was made or an error occured
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  *)
 on do_commit(local_repo_path)
-	set status_list to my CommitUtil's compile_status_list(local_repo_path) --get current status
+	set status_list to my CommitUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
-	my Util's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
-	set status_list to my Util's compile_status_list(local_repo_path) --get the new status
-	set commit_message to my Util's compile_commit_msg(status_list) --compile commit msg for the commit
+	my CommitUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
+	set status_list to my CommitUtil's generate_status_list(local_repo_path) --get the new status
+	set commit_message to my CommitUtil's sequence_commit_msg(status_list) --compile commit msg for the commit
 	log "commit_message: " & commit_message
 	try
 		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
@@ -127,11 +127,11 @@ end script
  *)
 script CommitUtil
 	(*
-	 * Compiles a commit message
+	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * Todo: Implement the commands: i and c
     	 *)
-	on compile_commit_msg(status_list) --rename to generate_commit_msg
+	on sequence_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
 		set num_of_deleted_files to 0
@@ -167,12 +167,12 @@ script CommitUtil
 			set commit_msg to commit_msg & "Files renamed: " & num_of_renamed_files
 		end if
 		return commit_msg
-	end compile_commit_msg
+	end sequence_commit_msg
 	(*
 	 * Returns a descriptive status list of the current git changes
 	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
 	 *)
-	on compile_status_list(local_repo_path)
+	on generate_status_list(local_repo_path)
 		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
 		set transformed_list to {}
@@ -185,7 +185,7 @@ script CommitUtil
 		log "len of the_status_list: " & (length of the_status_list)
 		log transformed_list
 		return transformed_list
-	end compile_status_list
+	end generate_status_list
 	(*
  	 * Transforms the "compact git status list" by adding more context to each item (a list with acociative lists, aka records)
  	 * Returns a list with records that contain staus type, file name and state
