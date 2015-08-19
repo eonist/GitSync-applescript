@@ -186,7 +186,7 @@ script CommitUtil
 		return transformed_list
 	end transform_status_list
 	(*
-	 * Iterates over the status items and git add's the item unless ots already added (aka staged for commit)
+	 * Iterates over the status items and "git add" the item unless it's already added (aka "staged for commit")
 	 * Note: if the status list is empty then there is nothing to process
 	 *)
 	on process_status_list(local_repo_path, status_list)
