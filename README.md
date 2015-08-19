@@ -49,14 +49,12 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Use Regular expression when deriving the git status message
 - [x] Test if you are prompted for a password when requesting from a new keychain, you are, ok this on init
 - [x] Stress-test when GitSync gets into trouble
+- [x] Research git ignore and how it works
 - [ ] **Self awareness when debugging / production**
-- [ ] **Commit msg Title: "Update by GitSync" Description: "Files moved:2, Files changed:1, Files deleted:4
-- [ ] Find the verbose version of the description layout you drew up
-- [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
+- [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
 - [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] Optional custom commit and push intervals
 - [ ] Implement the commands: i and c
-- [x] Research git ignore and how it works
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
