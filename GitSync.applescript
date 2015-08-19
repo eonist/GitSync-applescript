@@ -94,7 +94,6 @@ on do_commit(local_repo_path)
 end do_commit
 
 log "end of the script"
-
 (*
  * A collection of utility methods for parsing the the "git status message" and a method for processing 
  *)
