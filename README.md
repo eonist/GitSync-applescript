@@ -32,7 +32,7 @@
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Add a readme.txt inside the release binary file, how to install etc
-- [ ] Add "Whats new in version 1.2" with "New" "Note" "Fixed"
+- [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
 - [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
