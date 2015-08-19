@@ -55,9 +55,8 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
 - [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] Optional custom commit and push intervals
-
 - [ ] Implement the commands: i and c
-- [ ] Research git ignore and how it works
+- [x] Research git ignore and how it works
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff?
 - [ ] Test with bitbucket private repo
