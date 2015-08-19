@@ -56,6 +56,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] **The GitHub.app should have a repo.xml that is within the app, and toggle this depending on an auto debug/deploy toggle**
+- [ ] Draw another OS X GUI sketch
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
