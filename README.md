@@ -44,6 +44,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
 - [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
 - [x] Beta test it with live coding
+- [x] Test .gitignore with the app
 - [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
