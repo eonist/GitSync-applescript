@@ -57,6 +57,9 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
+- [ ] Use wiki for FAQ
+- [ ] One fat download button
+- [ ] Readme.txt inside the release binary file
 - [ ] Draw another OS X GUI sketch
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
