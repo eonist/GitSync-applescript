@@ -88,7 +88,7 @@ on do_commit(local_repo_path)
 		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
-		log "ERROR: " & errMsg
+		log "----------------ERROR:-----------------" & errMsg
 	end try
 	return true --return true to indicate that the commit completed
 end do_commit
