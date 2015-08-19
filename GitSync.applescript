@@ -75,7 +75,7 @@ end handle_push_interval
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  *)
 on do_commit(local_repo_path)
-	set status_list to my Util's compile_status_list(local_repo_path) --get current status
+	set status_list to my CommitUtil's compile_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
 	my Util's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 	set status_list to my Util's compile_status_list(local_repo_path) --get the new status
@@ -92,9 +92,9 @@ end do_commit
 
 log "end of the script"
 (*
- * A collection of utility methods for GitSync
+ * A collection of utility methods for parsing the repository.xml file
  *)
-script Util
+script RepoUtil
 	(*
  	* Returns a repo_list with values derived from an XML file
  	* @param file_path is in HSF not POSIX
@@ -121,6 +121,11 @@ script Util
 		end repeat
 		return the_repo_list
 	end compile_repo_list
+end script
+(*
+ * A collection of utility methods for parsing the the "git status message" and a method for processing 
+ *)
+script CommitUtil
 	(*
 	 * Compiles a commit message
 	 * @param status_list: a list with records that contain staus type, file name and state
@@ -231,13 +236,4 @@ script Util
 			end if
 		end repeat
 	end process_status_list
-end script
-
-script RepoUitl
-	
-end script
-
-script CommitUtil
-	
-	
 end script
