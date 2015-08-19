@@ -58,7 +58,6 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Find a suitable download provider for a zip file, bitbucket? google this
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
-- [ ] Add a debug/production if statement that toggles the two modes
 - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo
