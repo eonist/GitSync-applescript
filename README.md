@@ -1,4 +1,4 @@
-##Features:
+##Highlighted features:
 - Auto sync to GitHub or Bitbucket. 
 - Auto generates commit messages
 
@@ -58,8 +58,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Use wiki for FAQ
-- [ ] One fat download button
-- [ ] Readme.txt inside the release binary file
+- [ ] Add Add a readme.txt inside the release binary file, how to install etc
 - [ ] Draw another OS X GUI sketch
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
@@ -68,6 +67,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo
 - [ ] Shorten the FAQ list
+- [ ] Create the GitEdit.app with one function; "Sync down all"
 - [ ] Add support for ssh authentication
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
