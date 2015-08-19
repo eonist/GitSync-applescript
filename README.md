@@ -27,13 +27,13 @@
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [x] Use wiki for FAQ
 - [ ] **Self awareness when in debugging / production**
-- [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
+- [ ] **Implement the commit msg description, you drew up:** [Here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Add a readme.txt inside the release binary file, how to install etc
 - [ ] Add "Whats new in version 1.2" with "New" "Note" "Fixed"
-- [ ] Draw another OS X GUI sketch
+- [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
 - [ ] Account for keychain passwords with special chars. They may be in hex format. Decode the hex.
@@ -43,6 +43,7 @@
 - [ ] Shorten the FAQ list
 - [ ] Create the GitEdit.app with one function; "Sync down all"
 - [ ] Add support for ssh authentication
+- [ ] Create a pro and con list for GitSync
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
