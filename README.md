@@ -17,7 +17,7 @@ A: You can always compile the .app yourself. Download the GitSync from the link 
 **Q: What about commit messages?** <br/>
 A: The commit message is created based on the context of the change, and is separated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
 
-**Q: Do I need to close the app when I do git work in other apps?** <br/>
+**Q: Should I avoid using other Git apps when GitSync is running?** <br/>
 A: Yes, its advisable to avoid git conflicts.
 
 **Q: Do I need to close the app down if I changed the repositories.xml file?** <br/>
