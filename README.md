@@ -58,7 +58,8 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Use wiki for FAQ
-- [ ] Add Add a readme.txt inside the release binary file, how to install etc
+- [ ] Add a readme.txt inside the release binary file, how to install etc
+- [ ] Add "Whats new in version 1.2" with "New" "Note" "Fixed"
 - [ ] Draw another OS X GUI sketch
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
