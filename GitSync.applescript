@@ -12,12 +12,7 @@ property the_interval : 60 --static value, increases the time by this value on e
 property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 
 log "beginning of the script"
-
-
 set current_time to 0 --always reset this value on init
-
-
-
 
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
