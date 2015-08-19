@@ -41,13 +41,13 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] The setup wizard
 - [x] Rename project to GitSync?
 - [x] Clean up the comments in the "setup wizard"
-- [x] Use GitSync as a single point of pushing updates to GitHub, if you need to pull down updates, use Git edit
+- [x] Use GitSync as a single point of pushing updates to GitHub, pull down in another app
 - [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
 - [x] Beta test it with live coding
 - [x] Test .gitignore with the app
 - [x] Create more internal scripts in the GitSync.applescript file. Better naming
 - [x] Use Regular expression when deriving the git status message
-- [x] Test if you are prompted for a password when requesting from a new keychain, you are, ok this on init
+- [x] Test if you are prompted for a password when requesting from a new keychain
 - [x] Stress-test when GitSync gets into trouble
 - [x] Research git ignore and how it works
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
@@ -60,7 +60,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Draw another OS X GUI sketch
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
-- [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
+- [ ] Account for keychain passwords with special chars. They may be in hex format. Decode the hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo
