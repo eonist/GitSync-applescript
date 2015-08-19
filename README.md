@@ -7,34 +7,6 @@
 2. Run [GitSync](https://github.com/eonist/GitSync/releases/download/0.9/GitSync.zip) 
 3. Enter "local-path", "remote-path", "keychain-name" into repositories.xml  
 
-##FAQ:
-**Q: Where does GitSync store passwords?** <br/>
-A: GitSync does not store passwords, GitSync requests passwords from keychain
-
-**Q: How can I trust GitSync with my password?** <br/>
-A: You can always compile the .app yourself. Download the GitSync from the link provided above, open the GitSync.applescript file in Applescript edit, then inspect the code and it's dependencies. Then export the script as an .app
-
-**Q: What about commit messages?** <br/>
-A: The commit message is created based on the context of the change, and is separated into two parts the commit title is a short summary of the changes, and the description part contains more fine grained information about the change. 
-
-**Q: Should I avoid using other Git apps when GitSync is running?** <br/>
-A: Yes, its advisable to avoid git conflicts.
-
-**Q: Do I need to close the app down if I changed the repositories.xml file?** <br/>
-A: Yes, all changes to the repositories.xml file take effect at the opening of the app. 
-
-**Q: Is the application heavy on the systems cpu?** <br/>
-A: You should be fine with a reasonable amount of repos and reasonably sized repos. The app does not parse through each repo and each file for changes, but instead rely on GIT's own "git status" call to figure out if a change has taken place.
-
-**Q: Can the application auto start after reboots?** <br/>
-A: Yes, right click on the icon in the dock and hit start app on startup.
-
-**Q: What if there are conflicts while GitSync tries to sync?** <br/>
-A: GitSync takes a non-destructive approach when conflicts occur. If GitSync stumbles upon a conflict GitSync will try again in the next interval until the user shuts GitSync down and resolves the issue via terminal, or the Github app etc. then open GitSync again and it will continue operations as usual.
-
-**Q: What was the motivation behind building GitSync?** <br/>
-A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. Textastic can edit code you have stored on an ftp server, but it doesn't support GitHub. So the process of synchronising to GitHub gets in the way of having fun coding. So voila GitSync saw the light of day. 
-
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
