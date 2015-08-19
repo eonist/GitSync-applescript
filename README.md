@@ -45,10 +45,10 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
 - [x] Beta test it with live coding
 - [x] Test .gitignore with the app
+- [x] Create more internal scripts in the GitSync.applescript file. Better naming
 - [ ] **Use Regular expression when deriving the git status message**
 - [ ] **The separation of Title and Description in a Commit msg, build the parser and sequencer for this**
 - [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
-- [ ] Create more internal scripts in the GitSync.applescript file. Better naming
 - [ ] Optional custom commit and push intervals
 - [ ] Contemplate having the title of the commit message be "Update by GitSync" and the Description be "Files moved:2, Files changed:1, Files deleted:4, and then even more descriptive bellow that, you have drafted the verbose version of the description somewhere
 - [ ] Implement the commands: i and c

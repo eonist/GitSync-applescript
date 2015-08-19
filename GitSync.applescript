@@ -91,37 +91,7 @@ on do_commit(local_repo_path)
 end do_commit
 
 log "end of the script"
-(*
- * A collection of utility methods for parsing the repository.xml file
- *)
-script RepoUtil
-	(*
- 	* Returns a repo_list with values derived from an XML file
- 	* @param file_path is in HSF not POSIX
- 	* Todo: if the interval values is not set, then use default values
- 	*)
-	on compile_repo_list(file_path) -- rename to generate_repo_list?
-		log "file_path: " & file_path
-		set theXMLRoot to XMLParser's root(file_path)
-		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
-		set the_repo_list to {}
-		repeat with i from 1 to num_children
-			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
-			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
-			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
-			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
-			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
-			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
-			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
-			set interval to XMLParser's attribute_value_by_name(theXMLChild, "interval") --default is 30min
-			--set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
-			--Todo: use only 1 interval
-			set key_value_pairs to {local_path:local_path, remote_path:remote_path, keychain_item_name:keychain_item_name, interval:interval} --remote_account_name:remote_account_name,commit_int:commit_int, push_int:push_int--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
-			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
-		end repeat
-		return the_repo_list
-	end compile_repo_list
-end script
+
 (*
  * A collection of utility methods for parsing the the "git status message" and a method for processing 
  *)
@@ -236,4 +206,35 @@ script CommitUtil
 			end if
 		end repeat
 	end process_status_list
+end script
+(*
+ * A collection of utility methods for parsing the repository.xml file
+ *)
+script RepoUtil
+	(*
+ 	* Returns a repo_list with values derived from an XML file
+ 	* @param file_path is in HSF not POSIX
+ 	* Todo: if the interval values is not set, then use default values
+ 	*)
+	on compile_repo_list(file_path) -- rename to generate_repo_list?
+		log "file_path: " & file_path
+		set theXMLRoot to XMLParser's root(file_path)
+		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
+		set the_repo_list to {}
+		repeat with i from 1 to num_children
+			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
+			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
+			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
+			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
+			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
+			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
+			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
+			set interval to XMLParser's attribute_value_by_name(theXMLChild, "interval") --default is 30min
+			--set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
+			--Todo: use only 1 interval
+			set key_value_pairs to {local_path:local_path, remote_path:remote_path, keychain_item_name:keychain_item_name, interval:interval} --remote_account_name:remote_account_name,commit_int:commit_int, push_int:push_int--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
+			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
+		end repeat
+		return the_repo_list
+	end compile_repo_list
 end script
