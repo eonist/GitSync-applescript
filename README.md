@@ -50,9 +50,9 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [x] Test if you are prompted for a password when requesting from a new keychain, you are, ok this on init
 - [x] Stress-test when GitSync gets into trouble
 - [x] Research git ignore and how it works
+- [x] Use a fixed interval if no interval is provided in the repositories.xml file
 - [ ] **Self awareness when debugging / production**
 - [ ] **Implement the commit msg description, you drew up here:** [Issue 10](https://github.com/eonist/GitSync/issues/10)
-- [ ] **Use a fixed interval if no interval is provided in the repositories.xml file**
 - [ ] Optional custom commit and push intervals
 - [ ] Implement the commands: i and c
 - [ ] Do research around what happens if a file changes before a commit is pushed, or before a commit for that matter
@@ -62,7 +62,7 @@ A: I use [Textastic](http://www.textasticapp.com) a lot on my iPhone and iPad. T
 - [ ] Account for keychain passwords with special characters. They may be in hex format. Find a way to decode hex.
 - [ ] Skip synchronising if the remote is ahead, see research.txt doc for this
 - [ ] Add a debug/production if statement that toggles the two modes
-- [ ] Create a log.txt file that logs the git activity, errors, etc
+- [ ] Create a LogEngine script that logs what GitSync has been up to log.txt
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Shorten the FAQ list
 - [ ] Add support for ssh authentication
