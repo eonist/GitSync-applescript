@@ -44,6 +44,7 @@
 - [ ] Add support for ssh authentication
 - [ ] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [ ] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
+- [ ] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
