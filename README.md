@@ -27,6 +27,7 @@
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [x] Use wiki for FAQ
+- [ ] **Account for keychain passwords with special chars. They may be in hex format.** [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
@@ -37,7 +38,6 @@
 - [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
-- [ ] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
