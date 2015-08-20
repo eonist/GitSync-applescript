@@ -42,7 +42,7 @@
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
-- [ ] Support urls with https:// prepended to the url and with out, use regexp to assert and prepend if needed
+- [ ] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [ ] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
