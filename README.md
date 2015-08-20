@@ -1,6 +1,6 @@
 [Download GitSync 0.9.2](https://github.com/eonist/GitSync/releases/download/0.9.2/GitSync.app.zip) 
 
-##Features:
+###Features:
 - Syncs your files in the background while you code. 
 - Works with both GitHub and Bitbucket. 
 - Creates commit messages on the fly, based on the file change.
