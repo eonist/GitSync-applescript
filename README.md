@@ -35,7 +35,7 @@
 - [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
 - [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
-- [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
+- [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
