@@ -43,7 +43,7 @@
 - [ ] Shorten the FAQ list
 - [ ] Create the GitEdit.app with one function; "Sync down all"
 - [ ] Add support for ssh authentication
-- [ ] Create a pro and con list for GitSync
+- [ ] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
