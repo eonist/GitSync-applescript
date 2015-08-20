@@ -1,6 +1,7 @@
 ##Features:
-- Auto sync to GitHub or Bitbucket. 
-- Auto generates commit messages
+- Syncs your files in the background while you code. 
+- Works with both GitHub and Bitbucket. 
+- Creates commit messages on the fly, based on the file change.
 
 ##How to install:
 1. Install [Git](http://git-scm.com/download/mac) 
