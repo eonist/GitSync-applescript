@@ -17,7 +17,6 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript can has persistent values
 
-
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Todo: if im an .app include the handle in the idel method, else call it from init
