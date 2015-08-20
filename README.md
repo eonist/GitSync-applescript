@@ -39,7 +39,7 @@
 - [ ] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
-- [ ] Test with bitbucket private repo
+- [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Shorten the FAQ list
 - [ ] Create the GitEdit.app with one function; "Sync down all"
 - [ ] Add support for ssh authentication
