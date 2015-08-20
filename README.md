@@ -25,6 +25,7 @@
 - [x] Use wiki for FAQ
 - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
+- [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
@@ -32,15 +33,13 @@
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses
 - [ ] Sketch out a log format in the issue section
-- [ ] Add a readme.txt inside the release binary file, how to install etc [here](https://github.com/eonist/GitSync/issues/21)
 - [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
-- [ ] Shorten the FAQ list
-- [ ] Create the GitEdit.app with one function; "Sync down all"
+- [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
 - [ ] Support urls with https:// prepended to the url and with out, use regexp to assert and prepend if needed
 - [ ] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
