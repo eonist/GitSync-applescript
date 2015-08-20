@@ -36,7 +36,7 @@
 - [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, do we need to setup the shell stuff git writes about in their readme file?
-- [ ] Account for keychain passwords with special chars. They may be in hex format. Decode the hex.
+- [ ] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo
