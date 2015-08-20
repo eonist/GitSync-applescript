@@ -60,6 +60,7 @@ on handle_push_interval(repo_item)
 	log "the_keychain_item_name: " & the_keychain_item_name
 	set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
 	set keychain_password to the_password of keychain_data
+	
 	log "keychain_password: " & keychain_password
 	set remote_account_name to account_name of keychain_data
 	log "remote_account_name: " & remote_account_name
