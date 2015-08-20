@@ -1,13 +1,12 @@
+[Download GitSync 0.9.2](https://github.com/eonist/GitSync/releases/download/0.9.2/GitSync.app.zip) 
+
 ##Features:
 - Syncs your files in the background while you code. 
 - Works with both GitHub and Bitbucket. 
 - Creates commit messages on the fly, based on the file change.
 
-##How to install:
-1. Install [Git](http://git-scm.com/download/mac) 
-2. Run [GitSync](https://github.com/eonist/GitSync/releases/download/0.9.2/GitSync.app.zip) 
-3. Enter "local-path", "remote-path", "keychain-name" into repositories.xml  
-4. Read [FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
+[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
+
 
 ###Todo's:
 - [x] Move repositories.xml into the app
