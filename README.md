@@ -28,12 +28,14 @@
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [x] Use wiki for FAQ
 - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
-- [ ] **Account for keychain passwords with special chars. They may be in hex format.** [here](https://github.com/eonist/GitSync/issues/18)
+- [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
+- [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses
+- [ ] Sketch out a log format in the issue section
 - [ ] Add a readme.txt inside the release binary file, how to install etc [here](https://github.com/eonist/GitSync/issues/21)
 - [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
 - [ ] Optional custom commit and push intervals
