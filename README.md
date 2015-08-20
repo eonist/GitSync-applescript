@@ -27,6 +27,7 @@
 - [x] Use a fixed interval if no interval is provided in the repositories.xml file
 - [x] Find a suitable download provider for a zip file, bitbucket? google this
 - [x] Use wiki for FAQ
+- [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Account for keychain passwords with special chars. They may be in hex format.** [here](https://github.com/eonist/GitSync/issues/18)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
@@ -35,7 +36,6 @@
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
 - [ ] Add a readme.txt inside the release binary file, how to install etc [here](https://github.com/eonist/GitSync/issues/21)
 - [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
-- [ ] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
