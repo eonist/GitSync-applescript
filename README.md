@@ -1,13 +1,10 @@
 [Download GitSync 0.9.2](https://github.com/eonist/GitSync/releases/download/0.9.2/GitSync.app.zip) 
-
+---
 ##Features:
 - Syncs your files in the background while you code. 
 - Works with both GitHub and Bitbucket. 
 - Creates commit messages on the fly, based on the file change.
-
-[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
-
-
+---
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
@@ -50,3 +47,6 @@
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
+
+---
+[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
