@@ -17,13 +17,15 @@ repeat with status_item in status_list
 	if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 	if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
 end repeat
-
-if (length of deleted_items > 0) then
-	set desc_text to desc_text & "Deleted " & length of deleted_items & " files:" & return
-	repeat with deleted_item in deleted_items
-		set desc_text to desc_text & (file_name of deleted_item)
-	end repeat
-	set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
-end if
+traverse_list(deleted_items,"Deleted ")
+on traverse_list(the_list,prefix_text)
+	if (length of the_list > 0) then
+		set desc_text to desc_text & prefix_text & length of the_list & " files:" & return
+		repeat with the_item in the_list
+			set desc_text to desc_text & (file_name of the_item)
+		end repeat
+		set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
+	end if
+end traverse_list
 log "desc_text: " & return & desc_text
 --now do this for the other lists as well
