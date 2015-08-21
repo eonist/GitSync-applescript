@@ -25,6 +25,8 @@ set desc_text to desc_text & traverse_list(modified_items, "Modified ")
 on traverse_list(the_list, prefix_text)
 	set desc_text to ""
 	if (length of the_list > 0) then
+		set the_suffix to ""
+		if (length of the_list) 
 		set desc_text to desc_text & prefix_text & length of the_list & " files:" & return
 		repeat with the_item in the_list
 			set desc_text to desc_text & (file_name of the_item) & return
