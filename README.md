@@ -36,22 +36,21 @@ repo.xml URLs may now be partial or full
 - [x] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
-- [ ] **Self awareness when in debugging / production**
-- [ ] **The GitHub.app should a self contained a repo.xml**
-- [ ] **Toggle repo.xml path depending on debug/deploy mode**
-- [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
-- [ ] One big readme.md doc with a menu [here](https://github.com/eonist/GitSync/issues/29)
+- [ ] **Self awareness when in debugging / production** [v.0.9.4]
+- [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
+- [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
+- [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt** [v.0.9.5]
+- [ ] One big readme.md doc with a menu [here](https://github.com/eonist/GitSync/issues/29) [v.0.9.3]
+- [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" [v.0.9.3]
 - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
-- [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses
-- [ ] Sketch out a log format in the issue section
-- [ ] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" 
+- [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses [v.0.9.5]
+- [ ] Sketch out a log format in the issue section [v.0.9.5]
 - [ ] Optional custom commit and push intervals
 - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
-- [ ] one long README.md file
 - [ ] Add support for ssh authentication
 - [ ] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
