@@ -36,6 +36,7 @@ repo.xml URLs may now be partial or full
 - [x] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
+- [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Self awareness when in debugging / production** [v.0.9.4]
 - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
 - [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
@@ -52,7 +53,7 @@ repo.xml URLs may now be partial or full
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
-- [ ] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
+- [ ] OSX icon in illustrator, OSX header in paper
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
