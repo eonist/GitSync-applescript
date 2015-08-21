@@ -17,8 +17,8 @@ repeat with status_item in status_list
 	if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 	if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
 end repeat
-traverse_list(deleted_items,"Deleted ")
-on traverse_list(the_list,prefix_text)
+traverse_list(deleted_items, "Deleted ")
+on traverse_list(the_list, prefix_text)
 	if (length of the_list > 0) then
 		set desc_text to desc_text & prefix_text & length of the_list & " files:" & return
 		repeat with the_item in the_list
