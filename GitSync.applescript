@@ -121,7 +121,8 @@ script CommitUtil
 	(*
 	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
-	 * Todo: Implement the commands: i and c
+	 * Note: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED, 
+	 * Note: In place of Renamed, Git first deletes the file then says its untracked
     	 *)
 	on sequence_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
@@ -136,7 +137,7 @@ script CommitUtil
 				set num_of_deleted_files to num_of_deleted_files + 1
 			else if (cmd = "A") then
 				set num_of_new_files to num_of_new_files + 1
-			else if (cmd = "R") then
+			else if (cmd = "R") then --This command seems to never be triggered in git
 				set num_of_renamed_files to num_of_renamed_files + 1
 			else if (cmd = "??") then --untracked files,
 				set num_of_new_files to num_of_new_files + 1
@@ -166,6 +167,7 @@ script CommitUtil
  	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
  	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
+	 * Note: the state can be:  "Changes not staged for commit" , "Untracked files" , "Changes to be committed"
 	 * @Param: the_status_list is a list with status messages like: {"?? test.txt"," M index.html","A home.html"}
  	 *)
 	on transform_status_list(the_status_list)

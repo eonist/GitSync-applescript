@@ -28,8 +28,8 @@
 - [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
 - [x] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
-- [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
+- [ ] **Self awareness when in debugging / production**
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
