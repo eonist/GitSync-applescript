@@ -35,11 +35,12 @@ repo.xml URLs may now be partial or full
 - [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
 - [x] Support urls with https:// prepended to the url and with out, use regexp to assert
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
-- [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
+- [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **The GitHub.app should a self contained a repo.xml**
 - [ ] **Toggle repo.xml path depending on debug/deploy mode**
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt**
+- [ ] One big readme.md doc with a menu [here](https://github.com/eonist/GitSync/issues/29)
 - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
 - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses
 - [ ] Sketch out a log format in the issue section
