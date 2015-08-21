@@ -1,12 +1,5 @@
 **[Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip)**
 
-[Whats new](https://github.com/eonist/GitSync#whats-new)  
-[Features](https://github.com/eonist/GitSync#features)  
-[How to install](https://github.com/eonist/GitSync#How-to-install)  
-[Frequently Asked Questions](https://github.com/eonist/GitSync#Frequently-Asked-Questions)  
-[Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons)  
-[Todos](https://github.com/eonist/GitSync#todos)  
-
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
@@ -54,4 +47,5 @@
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
 
+[Wiki](https://github.com/eonist/GitSync/wiki/)  
 
