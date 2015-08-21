@@ -1,11 +1,20 @@
 [Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip) 
 
+---
+
+[Features](https://github.com/eonist/GitSync#features)  
+[Whats new](https://github.com/eonist/GitSync#whats-new)  
+[Todos](https://github.com/eonist/GitSync#todos)  
+[Frequently Asked Questions](https://github.com/eonist/GitSync#Frequently-Asked-Questions)  
+[Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons) 
+[How to install](https://github.com/eonist/GitSync#How-to-install) 
+
 ###Features:
 - Syncs your files in the background while you work. 
 - Works with both GitHub and Bitbucket. 
 - Automatically creates commit messages, based on the file change.
 
-###Whats new in version 0.9.3:
+###Whats new:
 **[New]**
 Now has support for "commit message descriptions"
 
