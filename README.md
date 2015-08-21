@@ -43,7 +43,7 @@
 - [ ] Research if you can change an applescript icon with an applescript
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
-- [ ] one long readme.md file
+- [ ] one long README.md file
 - [ ] Add support for ssh authentication
 - [ ] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes

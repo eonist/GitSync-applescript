@@ -16,7 +16,8 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript can has persistent values
-
+set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
+handle_interval() --move this out of this method when debuggin
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Todo: if im an .app include the handle in the idel method, else call it from init
@@ -24,8 +25,7 @@ set current_time to 0 --always reset this value on init, applescript can has per
 on idle {}
 	log "idle()"
 	--
-	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
-	handle_interval() --move this out of this method when debuggin
+	
 	--
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -88,7 +88,7 @@ on do_commit(local_repo_path)
 	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
 	log "commit_msg_desc: " & commit_msg_desc
 	try
-		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
+		set commit_result to GitUtil's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "----------------ERROR:-----------------" & errMsg
@@ -278,7 +278,7 @@ script RepoUtil
 			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
 			set remote_path to "https://github.com/eonist/test.git"
-			set is_full_url to has_match(remote_path, "^https://.+$") --support for partial and full url
+			set is_full_url to RegExpUtil's has_match(remote_path, "^https://.+$") --support for partial and full url
 			if is_full_url = false then
 				set remote_path to "https://" & remote_path
 			end if
