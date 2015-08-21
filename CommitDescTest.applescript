@@ -10,7 +10,7 @@ set rec_3 to {state:"Changes to be committed", cmd:"D", file_name:"doc/faq.txt"}
 set rec_4 to {state:"Changes to be committed", cmd:"D", file_name:"doc/log.txt"}
 set status_list to {rec_1, rec_2, rec_3, rec_4}
 
-sequence_description(status_list)
+log sequence_description(status_list)
 on sequence_description(status_list)
 	set desc_text to ""
 	set modified_items to {}
@@ -24,6 +24,7 @@ on sequence_description(status_list)
 	set desc_text to desc_text & description_paragraph(added_items, "Added ")
 	set desc_text to desc_text & description_paragraph(deleted_items, "Deleted ")
 	set desc_text to desc_text & description_paragraph(modified_items, "Modified ")
+	return desc_text
 end sequence_description
 (*
  * Returns a paragraph with a detailed description for Deleted, added and modified files
@@ -41,6 +42,3 @@ on description_paragraph(the_list, prefix_text)
 	end if
 	return desc_text
 end description_paragraph
-
-log desc_text
---now do this for the other lists as well
