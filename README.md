@@ -41,6 +41,7 @@
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
 - [ ] OSX icon in illustrator, OSX header in paper
+- [ ] Separate the commit msg title method and status-list method into their own scripts
 - [ ] set the interval to every 10 seconds so that we can do 
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
