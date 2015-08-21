@@ -6,7 +6,8 @@ property ListModifier : my ScriptLoader's load_script(alias ((path to scripts fo
 set rec_1 to {state:"Changes not staged for commit", cmd:"??", file_name:"doc/faq.txt"}
 set rec_2 to {state:"Untracked files", cmd:"M", file_name:"doc/readme.txt"}
 set rec_3 to {state:"Changes to be committed", cmd:"D", file_name:"doc/faq.txt"}
-set status_list to {rec_1, rec_2, rec_3}
+set rec_4 to {state:"Changes to be committed", cmd:"D", file_name:"doc/log.txt"}
+set status_list to {rec_1, rec_2, rec_3, rec_4}
 set desc_text to ""
 
 set modified_items to {}
@@ -24,7 +25,7 @@ on traverse_list(the_list, prefix_text)
 	if (length of the_list > 0) then
 		set desc_text to desc_text & prefix_text & length of the_list & " files:" & return
 		repeat with the_item in the_list
-			set desc_text to desc_text & (file_name of the_item)
+			set desc_text to desc_text & (file_name of the_item) & return
 		end repeat
 		set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
 	end if
