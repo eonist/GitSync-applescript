@@ -1,15 +1,11 @@
 [Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip) 
 
----
-
-[Whats new](https://github.com/eonist/GitSync#whats-new) 
+[Whats new](https://github.com/eonist/GitSync#whats-new)  
 [Features](https://github.com/eonist/GitSync#features)  
 [Todos](https://github.com/eonist/GitSync#todos)  
 [Frequently Asked Questions](https://github.com/eonist/GitSync#Frequently-Asked-Questions)  
 [Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons) 
 [How to install](https://github.com/eonist/GitSync#How-to-install) 
-
----
 
 ###Whats new:
 **[New]**
