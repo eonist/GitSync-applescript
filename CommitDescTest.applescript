@@ -1,3 +1,5 @@
+property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
+property ListModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "list:ListModifier.applescript"))
 (*
  * Test
  *)
@@ -13,9 +15,9 @@ set deleted_items to {}
 set modified_items to {}
 set added_items to {}
 repeat with status_item in status_list
-	if (cmd of status_item is "D") then set deleted_items to status_item
-	if (cmd of status_item is "M") then set modified_items to status_item
-	if (cmd of status_item is "??") then set added_items to status_item
+	if (cmd of status_item is "D") then set deleted_items to ListModifier's add_list(deleted_items, status_item) --add a record to a list
+	--if (cmd of status_item is "M") then set modified_items to status_item
+	--if (cmd of status_item is "??") then set added_items to status_item
 end repeat
 
 if (length of deleted_items > 0) then
@@ -27,5 +29,5 @@ if (length of deleted_items > 0) then
 	end repeat
 	set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
 end if
-log "desc_text: " & desc_text
+log "desc_text: " & return & desc_text
 --now do this for the other lists as well
