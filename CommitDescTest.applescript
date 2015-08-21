@@ -21,8 +21,8 @@ on sequence_description(status_list)
 		if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 		if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
 	end repeat
-	set desc_text to desc_text & description_paragraph(added_items, "Added ")
-	set desc_text to desc_text & description_paragraph(deleted_items, "Deleted ")
+	set desc_text to desc_text & description_paragraph(added_items, "Added ") & return --add an extra line break at the end "paragraph like"
+	set desc_text to desc_text & description_paragraph(deleted_items, "Deleted ") & return
 	set desc_text to desc_text & description_paragraph(modified_items, "Modified ")
 	return desc_text
 end sequence_description
@@ -38,7 +38,7 @@ on description_paragraph(the_list, prefix_text)
 		repeat with the_item in the_list
 			set desc_text to desc_text & (file_name of the_item) & return
 		end repeat
-		set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
+		
 	end if
 	return desc_text
 end description_paragraph
