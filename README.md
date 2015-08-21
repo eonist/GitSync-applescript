@@ -1,4 +1,4 @@
-**[Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip)**
+[Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip)
 
 ###Todo's:
 - [x] Move repositories.xml into the app
@@ -30,7 +30,6 @@
 - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
 - [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt** [v.0.9.5]
-- [ ] One big readme.md doc with a menu [here](https://github.com/eonist/GitSync/issues/29) [v.0.9.3]
 - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
 - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses [v.0.9.5]
 - [ ] Sketch out a log format in the issue section [v.0.9.5]
