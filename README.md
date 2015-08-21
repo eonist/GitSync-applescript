@@ -5,6 +5,13 @@
 - Works with both GitHub and Bitbucket. 
 - Automatically creates commit messages, based on the file change.
 
+###Whats new in version 0.9.3:
+**[New]**
+Now has support for "commit message descriptions"
+
+**[Fixed]**
+repo.xml URLs may now be partial or full
+
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
