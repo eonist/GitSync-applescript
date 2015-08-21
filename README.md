@@ -1,4 +1,4 @@
-[Download GitSync 0.9.2](https://github.com/eonist/GitSync/releases/download/0.9.2/GitSync.app.zip) 
+[Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip) 
 
 ###Features:
 - Syncs your files in the background while you work. 
