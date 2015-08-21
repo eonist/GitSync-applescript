@@ -4,8 +4,8 @@
 [Features](https://github.com/eonist/GitSync#features)  
 [Todos](https://github.com/eonist/GitSync#todos)  
 [Frequently Asked Questions](https://github.com/eonist/GitSync#Frequently-Asked-Questions)  
-[Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons) 
-[How to install](https://github.com/eonist/GitSync#How-to-install) 
+[Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons)  
+[How to install](https://github.com/eonist/GitSync#How-to-install)  
 
 ###Whats new:
 [New]
