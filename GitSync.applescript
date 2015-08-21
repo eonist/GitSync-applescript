@@ -83,9 +83,10 @@ on do_commit(local_repo_path)
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
 	my CommitUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 	set status_list to my CommitUtil's generate_status_list(local_repo_path) --get the new status
-	set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --compile commit msg for the commit
-	set commit_msg_desc to my DescUtil's 
-	log "commit_message: " & commit_message
+	set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
+	log "commit_msg_title: " & commit_msg_title
+	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
+	log "commit_msg_desc: " & commit_msg_desc
 	try
 		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
 		log "commit_result: " & commit_result
