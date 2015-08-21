@@ -20,7 +20,8 @@ end repeat
 if (length of deleted_items > 0) then
 	set desc_text to desc_text & "Deleted " & length of deleted_items & " files:" & return
 	repeat with deleted_item in deleted_items
-		set desc_text to desc_text & file_name of deleted_item
+		log (file_name of deleted_item)
+		set desc_text to desc_text & (file_name of deleted_item)
 	end repeat
 	set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
 end if
