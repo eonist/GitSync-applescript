@@ -29,7 +29,7 @@ on traverse_list(the_list, prefix_text)
 		if (length of the_list > 1) then set the_suffix to the_suffix & "s" --multiple
 		set desc_text to desc_text & prefix_text & length of the_list & the_suffix & ":" & return
 		repeat with the_item in the_list
-			set desc_text to desc_text & "- " & (file_name of the_item) & return
+			set desc_text to desc_text & (file_name of the_item) & return
 		end repeat
 		set desc_text to desc_text & return --add an extra line break at the end "paragraph like"
 	end if
