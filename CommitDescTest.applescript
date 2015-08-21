@@ -18,6 +18,7 @@ repeat with status_item in status_list
 	if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
 end repeat
 set desc_text to desc_text & traverse_list(deleted_items, "Deleted ")
+set desc_text to desc_text & traverse_list(modified_items, "Modified ")
 on traverse_list(the_list, prefix_text)
 	set desc_text to ""
 	if (length of the_list > 0) then
@@ -29,5 +30,5 @@ on traverse_list(the_list, prefix_text)
 	end if
 	return desc_text
 end traverse_list
-log "desc_text: " & return & desc_text
+log desc_text
 --now do this for the other lists as well
