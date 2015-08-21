@@ -1,3 +1,6 @@
+(*
+ * 
+ *)
 set rec_1 to {state:"Changes not staged for commit", cmd:"??", file_name:"doc/faq.txt"}
 set rec_2 to {state:"Untracked files", cmd:"M", file_name:"doc/readme.txt"}
 set rec_3 to {state:"Changes to be committed", cmd:"D", file_name:"doc/faq.txt"}
