@@ -1,7 +1,7 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property ListModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "list:ListModifier.applescript"))
 (*
- * Test
+ * Test stuff
  *)
 
 set rec_1 to {state:"Changes not staged for commit", cmd:"??", file_name:"doc/faq.txt"}
@@ -11,6 +11,9 @@ set rec_4 to {state:"Changes to be committed", cmd:"D", file_name:"doc/log.txt"}
 set status_list to {rec_1, rec_2, rec_3, rec_4}
 
 log sequence_description(status_list)
+(*
+ * Returns a "Git Commit Message Description" derived from a "git status list" with "status items records"
+ *)
 on sequence_description(status_list)
 	set desc_text to ""
 	set modified_items to {}
