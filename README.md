@@ -2,17 +2,14 @@
 
 ---
 
+[Whats new](https://github.com/eonist/GitSync#whats-new) 
 [Features](https://github.com/eonist/GitSync#features)  
-[Whats new](https://github.com/eonist/GitSync#whats-new)  
 [Todos](https://github.com/eonist/GitSync#todos)  
 [Frequently Asked Questions](https://github.com/eonist/GitSync#Frequently-Asked-Questions)  
 [Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons) 
 [How to install](https://github.com/eonist/GitSync#How-to-install) 
 
-###Features:
-- Syncs your files in the background while you work. 
-- Works with both GitHub and Bitbucket. 
-- Automatically creates commit messages, based on the file change.
+---
 
 ###Whats new:
 **[New]**
@@ -20,6 +17,11 @@ Now has support for "commit message descriptions"
 
 **[Fixed]**
 repo.xml URLs may now be partial or full
+
+###Features:
+- Syncs your files in the background while you work. 
+- Works with both GitHub and Bitbucket. 
+- Automatically creates commit messages, based on the file change.
 
 ###Todo's:
 - [x] Move repositories.xml into the app
