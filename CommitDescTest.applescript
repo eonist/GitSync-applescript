@@ -14,8 +14,7 @@ set added_items to {}
 repeat with status_item in status_list
 	if (cmd of status_item is "D") then set deleted_items to status_item
 	if (cmd of status_item is "M") then set modified_items to status_item
-	if (cmd of status_item is "A") then set added_items to status_item
-	if (cmd of status_item is "A") then set added_items to status_item
+	if (cmd of status_item is "??") then set added_items to status_item
 end repeat
 
 if (length of deleted_items > 0) then
