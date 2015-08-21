@@ -12,12 +12,11 @@ set desc_text to ""
 
 set modified_items to {}
 set deleted_items to {}
-set modified_items to {}
 set added_items to {}
 repeat with status_item in status_list
 	if (cmd of status_item is "D") then set deleted_items to ListModifier's add_list(deleted_items, status_item) --add a record to a list
-	--if (cmd of status_item is "M") then set modified_items to status_item
-	--if (cmd of status_item is "??") then set added_items to status_item
+	if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
+	if (cmd of status_item is "??") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 end repeat
 
 if (length of deleted_items > 0) then
