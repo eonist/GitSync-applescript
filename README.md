@@ -50,7 +50,7 @@
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
 
 
-[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)
-[How To Install](https://github.com/eonist/GitSync/wiki/How-to-install)
-[Pros & Cons](https://github.com/eonist/GitSync/wiki/Pros-&-Cons)
+[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)  
+[How To Install](https://github.com/eonist/GitSync/wiki/How-to-install)  
+[Pros & Cons](https://github.com/eonist/GitSync/wiki/Pros-&-Cons)  
 
