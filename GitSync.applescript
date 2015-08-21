@@ -279,7 +279,7 @@ script RepoUtil
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
 			set is_full_url to RegExpUtil's has_match(remote_path, "^https://.+$") --support for partial and full url
 			if is_full_url = true then
-				set remote_path to text 6 thru (length of remote_path) of remote_path --strip away the https, since this will be added later
+				set remote_path to text 9 thru (length of remote_path) of remote_path --strip away the https://, since this will be added later
 			end if
 			log remote_path
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
