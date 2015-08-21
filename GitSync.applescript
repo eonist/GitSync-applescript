@@ -234,6 +234,8 @@ script RepoUtil
 			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
 			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
+			set is_full_url to RegExpUtil's has_match(remote_path,"^https://.+$")
+			if is_full_url is false then set remote_path to "https://"&remote_path
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
 			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
 			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
