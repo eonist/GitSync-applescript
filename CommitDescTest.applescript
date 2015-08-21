@@ -4,7 +4,6 @@ property ListModifier : my ScriptLoader's load_script(alias ((path to scripts fo
  * Test
  *)
 set rec_1 to {state:"Changes not staged for commit", cmd:"??", file_name:"doc/faq.txt"}
-
 set rec_2 to {state:"Untracked files", cmd:"M", file_name:"doc/readme.txt"}
 set rec_3 to {state:"Changes to be committed", cmd:"D", file_name:"doc/faq.txt"}
 set status_list to {rec_1, rec_2, rec_3}
@@ -16,7 +15,7 @@ set added_items to {}
 repeat with status_item in status_list
 	if (cmd of status_item is "D") then set deleted_items to ListModifier's add_list(deleted_items, status_item) --add a record to a list
 	if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
-	if (cmd of status_item is "??") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
+	if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
 end repeat
 
 if (length of deleted_items > 0) then
