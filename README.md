@@ -7,18 +7,6 @@
 [Pros & Cons](https://github.com/eonist/GitSync#Pros-&-Cons)  
 [Todos](https://github.com/eonist/GitSync#todos)  
 
-###Whats new:
-[New]
-Now has support for "commit message descriptions"
-
-[Fixed]
-repo.xml URLs may now be partial or full
-
-###Features:
-- Syncs your files in the background while you work. 
-- Works with both GitHub and Bitbucket. 
-- Automatically creates commit messages, based on the file change.
-
 ###Todo's:
 - [x] Move repositories.xml into the app
 - [x] The export of xml data to repositories.xml
@@ -61,11 +49,9 @@ repo.xml URLs may now be partial or full
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
 - [ ] OSX icon in illustrator, OSX header in paper
+- [ ] set the interval to every 10 seconds so that we can do 
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
 - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
 
-[FAQ](https://github.com/eonist/GitSync/wiki/Frequently-Asked-Questions)  
-[How To Install](https://github.com/eonist/GitSync/wiki/How-to-install)  
-[Pros & Cons](https://github.com/eonist/GitSync/wiki/Pros-&-Cons)  
 
