@@ -26,6 +26,8 @@
 - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
 - [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
 - [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
+- [x] Support urls with https:// prepended to the url and with out, use regexp to assert
+- [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [ ] **Self awareness when in debugging / production**
 - [ ] **Implement the commit msg description, you drew up:** [here](https://github.com/eonist/GitSync/issues/10)
 - [ ] **The GitHub.app should a self contained a repo.xml**
@@ -42,8 +44,6 @@
 - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
-- [ ] Support urls with https:// prepended to the url and with out, use regexp to assert
-- [ ] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [ ] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
