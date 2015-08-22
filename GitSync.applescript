@@ -38,6 +38,7 @@ else
 		display alert ("file does exist")
 	end if
 end if
+
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
