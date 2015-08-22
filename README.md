@@ -38,21 +38,22 @@
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt 
  - [ ] Do research around log layouts, check the logs that stream2me and air-video
  - [ ] Sketch out a log format in the issue section 
-- [ ] Auto Init repo items that are not inited 
-- [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
-- [ ] Optional custom commit and push intervals
-- [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
-- [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
-- [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
-- [ ] Research if you can change an applescript icon with an applescript
-- [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
-- [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
-- [ ] Add support for ssh authentication
-- [ ] OSX icon in illustrator, OSX header in paper
-- [ ] set the interval to every 10 seconds so that we can do 
-- [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
-- [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
-- [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
+- [ ] [v.0.9.6]
+ - [ ] Auto Init repo items that are not inited [here](https://github.com/eonist/GitSync/issues/30)  
+ - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
+ - [ ] Optional custom commit and push intervals
+ - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
+ - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
+ - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
+ - [ ] Research if you can change an applescript icon with an applescript
+ - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
+ - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
+ - [ ] Add support for ssh authentication
+ - [ ] OSX icon in illustrator, OSX header in paper
+ - [ ] set the interval to every 10 seconds so that we can do 
+ - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
+ - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
+ - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
 
 [Wiki](https://github.com/eonist/GitSync/wiki/)  
 
