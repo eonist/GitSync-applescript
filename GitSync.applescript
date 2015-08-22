@@ -29,7 +29,7 @@ else --deploy mode
 	if (FileAsserter's does_file_exist(repo_file_path) = false) then
 		set the_repo_xml to RepoUtil's repo_xml()
 		FileModifier's write_data(the_repo_xml, repo_file_path, false) --create the repo.xml file inside the GitSync.app
-	end if --else do nothing
+	end if --else do nothing, the repo.xml already exists
 end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
