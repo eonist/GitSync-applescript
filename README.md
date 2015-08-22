@@ -34,6 +34,7 @@
 - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses [v.0.9.5]
 - [ ] Sketch out a log format in the issue section [v.0.9.5]
 - [ ] Optional custom commit and push intervals
+- [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
 - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
 - [ ] Research if you can change an applescript icon with an applescript
