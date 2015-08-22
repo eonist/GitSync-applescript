@@ -16,10 +16,10 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript can has persistent values
-if FileParser's file_name(path to me) = "GitSync.applescript" then handle_interval()
+if (FileParser's file_name(path to me) = "GitSync.applescript") then handle_interval() --this will only be called when you are debugging from the .applescript file aka "debug mode"
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
- * Note: this will only be called from an .app
+ * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
 	handle_interval()
@@ -30,7 +30,7 @@ end idle
  *)
 on handle_interval()
 	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
-	handle_interval() --move this out of this method when debuggin
+	modulate_interval()
 end handle_interval
 
 (*
