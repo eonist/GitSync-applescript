@@ -37,7 +37,7 @@
 - [ ] v.0.9.5
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33)  
  - [ ] Do research around log layouts, check the logs that stream2me and air-video
- - [ ] Sketch out a log format in the issue section
+ - [ ] Sketch out the log format in the issue section
 - [ ] v.0.9.6
  - [ ] Auto Init repo items that are not inited [here](https://github.com/eonist/GitSync/issues/30)  
  - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
