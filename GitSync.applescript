@@ -20,16 +20,17 @@ set current_time to 0 --always reset this value on init, applescript has persist
 if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
 	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repositories.xml"
 	handle_interval()
+else
+	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
+	display alert (repo_file_path)
 end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
-	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
 	
-	display alert (repo_file_path)
-	handle_interval()
+	--handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
