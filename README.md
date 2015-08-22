@@ -1,31 +1,35 @@
 [Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip)
 
 ###Todo's:
-- [x] Move repositories.xml into the app
-- [x] The export of xml data to repositories.xml
-- [x] The setup wizard
-- [x] Rename project to GitSync?
-- [x] Clean up the comments in the "setup wizard"
-- [x] Use GitSync as a single point of pushing updates to GitHub, pull down in another app
-- [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
-- [x] Beta test it with live coding
-- [x] Test .gitignore with the app
-- [x] Create more internal scripts in the GitSync.applescript file. Better naming
-- [x] Use Regular expression when deriving the git status message
-- [x] Test if you are prompted for a password when requesting from a new keychain
-- [x] Stress-test when GitSync gets into trouble
-- [x] Research git ignore and how it works
-- [x] Use a fixed interval if no interval is provided in the repositories.xml file
-- [x] Find a suitable download provider for a zip file, bitbucket? google this
-- [x] Use wiki for FAQ
-- [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
-- [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
-- [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
-- [x] Support urls with https:// prepended to the url and with out, use regexp to assert
-- [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
-- [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
-- [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
-- [x] Separate the commit msg title method and status-list method into their own scripts
+- [x] [v.0.9.0]
+ - [x] Move repositories.xml into the app
+ - [x] The export of xml data to repositories.xml
+ - [x] The setup wizard
+ - [x] Rename project to GitSync?
+ - [x] Clean up the comments in the "setup wizard"
+ - [x] Use GitSync as a single point of pushing updates to GitHub, pull down in another app
+ - [x] Retrieve the remote account name from keychain with shell and RegExp capture groups
+ - [x] Beta test it with live coding
+ - [x] Test .gitignore with the app
+- [x] [v.0.9.1]
+ - [x] Create more internal scripts in the GitSync.applescript file. Better naming
+ - [x] Use Regular expression when deriving the git status message
+ - [x] Test if you are prompted for a password when requesting from a new keychain
+ - [x] Stress-test when GitSync gets into trouble
+ - [x] Research git ignore and how it works
+ - [x] Use a fixed interval if no interval is provided in the repositories.xml file
+ - [x] Find a suitable download provider for a zip file, bitbucket? google this
+- [x] [v.0.9.2]
+ - [x] Use wiki for FAQ
+ - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
+ - [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
+ - [x] Add a readme.txt inside to wiki etc [here](https://github.com/eonist/GitSync/issues/21)
+ - [x] Support urls with https:// prepended to the url and with out, use regexp to assert
+- [x] [v.0.9.3]
+ - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
+ - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
+ - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
+ - [x] Separate the commit msg title method and status-list method into their own scripts
 - [ ] [v.0.9.4]
  - [ ] **Self awareness when in debugging / production** [v.0.9.4]
  - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
