@@ -15,7 +15,7 @@ property the_interval : 60 --static value, increases the time by this value on e
 property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 
 log "beginning of the script"
-set current_time to 0 --always reset this value on init, applescript can has persistent values
+set current_time to 0 --always reset this value on init, applescript has persistent values
 if (FileParser's file_name(path to me) = "GitSync.applescript") then handle_interval() --this will only be called when you are debugging from the .applescript file aka "debug mode"
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
