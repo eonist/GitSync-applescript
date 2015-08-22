@@ -19,34 +19,24 @@ property repo_file_path : ""
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
+--Todo: move the bellow into a method
 if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
 	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
 	log repo_file_path
 	handle_interval()
-else
+else --deploy mode 
 	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
-	display alert (repo_file_path & " v2")
 	if (FileAsserter's does_file_exist(repo_file_path) = false) then
-		display alert ("file does not exist")
 		set the_repo_xml to RepoUtil's repo_xml()
-		set file_was_written_to to FileModifier's write_data(the_repo_xml, repo_file_path, false)
-		if file_was_written_to then
-			display alert ("success")
-		else
-			display alert ("failure")
-		end if
-	else
-		display alert ("file does exist")
-	end if
+		FileModifier's write_data(the_repo_xml, repo_file_path, false) --create the repo.xml file inside the GitSync.app
+	end if --else do nothing
 end if
-
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
-	
-	--handle_interval()
+	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
