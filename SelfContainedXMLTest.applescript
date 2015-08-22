@@ -4,4 +4,4 @@ property FileModifier : my ScriptLoader's load_script(alias ((path to scripts fo
 set the_path to path to desktop
 log the_path
 log (the_path & ":text1.txt")
-FileModifier's write_data("test", the_path & ":text1.txt", true)
+FileModifier's write_data("test", the_path & "text.txt", true)
