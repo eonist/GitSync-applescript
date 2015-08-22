@@ -17,7 +17,7 @@ property repo_file_path : ""
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
-if  (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
+if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
 	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repositories.xml"
 	handle_interval()
 end if
@@ -28,8 +28,6 @@ end if
  *)
 on idle {}
 	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
-
-	display alert (repo_file_path)
 	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -48,7 +46,7 @@ on handle_interval()
 		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
-
+	
 end handle_interval
 (*
  * Handles the process of making a commit for a single repository
@@ -66,7 +64,7 @@ on handle_push_interval(repo_item)
 	log "the_keychain_item_name: " & the_keychain_item_name
 	set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
 	set keychain_password to the_password of keychain_data
-
+	
 	log "keychain_password: " & keychain_password
 	set remote_account_name to account_name of keychain_data
 	log "remote_account_name: " & remote_account_name
@@ -151,8 +149,8 @@ script CommitUtil
 		end if
 		return commit_msg
 	end sequence_commit_msg
-
-
+	
+	
 end script
 (*
  * Utility methods for generating the "Git Commit Message Description"
@@ -188,7 +186,7 @@ script DescUtil
 			repeat with the_item in the_list
 				set desc_text to desc_text & (file_name of the_item) & return
 			end repeat
-
+			
 		end if
 		return desc_text
 	end description_paragraph
