@@ -52,7 +52,7 @@
  - [ ] Add support for ssh authentication
  - [ ] OSX icon in illustrator, OSX header in paper
  - [ ] set the interval to every 10 seconds so that we can do
- - [ ] Lines modified: 10 [here](https://github.com/eonist/GitSync/issues/32) 
+ - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
