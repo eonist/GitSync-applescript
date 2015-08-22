@@ -35,7 +35,7 @@
  - [ ] The GitSync.app should a self contained a repo.xml [here](https://github.com/eonist/GitSync/issues/31)
  - [ ] Toggle repo.xml path depending on debug/deploy mode 
 - [ ] [v.0.9.5]
- - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt 
+ - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33)  
  - [ ] Do research around log layouts, check the logs that stream2me and air-video
  - [ ] Sketch out a log format in the issue section 
 - [ ] [v.0.9.6]
