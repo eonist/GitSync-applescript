@@ -8,6 +8,7 @@ property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folde
 property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
 property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
 property FileModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileModifier.applescript"))
+property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
 property RegExpUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "regexp:RegExpUtil.applescript"))
 
 --Properties:
@@ -19,17 +20,22 @@ property repo_file_path : ""
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
-	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repositories.xml"
+	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
 	handle_interval()
 else
-	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
-	set the_repo_xml to RepoUtil's repo_xml()
+	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
 	display alert (repo_file_path)
-	set file_was_written_to to FileModifier's write_data(the_repo_xml, repo_file_path & "repo.xml", false)
-	if file_was_written_to then
-		display alert ("success")
+	if FileAsserter's does_file_exist(repo_file_path) then
+		display alert ("file does not exist")
+		set the_repo_xml to RepoUtil's repo_xml()
+		set file_was_written_to to FileModifier's write_data(the_repo_xml, repo_file_path, false)
+		if file_was_written_to then
+			display alert ("success")
+		else
+			display alert ("failure")
+		end if
 	else
-		display alert ("failure")
+		display alert ("file does exist")
 	end if
 end if
 (*
