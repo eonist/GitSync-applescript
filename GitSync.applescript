@@ -22,6 +22,7 @@ if (FileParser's file_name(path to me) = "GitSync.applescript") then handle_inte
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
+	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
 	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -29,15 +30,6 @@ end idle
  * This is called on every interval
  *)
 on handle_interval()
-	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
-	modulate_interval()
-end handle_interval
-
-(*
- * Handles the process of comitting, pushing for multiple repositories
- * Note: while testing you can call this manually, since idle will only work when you run it from an .app
- *)
-on modulate_interval()
 	log "handle_interval()"
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
@@ -46,6 +38,15 @@ on modulate_interval()
 		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
+	
+end handle_interval
+
+(*
+ * Handles the process of comitting, pushing for multiple repositories
+ * Note: while testing you can call this manually, since idle will only work when you run it from an .app
+ *)
+on modulate_interval()
+	
 end modulate_interval
 (*
  * Handles the process of making a commit for a single repository
