@@ -25,6 +25,7 @@
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
 - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
+- [x] Separate the commit msg title method and status-list method into their own scripts
 - [ ] **Self awareness when in debugging / production** [v.0.9.4]
 - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
 - [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
@@ -40,7 +41,6 @@
 - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
 - [ ] Add support for ssh authentication
 - [ ] OSX icon in illustrator, OSX header in paper
-- [ ] Separate the commit msg title method and status-list method into their own scripts
 - [ ] set the interval to every 10 seconds so that we can do 
 - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
 - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
