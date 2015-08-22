@@ -32,7 +32,7 @@
  - [x] Separate the commit msg title method and status-list method into their own scripts
 - [ ] [v.0.9.4]
  - [x] Self awareness when in debugging / production 
- - [ ] The GitHub.app should a self contained a repo.xml 
+ - [ ] The GitSync.app should a self contained a repo.xml 
  - [ ] Toggle repo.xml path depending on debug/deploy mode 
 - [ ] [v.0.9.5]
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt 
