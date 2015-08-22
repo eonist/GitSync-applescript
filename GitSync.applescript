@@ -7,6 +7,7 @@ property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folde
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
 property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
+property FileModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileModifier.applescript"))
 property RegExpUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "regexp:RegExpUtil.applescript"))
 
 --Properties:
@@ -22,7 +23,14 @@ if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will
 	handle_interval()
 else
 	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
+	set the_repo_xml to RepoUtil's repo_xml()
 	display alert (repo_file_path)
+	set file_was_written_to to FileModifier's write_data(the_repo_xml, repo_file_path & "repo.xml", false)
+	if file_was_written_to then
+		display alert ("success")
+	else
+		display alert ("failure")
+	end if
 end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
