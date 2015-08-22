@@ -1,4 +1,4 @@
-[Download GitSync 0.9.3](https://github.com/eonist/GitSync/releases/download/0.9.3/GitSync.app.zip)
+[Download GitSync 0.9.4](https://github.com/eonist/GitSync/releases/download/0.9.4/GitSync.app.zip)
 
 ###Todo's:
 - [x] [v.0.9.0]
@@ -30,10 +30,10 @@
  - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
  - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
  - [x] Separate the commit msg title method and status-list method into their own scripts
-- [ ] [v.0.9.4]
+- [x] [v.0.9.4]
  - [x] Self awareness when in debugging / production 
- - [ ] The GitSync.app should a self contained a repo.xml [here](https://github.com/eonist/GitSync/issues/31)
- - [ ] Toggle repo.xml path depending on debug/deploy mode 
+ - [x] The GitSync.app should a self contained a repo.xml [here](https://github.com/eonist/GitSync/issues/31)
+ - [x] Toggle repo.xml path depending on debug/deploy mode 
 - [ ] [v.0.9.5]
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33)  
  - [ ] Do research around log layouts, check the logs that stream2me and air-video
