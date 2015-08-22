@@ -46,11 +46,14 @@
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
  - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
+- [ ] [v.0.9.7]
  - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
  - [ ] Add support for ssh authentication
  - [ ] OSX icon in illustrator, OSX header in paper
  - [ ] set the interval to every 10 seconds so that we can do 
+ - [ ] Lines modified: 10 [here](https://github.com/eonist/GitSync/issues/32) 
+- [ ] [**Bonus**]
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
  - [ ] **Bonus:** Install git on server, and use it as origin instead of Github for private projects
