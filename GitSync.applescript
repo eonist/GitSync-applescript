@@ -7,6 +7,8 @@ property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folde
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
 property FileParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileParser.applescript"))
+property FileModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileModifier.applescript"))
+property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
 property RegExpUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "regexp:RegExpUtil.applescript"))
 
 --Properties:
@@ -17,16 +19,23 @@ property repo_file_path : ""
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
+--Todo: move the bellow into a method
 if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
-	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repositories.xml"
+	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
+	log repo_file_path
 	handle_interval()
+else --deploy mode 
+	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
+	if (FileAsserter's does_file_exist(repo_file_path) = false) then
+		set the_repo_xml to RepoUtil's repo_xml()
+		FileModifier's write_data(the_repo_xml, repo_file_path, false) --create the repo.xml file inside the GitSync.app
+	end if --else do nothing, the repo.xml already exists
 end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
-	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
 	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -47,6 +56,7 @@ on handle_interval()
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 	
 end handle_interval
+
 (*
  * Handles the process of making a commit for a single repository
  *)
@@ -56,7 +66,7 @@ on handle_commit_interval(repo_item)
 	--log "has_commited: " & has_commited
 end handle_commit_interval
 (*
- * Handles the process of making a push for a single repository
+ * Handles the process of making a push for a single repository 
  *)
 on handle_push_interval(repo_item)
 	set the_keychain_item_name to keychain_item_name of repo_item
@@ -102,13 +112,13 @@ end do_commit
 
 log "end of the script"
 (*
- * A collection of utility methods for parsing the the "git status message" and a method for processing
+ * A collection of utility methods for parsing the the "git status message" and a method for processing 
  *)
 script CommitUtil
 	(*
 	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
-	 * Note: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED,
+	 * Note: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED, 
 	 * Note: In place of Renamed, Git first deletes the file then says its untracked
     *)
 	on sequence_commit_msg(status_list) --rename to generate_commit_msg
@@ -135,7 +145,7 @@ script CommitUtil
 			set commit_msg to commit_msg & "New files added: " & num_of_new_files
 		end if
 		if (num_of_modified_files > 0) then
-			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --append comma
+			if (length of commit_msg > 0) then set commit_msg to commit_msg & ", " --append comma	
 			set commit_msg to commit_msg & "Files modified: " & num_of_modified_files
 		end if
 		if (num_of_deleted_files > 0) then
@@ -242,7 +252,7 @@ script StatusUtil
 			end if
 			set file_name to the fourth item in the_status_parts
 			log "state: " & state & ", cmd: " & cmd & ", file_name: " & file_name --logs the file named added changed etc
-			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative
+			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative 
 			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record to a list
 		end repeat
 		return transformed_list
