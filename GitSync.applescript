@@ -79,16 +79,14 @@ end handle_push_interval
  * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  *)
 on do_commit(local_repo_path)
-	set status_list to my CommitUtil's generate_status_list(local_repo_path) --get current status
+	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
-	my CommitUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
-	set status_list to my CommitUtil's generate_status_list(local_repo_path) --get the new status
-	set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
-	log "commit_msg_title: " & commit_msg_title
-	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
-	log "commit_msg_desc: " & commit_msg_desc
+	my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
+	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status
+	set commit_message to my CommitUtil's sequence_commit_msg(status_list) --compile commit msg for the commit
+	log "commit_message: " & commit_message
 	try
-		set commit_result to GitUtil's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
+		set commit_result to GitUtil's commit(local_repo_path, commit_message, "The description feature is not implimented yet") --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "----------------ERROR:-----------------" & errMsg
@@ -102,29 +100,9 @@ log "end of the script"
  *)
 script CommitUtil
 	(*
-	 * Returns a descriptive status list of the current git changes
-	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
-	 *)
-	on generate_status_list(local_repo_path)
-		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		log "the_status: " & the_status
-		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
-		set transformed_list to {}
-		if (length of the_status_list = 0) then
-			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
-		else
-			set transformed_list to my transform_status_list(the_status_list)
-		end if
-		--
-		log "len of the_status_list: " & (length of the_status_list)
-		log transformed_list
-		return transformed_list
-	end generate_status_list
-	(*
 	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
-	 * Note: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED, 
-	 * Note: In place of Renamed, Git first deletes the file then says its untracked
+	 * Todo: Implement the commands: i and c
     	 *)
 	on sequence_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
@@ -139,7 +117,7 @@ script CommitUtil
 				set num_of_deleted_files to num_of_deleted_files + 1
 			else if (cmd = "A") then
 				set num_of_new_files to num_of_new_files + 1
-			else if (cmd = "R") then --This command seems to never be triggered in git
+			else if (cmd = "R") then
 				set num_of_renamed_files to num_of_renamed_files + 1
 			else if (cmd = "??") then --untracked files,
 				set num_of_new_files to num_of_new_files + 1
@@ -169,7 +147,6 @@ script CommitUtil
  	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
  	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
-	 * Note: the state can be:  "Changes not staged for commit" , "Untracked files" , "Changes to be committed"
 	 * @Param: the_status_list is a list with status messages like: {"?? test.txt"," M index.html","A home.html"}
  	 *)
 	on transform_status_list(the_status_list)
@@ -197,6 +174,30 @@ script CommitUtil
 		end repeat
 		return transformed_list
 	end transform_status_list
+end script
+(*
+ * utils for paraing the git status list
+ *)
+script StatusUtil
+	(*
+	 * Returns a descriptive status list of the current git changes
+	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
+	 *)
+	on generate_status_list(local_repo_path)
+		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
+		log "the_status: " & the_status
+		set the_status_list to TextParser's every_paragraph(the_status) --store each line as a list
+		set transformed_list to {}
+		if (length of the_status_list = 0) then
+			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
+		else
+			set transformed_list to my transform_status_list(the_status_list)
+		end if
+		--
+		log "len of the_status_list: " & (length of the_status_list)
+		log transformed_list
+		return transformed_list
+	end generate_status_list
 	(*
 	 * Iterates over the status items and "git add" the item unless it's already added (aka "staged for commit")
 	 * Note: if the status list is empty then there is nothing to process
@@ -221,45 +222,6 @@ script CommitUtil
 	end process_status_list
 end script
 (*
- * Utility methods for generating the "Git Commit Message Description"
- *)
-script DescUtil
-	(*
-	 * Returns a "Git Commit Message Description" derived from a "git status list" with "status items records"
-	 *)
-	on sequence_description(status_list)
-		set desc_text to ""
-		set modified_items to {}
-		set deleted_items to {}
-		set added_items to {}
-		repeat with status_item in status_list
-			if (cmd of status_item is "D") then set deleted_items to ListModifier's add_list(deleted_items, status_item) --add a record to a list
-			if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
-			if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
-		end repeat
-		set desc_text to desc_text & description_paragraph(added_items, "Added ") & return --add an extra line break at the end "paragraph like"
-		set desc_text to desc_text & description_paragraph(deleted_items, "Deleted ") & return
-		set desc_text to desc_text & description_paragraph(modified_items, "Modified ")
-		return desc_text
-	end sequence_description
-	(*
-	 * Returns a paragraph with a detailed description for Deleted, added and modified files
-	 *)
-	on description_paragraph(the_list, prefix_text)
-		set desc_text to ""
-		if (length of the_list > 0) then
-			set the_suffix to " file"
-			if (length of the_list > 1) then set the_suffix to the_suffix & "s" --multiple
-			set desc_text to desc_text & prefix_text & length of the_list & the_suffix & ":" & return
-			repeat with the_item in the_list
-				set desc_text to desc_text & (file_name of the_item) & return
-			end repeat
-			
-		end if
-		return desc_text
-	end description_paragraph
-end script
-(*
  * A collection of utility methods for parsing the repository.xml file
  *)
 script RepoUtil
@@ -277,11 +239,8 @@ script RepoUtil
 			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
 			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
-			set is_full_url to RegExpUtil's has_match(remote_path, "^https://.+$") --support for partial and full url
-			if is_full_url = true then
-				set remote_path to text 9 thru (length of remote_path) of remote_path --strip away the https://, since this will be added later
-			end if
-			log remote_path
+			set is_full_url to RegExpUtil's has_match(remote_path,"^https://.+$")
+			if is_full_url is false then set remote_path to "https://"&remote_path
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
 			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
 			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min

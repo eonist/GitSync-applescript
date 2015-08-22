@@ -25,7 +25,6 @@
 - [x] Create a pro and con list for GitSync [here](https://github.com/eonist/GitSync/issues/19)
 - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
 - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
-- [x] Add a section to README.md: "Whats new in version 1.2" with "New" "Note" "Fixed" [v.0.9.3]
 - [ ] **Self awareness when in debugging / production** [v.0.9.4]
 - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
 - [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
