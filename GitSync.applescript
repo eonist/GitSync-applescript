@@ -28,7 +28,9 @@ on idle {}
 	--
 	return the_interval --the_interval --return new idle time in seconds
 end idle
-
+(*
+ * 
+ *) 
 on handle_interval()
 	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
 	handle_interval() --move this out of this method when debuggin
