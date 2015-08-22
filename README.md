@@ -31,13 +31,13 @@
  - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
  - [x] Separate the commit msg title method and status-list method into their own scripts
 - [ ] [v.0.9.4]
- - [ ] Self awareness when in debugging / production [v.0.9.4]
- - [ ] The GitHub.app should a self contained a repo.xml [v.0.9.4]
- - [ ] Toggle repo.xml path depending on debug/deploy mode [v.0.9.4]
+ - [ ] Self awareness when in debugging / production 
+ - [ ] The GitHub.app should a self contained a repo.xml 
+ - [ ] Toggle repo.xml path depending on debug/deploy mode 
 - [ ] [v.0.9.5]
- - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [v.0.9.5]
- - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses [v.0.9.5]
- - [ ] Sketch out a log format in the issue section [v.0.9.5]
+ - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt 
+ - [ ] Do research around log layouts, check the logs that stream2me and air-video
+ - [ ] Sketch out a log format in the issue section 
 - [ ] Auto Init repo items that are not inited 
 - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
 - [ ] Optional custom commit and push intervals
