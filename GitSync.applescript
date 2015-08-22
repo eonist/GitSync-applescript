@@ -50,7 +50,6 @@ on handle_interval()
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 
 end handle_interval
-
 (*
  * Handles the process of making a commit for a single repository
  *)
