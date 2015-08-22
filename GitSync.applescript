@@ -29,7 +29,9 @@ on idle {}
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
+ * Handles the process of comitting, pushing for multiple repositories
  * This is called on every interval
+ * Note: while testing you can call this manually, since idle will only work when you run it from an .app
  *)
 on handle_interval()
 	log "handle_interval()"
@@ -43,13 +45,6 @@ on handle_interval()
 	
 end handle_interval
 
-(*
- * Handles the process of comitting, pushing for multiple repositories
- * Note: while testing you can call this manually, since idle will only work when you run it from an .app
- *)
-on modulate_interval()
-	
-end modulate_interval
 (*
  * Handles the process of making a commit for a single repository
  *)
