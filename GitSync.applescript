@@ -21,11 +21,12 @@ log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
 	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
+	log repo_file_path
 	handle_interval()
 else
 	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
-	display alert (repo_file_path)
-	if FileAsserter's does_file_exist(repo_file_path) then
+	display alert (repo_file_path & " v2")
+	if (FileAsserter's does_file_exist(repo_file_path) = false) then
 		display alert ("file does not exist")
 		set the_repo_xml to RepoUtil's repo_xml()
 		set file_was_written_to to FileModifier's write_data(the_repo_xml, repo_file_path, false)
