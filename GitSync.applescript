@@ -18,17 +18,17 @@ property repo_file_path : ""
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 if (FileParser's file_name(path to me) = "GitSync.applescript") then
+	
+	
+	set repo_file_path to FileParser's hfs_parent_path(path to me) & "repositories.xml"
 	handle_interval() --this will only be called when you are debugging from the .applescript file aka "debug mode"
-	set repo_file_path to ""
 end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
  *)
 on idle {}
-	set repo_file_path to (((path to me) & "Contents" & ":" & "Resources") as text) as alias
-	
-	set repo_list to my RepoUtil's compile_repo_list(FileParser's hfs_parent_path(path to me) & "repositories.xml") --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
+	set repo_file_path to ((path to me) & "Contents" & ":" & "Resources") as text
 	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
@@ -39,6 +39,7 @@ end idle
  *)
 on handle_interval()
 	log "handle_interval()"
+	set repo_list to my RepoUtil's compile_repo_list(repo_file_path) --try to avoid calling this on every intervall, its nice to be able to update on the fly, be carefull though
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
 	repeat with repo_item in repo_list --iterate over every repo item
