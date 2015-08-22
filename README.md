@@ -31,7 +31,7 @@
  - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
  - [x] Separate the commit msg title method and status-list method into their own scripts
 - [ ] [v.0.9.4]
- - [ ] Self awareness when in debugging / production 
+ - [x] Self awareness when in debugging / production 
  - [ ] The GitHub.app should a self contained a repo.xml 
  - [ ] Toggle repo.xml path depending on debug/deploy mode 
 - [ ] [v.0.9.5]
