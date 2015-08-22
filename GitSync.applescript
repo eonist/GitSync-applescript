@@ -16,7 +16,9 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
-if (FileParser's file_name(path to me) = "GitSync.applescript") then handle_interval() --this will only be called when you are debugging from the .applescript file aka "debug mode"
+if (FileParser's file_name(path to me) = "GitSync.applescript") then
+	handle_interval() --this will only be called when you are debugging from the .applescript file aka "debug mode"
+end if
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
  * Note: this will only be called from an .app aka "deploy mode" / "production mode"
@@ -306,15 +308,4 @@ script RepoUtil
 		end repeat
 		return the_repo_list
 	end compile_repo_list
-	(*
- 	 * Returns xml data, for the debug mode
- 	 *)
-	on repo_xml()
-		set the_repo_xml to "<repositories>" & return --beginning
-		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/_projects/_code/_active/applescript/GitSync\" remote-path=\"https://github.com/eonist/GitSync.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
-		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/_projects/_code/_active/applescript/SqliteEdit/repo\" remote-path=\"github.com/eonist/SqliteEdit.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
-		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/Library/Scripts\" remote-path=\"github.com/eonist/applescripts.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
-		set the_repo_xml to the_repo_xml & "</repositories>" --end
-		return the_repo_xml
-	end repo_xml
 end script
