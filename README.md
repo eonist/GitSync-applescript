@@ -26,9 +26,10 @@
 - [x] Implement the commit msg description, you drew up: [here](https://github.com/eonist/GitSync/issues/10)
 - [x] Improve the GitSync OSX app layout, draw prefs win [here](https://github.com/eonist/GitSync/issues/16)
 - [x] Separate the commit msg title method and status-list method into their own scripts
-- [ ] **Self awareness when in debugging / production** [v.0.9.4]
-- [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
-- [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
+* - [ ] [v.0.9.4]
+ * - [ ] **Self awareness when in debugging / production** [v.0.9.4]
+ * - [ ] **The GitHub.app should a self contained a repo.xml** [v.0.9.4]
+ * - [ ] **Toggle repo.xml path depending on debug/deploy mode** [v.0.9.4]
 - [ ] **Create a LogEngine script that logs what GitSync has been up to log.txt** [v.0.9.5]
 - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
 - [ ] Do research around log layouts, check the logs that "stream2me" and "air video"" uses [v.0.9.5]
