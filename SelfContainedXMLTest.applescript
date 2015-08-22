@@ -2,4 +2,4 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property FileModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileModifier.applescript"))
 
 set the_path to desktop
-FileModifier's write_data("test", the_path)
+FileModifier's write_data("test", the_path, true)
