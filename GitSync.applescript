@@ -16,14 +16,13 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript can has persistent values
---if FileParser's file_name(path to me) = "GitSync.applescript" then handle_interval()
+if FileParser's file_name(path to me) = "GitSync.applescript" then handle_interval()
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
- * Note: this will only be called from 
+ * Note: this will only be called from an .app
  *)
 on idle {}
-	log "test"
-	--handle_interval()
+	handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
