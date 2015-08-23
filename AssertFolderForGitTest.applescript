@@ -21,11 +21,7 @@ end is_git_repo
 
 --return FileAsserter's does_path_exist("~/testx/")
 
-if (is_git_repo_2("~/testx/")) then
-  log "works"
-else
-  log "doesnt work"
-end if
+is_git_repo_2("~/testing/")
 
 (*
  * Asserts if a folder has a git repository
