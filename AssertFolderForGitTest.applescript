@@ -39,3 +39,18 @@ on is_git_repo_2(posix_file_path)
     return false
   end if
 end is_git_repo_2
+
+(*
+
+if FileAsserter's does_path_exist(posix_file_path) then
+  try
+    GitUtil's status(posix_file_path, "")
+    return true
+  on error
+    return false
+  end try
+else
+  return false
+end if
+
+*)
