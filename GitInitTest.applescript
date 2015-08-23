@@ -4,7 +4,7 @@ property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts fo
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
 property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
 
-set the_path to "~/test/"
+set the_path to "~/testing/"
 
 if FileAsserter's does_path_exist(the_path) then
 
@@ -19,5 +19,5 @@ else--does not have .git folder
 
 end if
 
-
+GitUtil's init(the_path)
 --do shell script "cd " & the_path & ";" &"rm -rf fox"
