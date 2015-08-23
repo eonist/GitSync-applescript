@@ -19,7 +19,7 @@
  - [x] Research git ignore and how it works
  - [x] Use a fixed interval if no interval is provided in the repositories.xml file
  - [x] Find a suitable download provider for a zip file, bitbucket? google this
-- [x] v.0.9.2
+- [x] v.0.9.2 
  - [x] Use wiki for FAQ
  - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
  - [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
