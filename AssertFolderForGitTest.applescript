@@ -2,9 +2,10 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
 
-set the_path to (((path to desktop) & "test") as text)
-log the_path
+
+test()
 on test()
+  set the_path to (((path to desktop) & "test") as text)
   try
     (the_path as alias)
     return true
