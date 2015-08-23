@@ -13,8 +13,8 @@ else--If the path does not exist then
   FileModifier's create_folder()
 end if
 
-if GitAsserter's is_git_repo(the_path) then--does not have .git folder
+if GitAsserter's is_git_repo(the_path) then
 
-else
+else--does not have .git folder
 
 end if
