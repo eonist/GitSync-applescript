@@ -19,7 +19,7 @@ on is_git_repo(posix_file_path)
 	end try
 end is_git_repo
 
-log is_git_repo_2("~/test/")
+is_git_repo_2("~/testx/")
 (*
  * Asserts if a folder has a git repository
  * Example: is_git_repo("~/test/.git/")--true/false
