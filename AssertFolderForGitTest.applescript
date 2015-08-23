@@ -1,4 +1,4 @@
-is_git_repo("testing/.git/")
+is_git_repo("~/test/.git/")
 on is_git_repo(posix_file_path)
   try
 		do shell script "cd " & posix_file_path
