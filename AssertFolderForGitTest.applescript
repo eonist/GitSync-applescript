@@ -19,25 +19,27 @@ on is_git_repo(posix_file_path)
 	end try
 end is_git_repo
 
-FileAsserter's does_path_exist("~/testx/")
-(*
+--FileAsserter's does_path_exist("~/testx/")
+
 if (is_git_repo_2("~/testing/")) then
   log "works"
 else
   log "doesnt work"
 end if
-*)
+
 (*
  * Asserts if a folder has a git repository
  * Example: is_git_repo("~/test/.git/")--true/false
  *)
 on is_git_repo_2(posix_file_path)
-	try
-		set the_status to GitUtil's status(posix_file_path, "")
-		log the_status
-		return true
-		--do shell script "cd " & posix_file_path
-	on error
-		return false
-	end try
+  if FileAsserter's does_path_exist(posix_file_path) then
+    try
+  		set the_status to GitUtil's status(posix_file_path, "")
+  		log the_status
+  		return true
+  		--do shell script "cd " & posix_file_path
+  	on error
+  		return false
+  	end try
+  end if
 end is_git_repo_2
