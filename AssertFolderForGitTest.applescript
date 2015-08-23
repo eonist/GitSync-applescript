@@ -21,7 +21,7 @@ end is_git_repo
 
 --FileAsserter's does_path_exist("~/testx/")
 
-if (is_git_repo_2("~/testing/")) then
+if (is_git_repo_2("~/testx/")) then
   log "works"
 else
   log "doesnt work"
