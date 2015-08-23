@@ -33,17 +33,13 @@ end if
  *)
 on is_git_repo_2(posix_file_path)
   if FileAsserter's does_path_exist(posix_file_path) then
-    log "if"
     try
-  		set the_status to GitUtil's status(posix_file_path, "")
-  		log the_status
+  		GitUtil's status(posix_file_path, "")
   		return true
-  		--do shell script "cd " & posix_file_path
   	on error
   		return false
   	end try
   else
-    log "else"
+    return false
   end if
-
 end is_git_repo_2
