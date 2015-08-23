@@ -19,14 +19,15 @@ on is_git_repo(posix_file_path)
 	end try
 end is_git_repo
 
-return is_git_repo_2("~/testings/")
+return is_git_repo_2("~/test/")
 (*
  * Asserts if a folder has a git repository
  * Example: is_git_repo("~/test/.git/")--true/false
  *)
 on is_git_repo_2(posix_file_path)
 	try
-		GitUtil's status(posix_file_path, "")
+		set the_status to GitUtil's status(posix_file_path, "")
+		log the_status
 		return true
 		--do shell script "cd " & posix_file_path
 	on error
