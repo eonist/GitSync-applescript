@@ -3,16 +3,6 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
 
 
-test()
-on test()
-  set the_path to (((path to desktop) & "testing") as text)
-  try
-    the_path as alias
-    return true
-  on error
-    return false
-  end try
-end test
 --return FileAsserter's is_folder(the_path)
 (*
  * Asserts if a folder is a git repository
@@ -22,7 +12,7 @@ on is_git_repo(posix_file_path)
   try
 		do shell script "cd " & posix_file_path
     return true
-	on error errMsg
+	on error
     return false
 	end try
 end is_git_repo
