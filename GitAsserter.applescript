@@ -1,3 +1,4 @@
+ has_git_repo("~/test/.git/")
  (*
   * Asserts if a folder has a git repository
   * Example: is_git_repo("~/testing/.git/")--true/false
