@@ -7,8 +7,8 @@ log the_path
 try
   log (the_path as alias)
   return true
-on error errMsg
-  --log "false"
+on error 
+  --log "falses"
   return false
 end try
 --return FileAsserter's is_folder(the_path)
