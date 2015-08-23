@@ -4,48 +4,17 @@ property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts fo
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
 
 
+set the_path to "~/testing/"
 
---return FileAsserter's is_folder(the_path)
-(*
- * Asserts if a folder is a git repository
- * Example: is_git_repo("~/testing/.git/")--true/false
- *)
-on is_git_repo(posix_file_path)
-	try
-		do shell script "cd " & posix_file_path
-		return true
-	on error
-		return false
-	end try
-end is_git_repo
+if FileAsserter's does_path_exist(the_path) then
 
---return FileAsserter's does_path_exist("~/testx/")
+else--If the path does not exist then
+  --Create the local folder with FileModifier
+  FileModifier's create_folder()
+end if
 
-is_git_repo_2("~/testing/")
-
-(*
- * Asserts if a folder has a git repository
- * Example: is_git_repo("~/test/.git/")--true/false
- *)
-on is_git_repo_2(posix_file_path)
-  if FileAsserter's does_path_exist(posix_file_path) then
-    try
-  		GitUtil's status(posix_file_path, "")
-  		return true
-  	on error
-  		return false
-  	end try
-  else
-    return false
-  end if
-end is_git_repo_2
-
-(*
-
-if FileAsserter's does_path_exist(posix_file_path) then
+if GitAsserter's is_git_repo(the_path) then--does not have .git folder
 
 else
   
 end if
-
-*)
