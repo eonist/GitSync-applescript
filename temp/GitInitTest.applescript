@@ -6,6 +6,7 @@ property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts fol
 
 set the_local_path to "~/testing/"
 set the_remote_path to "https://github.com/eonist/testing.git"
+--Todo: continue resear cloning into an existing path
 
 if FileAsserter's does_path_exist(the_local_path) then
 
