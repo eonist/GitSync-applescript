@@ -7,10 +7,10 @@ test()
 on test()
   set the_path to (((path to desktop) & "test") as text)
   try
-    (the_path as alias)
-    return true
+    the_path as alias
+    --return true
   on error
-    log "falses"
+    --log "falses"
     return false
   end try
 end test
