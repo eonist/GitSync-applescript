@@ -5,12 +5,10 @@ property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts fo
 
 test()
 on test()
-  set the_path to (((path to desktop) & "test") as text)
+  set the_path to (((path to desktop) & "testing") as text)
   try
     the_path as alias
-    --return true
   on error
-    --log "falses"
     return false
   end try
 end test
