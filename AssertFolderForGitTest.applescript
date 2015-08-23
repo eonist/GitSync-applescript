@@ -1,7 +1,7 @@
-is_git_repo("test")
-on is_git_repo(file_path)
+is_git_repo("testing/.git/")
+on is_git_repo(posix_file_path)
   try
-		do shell script "cd " & " testing" & "/" & ".git/"
+		do shell script "cd " & posix_file_path
     return true
 	on error errMsg
     return false
