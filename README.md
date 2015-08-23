@@ -38,7 +38,7 @@
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33)  
  - [ ] Do research around log layouts, check the logs that stream2me and air-video
  - [ ] Sketch out the log format in the issue section
- - [ ] ignore repo.xml with gitignore 
+ - [ ] ignore repo.xml with gitignore
 - [ ] v.0.9.6
  - [ ] Auto Init repo items that are not inited [here](https://github.com/eonist/GitSync/issues/30)  
  - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
@@ -54,6 +54,7 @@
  - [ ] OSX icon in illustrator, OSX header in paper
  - [ ] set the interval to every 10 seconds so that we can do
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
+ - [ ] Sync GitSync wiki
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
