@@ -16,5 +16,5 @@ end if
 if GitAsserter's is_git_repo(the_path) then--does not have .git folder
 
 else
-  
+
 end if
