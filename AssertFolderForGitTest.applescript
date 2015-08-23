@@ -8,6 +8,7 @@ on test()
   set the_path to (((path to desktop) & "testing") as text)
   try
     the_path as alias
+    return true
   on error
     return false
   end try
