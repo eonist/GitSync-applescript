@@ -4,7 +4,7 @@ property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts fo
 
 set the_path to (((path to desktop) & "test") as text) as alias
 log the_path
-return FileAsserter's is_folder(the_path)
+--return FileAsserter's is_folder(the_path)
 (*
  * Asserts if a folder is a git repository
  * Example: is_git_repo("~/testing/.git/")--true/false
