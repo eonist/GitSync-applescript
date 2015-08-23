@@ -2,7 +2,8 @@
   (*
    * Asserts if a folder has a git repository
    * Example: is_git_repo("~/test/.git/")--true/false
-   * Note: Asserts 3 states: folder doesnt exist, folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
+   * Note: Asserts 2 states: folder does not have a git repository, folder exists and has a git repository attatched, only returns true for the last case
+   * Note: Its wise to assert if the folder exists first, use FileAsserter's does_path_exist("~/test/.git/")
    *)
   on is_git_repo(posix_file_path)
 
