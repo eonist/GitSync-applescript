@@ -2,8 +2,14 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
 
-set the_path to (((path to desktop) & "test") as text) as alias
+set the_path to (((path to desktop) & "test") as text)
 log the_path
+try
+  log the_path as alias
+  return true
+on error errMsg
+  return false
+end try
 --return FileAsserter's is_folder(the_path)
 (*
  * Asserts if a folder is a git repository
