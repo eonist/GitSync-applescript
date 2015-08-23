@@ -19,7 +19,7 @@
  - [x] Research git ignore and how it works
  - [x] Use a fixed interval if no interval is provided in the repositories.xml file
  - [x] Find a suitable download provider for a zip file, bitbucket? google this
-- [x] v.0.9.2 
+- [x] v.0.9.2
  - [x] Use wiki for FAQ
  - [x] Draw another OS X GUI sketch and add it [here](https://github.com/eonist/GitSync/issues/16)
  - [x] Account for keychain passwords with special chars. They may be in hex format. [here](https://github.com/eonist/GitSync/issues/18)
@@ -36,11 +36,11 @@
  - [x] Toggle repo.xml path depending on debug/deploy mode
 - [ ] v.0.9.5
  - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33)  
- - [ ] Do research around log layouts, check the logs that stream2me and air-video
- - [ ] Sketch out the log format in the issue section
- - [ ] ignore repo.xml with gitignore
+ - [x] Do research around log layouts, check the logs that stream2me and air-video
+ - [x] Sketch out the log format in the issue section
+ - [x] ignore repo.xml with gitignore
 - [ ] v.0.9.6
- - [ ] Auto Init repo items that are not inited [here](https://github.com/eonist/GitSync/issues/30)  
+ - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)  
  - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
