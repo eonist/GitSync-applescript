@@ -19,7 +19,7 @@ on is_git_repo(posix_file_path)
 	end try
 end is_git_repo
 
-return is_git_repo_2("~/testing/.git/")
+return is_git_repo_2("~/testing/")
 on is_git_repo_2(posix_file_path)
 	try
 		return GitUtil's status(posix_file_path, "")
