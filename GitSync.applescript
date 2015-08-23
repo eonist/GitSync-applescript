@@ -21,10 +21,10 @@ log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 initialize()
 (*
- * Initialize
+ * Initialize the app, toggles between debug and deploy mode depending fromwhich file type it is run from
  *)
 on initialize()
-	if (FileParser's file_name(path to me) = "GitSync.applescript") then --this will only be called when you are debugging from the .applescript file aka "debug mode"
+	if (FileParser's file_name(path to me) = "GitSync.applescript") then --debug mode
 		set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
 		log repo_file_path
 		handle_interval()
@@ -39,7 +39,7 @@ end initialize
 
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
- * Note: this will only be called from an .app aka "deploy mode" / "production mode"
+ * Note: this will only be called from an .app mode aka "deploy mode" / "production mode"
  *)
 on idle {}
 	handle_interval()
@@ -62,7 +62,6 @@ on handle_interval()
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 
 end handle_interval
-
 (*
  * Handles the process of making a commit for a single repository
  *)
@@ -115,7 +114,6 @@ on do_commit(local_repo_path)
 	end try
 	return true --return true to indicate that the commit completed
 end do_commit
-
 log "end of the script"
 (*
  * A collection of utility methods for parsing the the "git status message" and a method for processing
@@ -164,8 +162,6 @@ script CommitUtil
 		end if
 		return commit_msg
 	end sequence_commit_msg
-
-
 end script
 (*
  * Utility methods for generating the "Git Commit Message Description"
