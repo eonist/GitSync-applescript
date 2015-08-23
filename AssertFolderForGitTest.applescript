@@ -19,7 +19,7 @@ on is_git_repo(posix_file_path)
 	end try
 end is_git_repo
 
-if (is_git_repo_2("~/testx/")) then
+if (is_git_repo_2("~/testing/")) then
   log "works"
 else
   log "doesnt work"
