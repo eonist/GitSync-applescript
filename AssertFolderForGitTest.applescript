@@ -11,21 +11,21 @@ property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder 
  * Example: is_git_repo("~/testing/.git/")--true/false
  *)
 on is_git_repo(posix_file_path)
-  try
+	try
 		do shell script "cd " & posix_file_path
-    return true
+		return true
 	on error
-    return false
+		return false
 	end try
 end is_git_repo
 
-return is_git_repo_2("~/testing/.git/")
+log is_git_repo_2("~/testing/.git/")
 on is_git_repo_2(posix_file_path)
-  try
-    return GitUtil's status(posix_file_path,"")
+	try
+		return GitUtil's status(posix_file_path, "")
 		--do shell script "cd " & posix_file_path
-    return true
+		return true
 	on error
-    return false
+		return false
 	end try
 end is_git_repo_2
