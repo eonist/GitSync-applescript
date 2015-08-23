@@ -20,4 +20,4 @@ else--does not have .git folder
 end if
 
 
-do shell script "cd " & the_path & ";" &"rm -rf fox"
+--do shell script "cd " & the_path & ";" &"rm -rf fox"
