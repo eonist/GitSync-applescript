@@ -7,7 +7,10 @@ if(the path exist)
         if(git status length is 0)--nothing new to upload to remote
           --do nothing
         else--has new files to upload to remote
-          
+
+        end if
+        if () 
+          -- statements
         end if
        --determine what to do next, download or upload or both. conflicts? solve this
      else--does not have remote repo attached
