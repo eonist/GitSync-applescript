@@ -4,6 +4,11 @@ if(the path exist)
   else--folder is not empty, files already exist
     if (folder has .git folder)
       if(does have remote repo attached)
+        if(git status length is 0)--nothing new to upload to remote
+          --do nothing
+        else--has new files to upload to remote
+          
+        end if
        --determine what to do next, download or upload or both. conflicts? solve this
      else--does not have remote repo attached
         attach remote repo
