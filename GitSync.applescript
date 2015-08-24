@@ -203,7 +203,7 @@ script DescUtil
 	end description_paragraph
 end script
 (*
- * utils for paraing the git status list
+ * Utils for paraing the git status list
  *)
 script StatusUtil
 	(*
