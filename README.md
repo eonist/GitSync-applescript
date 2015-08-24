@@ -41,8 +41,9 @@
  - [x] ignore repo.xml with gitignore
 - [ ] v.0.9.6
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
- - [ ] Research git merging techniques on google, 
- - [ ] Research how to overiding the local file when local and remote files have both changed
+ - [ ] Research git merging techniques on google 
+ - [x] Research how to overiding the local file when local and remote files have both changed
+ - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
  - [ ] Research how to overiding the remote file when local and remote files have both changed
  - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
  - [ ] Optional custom commit and push intervals
