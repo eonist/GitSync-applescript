@@ -49,7 +49,7 @@
  - [ ] Research if you can change an applescript icon with an applescript
 - [ ] v.0.9.7
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
- - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
+ - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server [here](https://github.com/eonist/GitSync/issues/23)
  - [ ] Add support for ssh authentication
  - [ ] OSX icon in illustrator, OSX header in paper
  - [ ] set the interval to every 10 seconds so that we can do
