@@ -3,11 +3,11 @@ if(the path exist)
     git clone remote_url local_dir
   else--folder is not empty, files already exist
     if (folder has .git folder)
-      if(does have remote repo attached)
+      if(has remote repo attached)
         if(git status length is 0)--nothing new to upload to remote
           --do nothing
         else--has new files to upload to remote
-
+          --then upload them
         end if
         if () 
           -- statements
