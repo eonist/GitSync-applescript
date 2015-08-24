@@ -48,7 +48,7 @@
  - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
 - [ ] v.0.9.7
- - [ ] Test with bitbucket private repo [here](https://github.com/eonist/GitSync/issues/20)
+ - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server
  - [ ] Add support for ssh authentication
  - [ ] OSX icon in illustrator, OSX header in paper
