@@ -86,7 +86,7 @@ on handle_push_interval(repo_item)
 	set cherry_result to GitUtil's cherry(local_path of repo_item, remote_account_name, keychain_password)
 	log "cherry_result: " & cherry_result
 	set has_commits to length of cherry_result > 0
-	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag
+	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
 		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
 		log "push_call_back: " & push_call_back
