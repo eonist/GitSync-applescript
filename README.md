@@ -45,7 +45,6 @@
  - [x] Research how to overiding the local file when local and remote files have both changed
  - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
  - [ ] Research how to overiding the remote file when local and remote files have both changed
- - [ ] GitSync should support team coding [here](https://github.com/eonist/GitSync/issues/23)
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
