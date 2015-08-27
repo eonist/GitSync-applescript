@@ -50,7 +50,7 @@
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
  - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
- 
+
 - [ ] v.0.9.7
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server [here](https://github.com/eonist/GitSync/issues/23)
