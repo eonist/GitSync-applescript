@@ -39,7 +39,7 @@
  - [x] Do research around log layouts, check the logs that stream2me and air-video
  - [x] Sketch out the log format in the issue section
  - [x] ignore repo.xml with gitignore
- - [ ] Create a "Notes on git" doc in the wiki section
+ - [ ] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
 - [ ] v.0.9.6
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
  - [ ] Research git merging techniques on google 
