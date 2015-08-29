@@ -42,7 +42,7 @@
  - [ ] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
 - [ ] v.0.9.6
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
- - [ ] Research git merging techniques on google 
+ - [ ] Research git merging techniques on google, merge vs rebase 
  - [x] Research how to overiding the local file when local and remote files have both changed
  - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
  - [ ] Research how to overiding the remote file when local and remote files have both changed
@@ -51,7 +51,7 @@
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
  - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
-
+ - [ ] Add more description to the GitUtils.applescript methods
 - [ ] v.0.9.7
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server [here](https://github.com/eonist/GitSync/issues/23)
