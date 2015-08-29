@@ -56,9 +56,9 @@
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server [here](https://github.com/eonist/GitSync/issues/23)
  - [ ] Add support for ssh authentication
- - [ ] Use your touch pen and do more icon doodles in Paper 
- - [ ] OSX icon in illustrator, OSX header in paper
- - [ ] set the interval to every 10 seconds so that we can do
+ - [ ] Use your touch pen and do more icon doodles in Paper [here](https://github.com/eonist/GitSync/issues/16) 
+ - [ ] OSX icon in illustrator, OSX app header in paper
+ - [ ] set the interval to every 10 seconds so that we can do more fine-grained intervals
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
  - [ ] Sync GitSync wiki
  - [ ] Check if GitSync has internet connection, if not then skip interval
