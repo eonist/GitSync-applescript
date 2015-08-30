@@ -62,6 +62,7 @@
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
  - [ ] Sync GitSync wiki
  - [ ] Check if GitSync has internet connection, if not then skip interval
+ - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
