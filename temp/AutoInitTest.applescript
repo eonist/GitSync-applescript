@@ -4,10 +4,10 @@ if(the path exist)
   else--folder is not empty, files already exist
     if (folder has .git folder)--folder already contains a .git folder (aka git repo data)
       if(has remote repo attached)--the .git folder already has a remote repo attached
-        --do a git fetch origin
-        --do an git merge
-        --
-        --checkout the origin, this moves the files into
+        --do a git fetch origin...
+        --do an git merge....
+        --hmm
+        --checkout the origin, this moves the files into...hmm
         if(git status length is 0)--nothing new to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
           --do nothing
         else--has new files to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
