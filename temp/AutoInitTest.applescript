@@ -4,7 +4,9 @@ if(the path exist)
   else--folder is not empty, files already exist
     if (folder has .git folder)--folder already contains a .git folder (aka git repo data)
       if(has remote repo attached)--the .git folder already has a remote repo attached
-        --do a git fetch origin...
+        --do a git fetch origin master
+        --Todo: test this in terminal, figure out if a file is ahead or behind etc, and what to do acordingly
+        --list the local branches
         --do an git merge....
         --hmm
         --checkout the origin, this moves the files into...hmm
