@@ -54,18 +54,17 @@
  - [ ] Add more description to the GitUtils.applescript methods
 - [ ] v.0.9.7
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
- - [ ] Create the GitEdit.app with one function; "Sync down all" temp solution for the server [here](https://github.com/eonist/GitSync/issues/23)
- - [ ] Add support for ssh authentication
- - [ ] ~~Use your touch pen~~ buy a pen that works with ipad air 2 and do icon doodles in Paper [here](https://github.com/eonist/GitSync/issues/16) 
- - [ ] OSX icon in illustrator, OSX app header in paper
+ - [ ] ~~Use your touch pen~~ Buy a pen that works with ipad air 2 and do icon doodles in Paper [here](https://github.com/eonist/GitSync/issues/16) 
+ - [ ] OSX icon in illustrator, OSX app header in paper (do more doodles first)
  - [ ] set the interval to every 10 seconds so that we can do more fine-grained intervals
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
- - [ ] Sync GitSync wiki
+ - [x] Sync GitSync wiki
  - [ ] Check if GitSync has internet connection, if not then skip interval
  - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
- - [ ] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
+ - [x] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
  - [ ] Try to rebase, try to manually clone, maybe research stashing 
  - [ ] If you commit without a message, a message is generated for you in vim, can you get to this msg?
+ - [ ] Add support for ssh authentication
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
