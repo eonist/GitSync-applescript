@@ -13,7 +13,7 @@ property RegExpUtil : my ScriptLoader's load_script(alias ((path to scripts fold
 
 --Properties:
 property current_time : 0 --keeps track of the time passed, remember to reset this value pn every init
-property the_interval : 60 --static value, increases the time by this value on every interval--Todo: rename to "frequncy"
+property the_interval : 60 --static value, increases the time by this value on every interval--TODO: rename to "frequncy"
 property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 property repo_file_path : ""
 
@@ -39,7 +39,7 @@ end initialize
 
 (*
  * This will be called on init and then every 60 seconds or the time you specifiy in the return value
- * Note: this will only be called from an .app mode aka "deploy mode" / "production mode"
+ * NOTE: this will only be called from an .app mode aka "deploy mode" / "production mode"
  *)
 on idle {}
 	handle_interval()
@@ -48,7 +48,7 @@ end idle
 (*
  * Handles the process of comitting, pushing for multiple repositories
  * This is called on every interval
- * Note: while testing you can call this manually, since idle will only work when you run it from an .app
+ * NOTE: while testing you can call this manually, since idle will only work when you run it from an .app
  *)
 on handle_interval()
 	log "handle_interval()"
@@ -95,7 +95,7 @@ end handle_push_interval
 (*
  * This method generates a git status list,and asserts if a commit is due, and if so, compiles a commit message and then tries to commit
  * Returns true if a commit was made, false if no commit was made or an error occured
- * Note: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
+ * NOTE: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  *)
 on do_commit(local_repo_path)
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
@@ -122,8 +122,8 @@ script CommitUtil
 	(*
 	 * Returns a a text "commit message" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
-	 * Note: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED,
-	 * Note: In place of Renamed, Git first deletes the file then says its untracked
+	 * NOTE: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED,
+	 * NOTE: In place of Renamed, Git first deletes the file then says its untracked
     *)
 	on sequence_commit_msg(status_list) --rename to generate_commit_msg
 		set num_of_new_files to 0
@@ -131,7 +131,7 @@ script CommitUtil
 		set num_of_deleted_files to 0
 		set num_of_renamed_files to 0
 		repeat with status_item in status_list
-			set cmd to cmd of status_item --Todo: rename to type or status_type
+			set cmd to cmd of status_item --TODO: rename to type or status_type
 			if (cmd = "M") then
 				set num_of_modified_files to num_of_modified_files + 1
 			else if (cmd = "D") then
@@ -208,7 +208,7 @@ end script
 script StatusUtil
 	(*
 	 * Returns a descriptive status list of the current git changes
-	 * Note: you may use short staus, but you must interpret the message if the state has an empty space infront of it
+	 * NOTE: you may use short staus, but you must interpret the message if the state has an empty space infront of it
 	 *)
 	on generate_status_list(local_repo_path)
 		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
@@ -228,10 +228,10 @@ script StatusUtil
 	(*
  	 * Transforms the "compact git status list" by adding more context to each item (a list with acociative lists, aka records)
  	 * Returns a list with records that contain staus type, file name and state
- 	 * Note: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
- 	 * Note: the space infront of the capetalized char indicates Changes not staged for commit:
- 	 * Note: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
-	 * Note: the state can be:  "Changes not staged for commit" , "Untracked files" , "Changes to be committed"
+ 	 * NOTE: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
+ 	 * NOTE: the space infront of the capetalized char indicates Changes not staged for commit:
+ 	 * NOTE: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
+	 * NOTE: the state can be:  "Changes not staged for commit" , "Untracked files" , "Changes to be committed"
 	 * @Param: the_status_list is a list with status messages like: {"?? test.txt"," M index.html","A home.html"}
  	 *)
 	on transform_status_list(the_status_list)
@@ -261,7 +261,7 @@ script StatusUtil
 	end transform_status_list
 	(*
 	 * Iterates over the status items and "git add" the item unless it's already added (aka "staged for commit")
-	 * Note: if the status list is empty then there is nothing to process
+	 * NOTE: if the status list is empty then there is nothing to process
 	 *)
 	on process_status_list(local_repo_path, status_list)
 		log "process_status_list()"
@@ -289,7 +289,7 @@ script RepoUtil
 	(*
  	 * Returns a repo_list with values derived from an XML file
  	 * @param file_path is in HSF not POSIX
- 	 * Todo: if the interval values is not set, then use default values
+ 	 * TODO: if the interval values is not set, then use default values
  	 *)
 	on compile_repo_list(file_path) -- rename to generate_repo_list?
 		log "file_path: " & file_path
@@ -311,8 +311,8 @@ script RepoUtil
 			--set pull_int to XMLParser's attribute_value_by_name(theXMLChild, "pull-interval-in-minutes") --default is 30min
 			set interval to XMLParser's attribute_value_by_name(theXMLChild, "interval") --default is 30min
 			--set remote_account_name to XMLParser's attribute_value_by_name(theXMLChild, "remote-account-name")
-			--Todo: use only 1 interval
-			set key_value_pairs to {local_path:local_path, remote_path:remote_path, keychain_item_name:keychain_item_name, interval:interval} --remote_account_name:remote_account_name,commit_int:commit_int, push_int:push_int--Todo: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
+			--TODO: use only 1 interval
+			set key_value_pairs to {local_path:local_path, remote_path:remote_path, keychain_item_name:keychain_item_name, interval:interval} --remote_account_name:remote_account_name,commit_int:commit_int, push_int:push_int--TODO: shouldnt the line bellow be sudo acociative list? or does the record style list work as is?, if you dont need to iterate over the values, you may use record
 			set the_repo_list to ListModifier's add_list(the_repo_list, key_value_pairs)
 		end repeat
 		return the_repo_list
