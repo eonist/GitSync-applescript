@@ -65,6 +65,7 @@
  - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
  - [ ] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
  - [ ] Try to rebase, try to manually clone, maybe research stashing 
+ - [ ] If you commit without a message, a message is generated for you in vim, can you get to this msg?
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
