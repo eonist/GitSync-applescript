@@ -49,9 +49,9 @@
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
- - [ ] Skip synchronising if the remote is ahead more info [here](https://github.com/eonist/GitSync/issues/17)
+ - [ ] Auto synchronising if the remote is ahead, resolve conflict via wizzard more info [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
- - [ ] Add more description to the GitUtils.applescript methods
+ - [x] Add more description to the GitUtils.applescript methods
 - [ ] v.0.9.7
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] ~~Use your touch pen~~ Buy a pen that works with ipad air 2 and do icon doodles in Paper [here](https://github.com/eonist/GitSync/issues/16) 
