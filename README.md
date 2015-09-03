@@ -39,13 +39,14 @@
  - [x] Do research around log layouts, check the logs that stream2me and air-video
  - [x] Sketch out the log format in the issue section
  - [x] ignore repo.xml with gitignore
- - [ ] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
+ - [x] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
 - [ ] v.0.9.6
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
- - [ ] Research git merging techniques on google, merge vs rebase 
+ - [x] Research git merging techniques on google
+ - [ ] Research git rebasing techniques on google (merge vs rebase )
  - [x] Research how to overiding the local file when local and remote files have both changed
  - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
- - [ ] Research how to overiding the remote file when local and remote files have both changed
+ - [x] Research how to overiding the remote file when local and remote files have both changed
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
  - [ ] Auto synchronising if the remote is ahead, resolve conflict via wizard [here](https://github.com/eonist/GitSync/issues/17)
