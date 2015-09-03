@@ -48,8 +48,7 @@
  - [ ] Research how to overiding the remote file when local and remote files have both changed
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
- - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
- - [ ] Auto synchronising if the remote is ahead, resolve conflict via wizzard more info [here](https://github.com/eonist/GitSync/issues/17)
+ - [ ] Auto synchronising if the remote is ahead, resolve conflict via wizard [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
  - [x] Add more description to the GitUtils.applescript methods
 - [ ] v.0.9.7
@@ -65,6 +64,7 @@
  - [ ] Try to rebase, try to manually clone, maybe research stashing 
  - [ ] If you commit without a message, a message is generated for you in vim, can you get to this msg?
  - [ ] Add support for ssh authentication
+ - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
 - [ ] **Bonus**
  - [ ] **Bonus:** Complete the KeychainParser and KeychainModifier classes
  - [ ] **Bonus:** Create an UML activity diagram, And UML class diagram
