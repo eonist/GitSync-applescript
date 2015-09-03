@@ -10,6 +10,8 @@ if(the path exist)
         --do an git merge....
         --hmm
         --checkout the origin, this moves the files into...hmm
+        --TODO: You need to make a local branch and merge this branch into master that you have pull(you know how to do this) 
+        --TODO: research statshing, i think stashing is more appropriate in this case, then merge the stash somehow
         if(git status length is 0)--nothing new to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
           --do nothing
         else--has new files to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
