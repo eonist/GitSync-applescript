@@ -43,9 +43,10 @@
 - [ ] v.0.9.6
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
  - [x] Research git merging techniques on google
+ - [x] research stashing
  - [ ] try to merge two branches together and see the end history when the branches has many commits
  - [ ] try to merge two branches together with rebase with many commits
- - [ ] Research git rebasing techniques on google (merge vs rebase )
+ - [x] Research git rebasing techniques on google (merge vs rebase )
  - [x] Research how to overiding the local file when local and remote files have both changed
  - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
  - [x] Research how to overiding the remote file when local and remote files have both changed
