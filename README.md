@@ -44,7 +44,7 @@
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
  - [x] Research git merging techniques on google
  - [x] research stashing
- - [x] Do stashing test in conjunction with the AutoInit worflow
+ - [x] Do stashing test as it relates to the AutoInit worflow
  - [ ] Try to merge two branches together and see the end history when the branches has many commits
  - [ ] Try to merge two branches together with rebase with many commits
  - [x] Research git rebasing techniques on google (merge vs rebase )
