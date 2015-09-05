@@ -44,8 +44,9 @@
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
  - [x] Research git merging techniques on google
  - [x] research stashing
- - [ ] try to merge two branches together and see the end history when the branches has many commits
- - [ ] try to merge two branches together with rebase with many commits
+ - [x] Do stashing test in conjunction with the AutoInit worflow
+ - [ ] Try to merge two branches together and see the end history when the branches has many commits
+ - [ ] Try to merge two branches together with rebase with many commits
  - [x] Research git rebasing techniques on google (merge vs rebase )
  - [x] Research how to overiding the local file when local and remote files have both changed
  - [x] Research Atom.io workflow techniques [here](https://github.com/eonist/GitSync/wiki/Atom-tips-and-tricks) 
@@ -59,13 +60,14 @@
  - [ ] Test with  private repo (use bitbucket) [here](https://github.com/eonist/GitSync/issues/20)
  - [ ] ~~Use your touch pen~~ Buy a pen that works with ipad air 2 and do icon doodles in Paper [here](https://github.com/eonist/GitSync/issues/16) 
  - [ ] OSX icon in illustrator, OSX app header in paper (do more doodles first)
- - [ ] set the interval to every 10 seconds so that we can do more fine-grained intervals
+ - [ ] Set the interval to every 10 seconds so that we can do more fine-grained intervals
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
  - [x] Sync GitSync wiki
  - [ ] Check if GitSync has internet connection, if not then skip interval
  - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
  - [x] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
- - [ ] Try to rebase, try to manually clone, maybe research stashing 
+ - [ ] Try to rebase
+ - [ ] Try to manually clone
  - [ ] If you commit without a message, a message is generated for you in vim, can you get to this msg?
  - [ ] Add support for ssh authentication
  - [ ] Test project with a fresh git install, what about the shell stuff git writes about in readme.txt?
