@@ -4,37 +4,47 @@ if(the path exist)
   else--folder is not empty, files already exist
     if (folder has .git folder)--folder already contains a .git folder (aka git repo data)
       if(has remote repo attached)--the .git folder already has a remote repo attached
-        --do a git fetch origin master
-        --Todo: test this in terminal, figure out if a file is ahead or behind etc, and what to do acordingly
-        --list the local branches
-        --do an git merge....
-        --hmm
-        --checkout the origin, this moves the files into...hmm
-        --TODO: You need to make a local branch and merge this branch into master that you have pull(you know how to do this) 
-        --TODO: research statshing, i think stashing is more appropriate in this case, then merge the stash somehow
-        if(git status length is 0)--nothing new to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
-          --do nothing
-        else--has new files to upload to remote (you may need to assert staging area, ealier commits and unstaged items)
-          --then upload them
+        --promt the user if he wants to use the existing remote origin, this will skip the user needing to input a remote url
+        if (use exisiting remote origin)
+           --grab the remote origin url somehow
+        else 
+           --remove remote origin,
+           --promt user for remote origin url
+           --add new remote origin
         end if
-        if () 
-          -- statements
-        end if
-       --determine what to do next, download or upload or both. conflicts? solve this
-     else--does not have remote repo attached
+    else--does not have remote repo attached
         --attach remote repo
-      end if
-    else
-      GitUtil's manual_clone(remote_url,local_path)--init,attach remote,fetch,checkout,fetch
     end if
+    else--has no .git folder, but there are some files like text.txt 
+      --init
+      --promt user for remote origin url
+      --add new remote origin
+    end if
+    --manual clone down files
+    try manual_clone(local_path,remote_path,branch)
+        error--merge conflicts
+           --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix
+           --add,commit,push
+        end try
   end if
 else--path does not exist
   git clone remote_url local_dir--this will also create the folders if they dont exist, even nested
 end if
---OR the the path exists and the folder is empty
 
 
-      attach remote repo
-   does have remote repo attached
-
-does not have .git folder
+(*
+ * manual clone test
+ *)  
+on manual_clone(local_path,remote_path,branch)
+  --figure out which files to add and commit
+  --find and add unstaged files to local branch
+  --commit the staged files
+  manual_merge(local_path,remote_path,branch)
+end manual_clone
+(*
+ * manual merge test
+ *)
+on manual_merge(local_path,remote_path,branch)
+  --git fetch origin
+  --git merge branch origin/branch
+end manual_merge

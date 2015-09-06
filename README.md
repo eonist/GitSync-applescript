@@ -41,6 +41,8 @@
  - [x] ignore repo.xml with gitignore
  - [x] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
 - [ ] v.0.9.6
+ - [ ] **Add empty items to the repo.xml, and the wizzard will help to populate them!!!**
+ - [ ] If there is some missinformation in the repo.xml the wizzard will help
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
  - [x] Research git merging techniques on google
  - [x] research stashing
