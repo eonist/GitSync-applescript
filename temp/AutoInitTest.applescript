@@ -30,8 +30,6 @@ if(the path exist)
 else--path does not exist
   git clone remote_url local_dir--this will also create the folders if they dont exist, even nested
 end if
-
-
 (*
  * manual clone test
  *)  
