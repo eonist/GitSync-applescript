@@ -16,7 +16,7 @@ if has_remote_change then
 			on handle_merge_conflict_dialog
 				set choice to text of button retruned
 				if choice is "keep local version" then
-					--git checkout --ours file_name
+					GitUtil's check_out(local_repo_path,"--ours", conflicting_file)
 				else if choice is "keep remote version" then
 					--git checkout --theirs filename
 				else if choice is "keep mix of both versions" then
