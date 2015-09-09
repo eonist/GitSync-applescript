@@ -1,8 +1,12 @@
-if(the path exist)
-  if(the folder is empty)--folder is empty
-    git clone remote_url local_dir--git clone with custom file path
+set does_path_exist to FileAsserter's does_path_exist(the_local_path)
+if(does_path_exist)
+	set is_folder_empty to length of files in the_local_path
+  if(is_folder_empty)--folder is empty
+    GitUtil's clone(remote_url, local_dir)--git clone with custom file path
   else--folder is not empty, files already exist
-    if (folder has .git folder)--folder already contains a .git folder (aka git repo data)
+    set is_git_folder to GitAsserter's is_git_repo(the_local_path)
+    if (is_git_folder)--folder already contains a .git folder (aka git repo data)
+      set has_remote_repo_attached to 
       if(has remote repo attached)--the .git folder already has a remote repo attached
         --promt the user if he wants to use the existing remote origin, this will skip the user needing to input a remote url
         if (use exisiting remote origin)
