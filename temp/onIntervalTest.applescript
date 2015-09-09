@@ -1,5 +1,5 @@
 (*
- * TODO: finish this method and test
+ * TODO: finish this method and test, needs parameters, calll to do_commit, and merge call, params in other calls aswell
  *)
 on interval_test()
 	if has_unstaged files then git add *
