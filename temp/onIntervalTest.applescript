@@ -1,17 +1,21 @@
 (*
+ * NOTE: this method performs a manualnpull on every interval 
  * TODO: finish this method and test, needs parameters, calll to do_commit, and merge call, params in other calls aswell
  *)
-on interval_test()
+on interval_test(local_file_path,)
 	if has_unstaged files then git add *
 	if has_staged files then 
 		--create commit message
 		--git commit 
 	end if
 	--git fetch remote
-	set has_remote_change to --use the git log oneline thing here
-	if has_remote_change then
-		merge master master/origin
-		set conflicting_files to --compilem a list of conflicting files somehow
+	set is_remote_branch_ahead to GitAsserter's is_remote_branch_ahead(local_repo_path,remote_path,local_branch,remote_branch)--use the git log oneline thing here
+	--TODO: resolve the bellow lines with a try error on the method manual_pull
+	--TODO: aldo make method snippets for the ipad
+	
+	if is_remote_branch_ahead then
+		--merge master master/origin
+		set conflicting_files to --compile a list of conflicting files somehow
 		set has_merge_conflicts to conflicting_files > 0
 		if has_merge_conflicts then
 			resolve_merge_conflicts()

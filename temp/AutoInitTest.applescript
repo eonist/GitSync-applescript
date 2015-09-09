@@ -30,7 +30,7 @@ on auto_init(local_path,remote_path,branch)
 	    	 --TODO: finish the method bellow, DisplayObject test in terminal
 	       set conflicting_files to --compilem a list of conflicting files somehow
 	       OnIntervalTest's resolve_merge_conflicts(local_path)--promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
-	    	 GitSync's do_commit(local_path)--add,commit files
+	    	 GitSync's do_commit(local_path)--add,commit if any files has an altered status
 	    end try
 	  end if
 	else--path does not exist
