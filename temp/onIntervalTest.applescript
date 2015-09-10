@@ -1,6 +1,7 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
-property GitSync : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitSync.applescript"))
+--TODO: test the bellow import first
+property GitSync : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "GitSync.applescript"))
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * TODO: aldo make method snippets for the ipad
