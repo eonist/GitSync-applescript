@@ -1,3 +1,9 @@
+property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
+property FileAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "file:FileAsserter.applescript"))
+property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
+--TODO: test the bellow import first
+property OnIntervalTest : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "OnIntervalTest.applescript"))
+
 (*
  * Automatically creates a local git repo based on the remote repo, if a local repo already exists, it is unharmfully merged into
  * TODO: this method is complete except merge_conflict_file_list needs to be generated somehow
