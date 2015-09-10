@@ -38,38 +38,36 @@ on manual_merge(local_path,remote_path,into_branch,from_branch)
     try
     	manual_pull(local_path,remote_path,from_branch)--manual clone down files
     error errMsg--merge conflicts
-    	 --TODO: finish the method bellow, do test in terminal, you may do git staus or git diff to get this, maybe git staus -s, they will show up as unmerged paths
-       set conflicting_files to conflict_files(local_path)--compile a list of conflicting files somehow
+       set unmerged_files to GitParser's unmerged_files(local_path)--compile a list of conflicting files somehow
        OnIntervalTest's resolve_merge_conflicts(local_path)--promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
     	 GitSync's do_commit(local_path)--add,commit if any files has an altered status
     end try
 end manual_merge
-
 (*
  * Promts the user with a list of options to aid in resolving merge conflicts
  * @param branch: the branch you tried to merge into
  * TODO: move to GitSync.applescript when testing is complete
  *)
-on resolve_merge_conflicts(local_repo_path,branch,conflicting_files)
-	repeat with conflicting_file in conflicting_files
-		--promt user with list of options, title: Merge conflict in: conflicting_file
+on resolve_merge_conflicts(local_repo_path,branch,unmerged_files)
+	repeat with unmerged_file in unmerged_files
+		--promt user with list of options, title: Merge conflict in: unmerged_file
 		on handle_merge_conflict_dialog
 			set choice to text of button retruned
 			if choice is "keep local version" then
-				GitUtil's check_out(local_repo_path,"--ours", conflicting_file)
+				GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
 			else if choice is "keep remote version" then
 				--git checkout --theirs filename
 			else if choice is "keep mix of both versions" then
 				--git checkout master filename
 			else if choice is "open local version" then
 				--checkout --ours file_name
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			else if choice is "open remote version" then
 				--checkout --theirs file_name
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			else if choice is "open mix of both versions" then
 				--checkout --master file_name
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			else if choice is "keep all local versions" then
 				--git checkout --ours *
 			else if choice is "keep all remote versions" then
@@ -78,13 +76,13 @@ on resolve_merge_conflicts(local_repo_path,branch,conflicting_files)
 				--checkout master
 			else if choice is "open all local versions" then
 				--checkout --ours *
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			else if choice is "open all remote versions" then
 				--checkout --theirs *
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			else if choice is "open all local and remote versions" then
 				--checkout --ours master
-				--tell finder to open conflicting_file
+				--tell finder to open unmerged_file
 			end if
 		end handle_merge_conflict_dialog
 	end repeat	
