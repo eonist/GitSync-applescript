@@ -60,7 +60,7 @@ on handle_interval()
 		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
-
+	
 end handle_interval
 (*
  * Handles the process of making a commit for a single repository
@@ -76,7 +76,7 @@ end handle_commit_interval
 on handle_push_interval(repo_item)
 	--TODO: use GitAsserter's is_local_branch_ahead instead of the bellow code
 	log GitUtil's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
-	set cherry_result to GitUtil's cherry(local_path of repo_item,"","")
+	set cherry_result to GitUtil's cherry(local_path of repo_item, "", "")
 	log "cherry_result: " & cherry_result
 	set has_commits to length of cherry_result > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
@@ -109,7 +109,7 @@ on do_commit(local_repo_path)
 	log "commit_msg_title: " & commit_msg_title
 	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
 	log "commit_msg_desc: " & commit_msg_desc
-	try--try to make a git commit
+	try --try to make a git commit
 		set commit_result to GitUtil's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
 		log "commit_result: " & commit_result
 	on error errMsg
@@ -200,7 +200,7 @@ script DescUtil
 			repeat with the_item in the_list
 				set desc_text to desc_text & (file_name of the_item) & return
 			end repeat
-
+			
 		end if
 		return desc_text
 	end description_paragraph
@@ -281,7 +281,7 @@ script StatusUtil
 				log "2. " & file_name
 				GitUtil's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
-				log "3. "--do nothing here
+				log "3. " --do nothing here
 			end if
 		end repeat
 	end process_status_list
