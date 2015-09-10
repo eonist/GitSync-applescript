@@ -44,19 +44,7 @@ on manual_merge(local_path,remote_path,into_branch,from_branch)
     	 GitSync's do_commit(local_path)--add,commit if any files has an altered status
     end try
 end manual_merge
-(*
- * TODO: try this in terminal: git diff --name-only --diff-filter=U
- * # On branch master
-   # Unmerged paths:
-	# (use "git add/rm ..." as appropriate to mark resolution)
-	#
-	# both modified: hello.py
-	#
- *)
-on conflict_files(local_path)
-	set the_status to GitUtil's staus(local_path,"-s")
-	return paragraphs of the_status
-end conflict_files
+
 (*
  * Promts the user with a list of options to aid in resolving merge conflicts
  * @param branch: the branch you tried to merge into
