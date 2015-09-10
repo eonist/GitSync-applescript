@@ -218,12 +218,11 @@ script StatusUtil
 		log "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as items in a list
 		set transformed_list to {}
-		if (length of the_status_list = 0) then
-			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
-		else
+		if (length of the_status_list > 0) then
 			set transformed_list to my transform_status_list(the_status_list)
+		else
+			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
 		end if
-		--
 		log "len of the_status_list: " & (length of the_status_list)
 		log transformed_list
 		return transformed_list
