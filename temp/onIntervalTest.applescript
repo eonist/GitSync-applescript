@@ -1,4 +1,6 @@
-
+property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
+property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
+property GitSync : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitSync.applescript"))
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * TODO: aldo make method snippets for the ipad
@@ -19,7 +21,7 @@ end commit_interval_test
  * NOTE: this method performs a "manual pull" on every interval 
  *)
 on push_interval_test(local_file_path,remote_path, branch)
-	OnIntervalTest's manual_merge(local_path,remote_path,branch,branch)--commits, merges with promts
+	manual_merge(local_path,remote_path,branch,branch)--commits, merges with promts
 	set has_local_commits to GitAsserter's has_local_commits(local_file_path,branch)
 	if has_local_commits then--only push if there is something to push
 		set keychain_data to KeychainParser's keychain_data("github eonist")
