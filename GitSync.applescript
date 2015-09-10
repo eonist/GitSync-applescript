@@ -74,19 +74,19 @@ end handle_commit_interval
  * Handles the process of making a push for a single repository
  *)
 on handle_push_interval(repo_item)
-	set the_keychain_item_name to keychain_item_name of repo_item
-	log "the_keychain_item_name: " & the_keychain_item_name
-	set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
-	set keychain_password to the_password of keychain_data
-
-	log "keychain_password: " & keychain_password
-	set remote_account_name to account_name of keychain_data
-	log "remote_account_name: " & remote_account_name
+	--TODO: use GitAsserter's is_local_branch_ahead instead of the bellow code
 	log GitUtil's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
-	set cherry_result to GitUtil's cherry(local_path of repo_item, remote_account_name, keychain_password)
+	set cherry_result to GitUtil's cherry(local_path of repo_item,"","")
 	log "cherry_result: " & cherry_result
 	set has_commits to length of cherry_result > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
+		set the_keychain_item_name to keychain_item_name of repo_item
+		log "the_keychain_item_name: " & the_keychain_item_name
+		set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
+		set keychain_password to the_password of keychain_data
+		log "keychain_password: " & keychain_password
+		set remote_account_name to account_name of keychain_data
+		log "remote_account_name: " & remote_account_name
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
 		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
 		log "push_call_back: " & push_call_back
@@ -96,6 +96,9 @@ end handle_push_interval
  * This method generates a git status list,and asserts if a commit is due, and if so, compiles a commit message and then tries to commit
  * Returns true if a commit was made, false if no commit was made or an error occured
  * NOTE: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
+ * NOTE: only commits if there is something to commit
+ * TODO: add branch parameter to this call
+ * NOTE: this a purly local method, does not need to communicate with remote servers etc
  *)
 on do_commit(local_repo_path)
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status

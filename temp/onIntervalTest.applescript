@@ -1,43 +1,37 @@
 (*
- * NOTE: this method performs a "manual pull" on every interval 
- *	--TODO: aldo make method snippets for the ipad
- * TODO: finish this method and test, needs parameters, calll to do_commit, and merge call, params in other calls aswell
+ * NOTE: we may not want to push on every interval, thats why this method works like a deligator
+ *	TODO: aldo make method snippets for the ipad
+ * NOTE: you only need to merge if you are ready to push
  *)
-on interval_test(local_file_path,)
-	if has_unstaged files then git add *
-	if has_staged files then 
-		--create commit message
-		--git commit 
-	end if
-	--git fetch remote
-	set is_remote_branch_ahead to GitAsserter's is_remote_branch_ahead(local_repo_path,remote_path,local_branch,remote_branch)--use the git log oneline thing here
-	--TODO: resolve the bellow lines with a try error on the method manual_pull
-	
-	--thinkkkkkkkkk
-	
-	if is_remote_branch_ahead then
-		--merge master master/origin
-		set conflicting_files to --compile a list of conflicting files somehow
-		set has_merge_conflicts to conflicting_files > 0
-		if has_merge_conflicts then
-			resolve_merge_conflicts()
-		end if--has_merge_conflicts
-		if has_unstaged_files then--assert this vi a direct method call
-			--git add *
-		end if
-		if has_staged_files then--assert this vi a direct method call
-			--create commit message
-			--git commit 
-		end if
-		if has_commits then
-			--git push master origin/master
-		end if
-	else 
+on interval_test(local_file_path,remote_path,branch)
+	commit_interval_test()
+	push_interval_test()
 end interval_test
+(*
+ * Commit un commited files
+ *)
+on commit_interval_test(local_file_path,branch)
+	GitSync's do_commit(local_path,branch)
+end commit_interval_test
+(*
+ * We must always merge the remote branch into the local branch before we push our changes. 
+ * NOTE: this method performs a "manual pull" on every interval 
+ *)
+on push_interval_test(local_file_path,remote_path, branch)
+	OnIntervalTest's manual_merge(local_path,remote_path,branch,branch)--commits, merges with promts
+	set is_local_branch_ahead to GitAsserter's is_local_branch_ahead(local_file_path,branch)
+	if is_local_branch_ahead then--only push if there is something to push
+		set keychain_data to KeychainParser's keychain_data("github eonist")
+		set keychain_password to the_password of keychain_data
+		set remote_account_name to account_name of keychain_data
+		set push_call_back to GitUtil's push(local_file_path, remote_path, remote_account_name, keychain_password)--TODO: add branch 
+	end if
+end push_interval_test
 (*
  * Manual merge
  * NOTE: tries to merge a remote branch into a local branch
  * NOTE: promts users if merge conflicts occure
+ * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  *)
 on manual_merge(local_path,remote_path,into_branch,from_branch)
 	GitSync's do_commit(local_path)--adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch

@@ -23,7 +23,7 @@ on auto_init(local_path,remote_path,branch)
 	      GitUtil's init(local_path)--init
 	      GitUtil's attach_remote_repo(local_path,branch)--add new remote origin
 	    end if
-	    OnIntervalTest's manual()
+	    OnIntervalTest's manual_merge(local_path,remote_path,into_branch,from_branch)--commits, merges with promts
 	  end if
 	else--path does not exist
 	  GitUtil's clone(remote_url, local_dir)--this will also create the folders if they dont exist, even nested
