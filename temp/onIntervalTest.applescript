@@ -4,7 +4,6 @@ property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder 
 property GitSync : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "GitSync.applescript"))
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
- * TODO: aldo make method snippets for the ipad
  * NOTE: you only need to merge if you are ready to push
  *)
 on interval_test(local_file_path,remote_path,branch)
