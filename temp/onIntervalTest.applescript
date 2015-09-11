@@ -2,6 +2,7 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
 --TODO: test the bellow import first
 property GitSync : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "GitSync.applescript"))
+property FileUtil : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "file:FileUtil.applescript"))
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
@@ -11,7 +12,7 @@ on interval_test(local_file_path,remote_path,branch)
 	push_interval_test()
 end interval_test
 (*
- * Commit un commited files
+ * Commit un-commited files
  *)
 on commit_interval_test(local_file_path,branch)
 	GitSync's do_commit(local_path,branch)
@@ -52,40 +53,48 @@ end manual_merge
  * TODO: move to GitSync.applescript when testing is complete
  *)
 on resolve_merge_conflicts(local_repo_path,branch,unmerged_files)
+	set options to {"keep local version","keep remote version","keep mix of both versions","open local version","open remote version","open mix of both versions","keep all local versions","keep all remote versions","keep all local and remote versions","open all local versions","open all remote versions","open all mixed versions"}
 	repeat with unmerged_file in unmerged_files
-		--promt user with list of options, title: Merge conflict in: unmerged_file
-		on handle_merge_conflict_dialog
-			set choice to text of button retruned
-			if choice is "keep local version" then
-				GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
-			else if choice is "keep remote version" then
-				--git checkout --theirs filename
-			else if choice is "keep mix of both versions" then
-				--git checkout master filename
-			else if choice is "open local version" then
-				--checkout --ours file_name
-				--tell finder to open unmerged_file
-			else if choice is "open remote version" then
-				--checkout --theirs file_name
-				--tell finder to open unmerged_file
-			else if choice is "open mix of both versions" then
-				--checkout --master file_name
-				--tell finder to open unmerged_file
-			else if choice is "keep all local versions" then
-				--git checkout --ours *
-			else if choice is "keep all remote versions" then
-				--git checkout --theirs *
-			else if choice is "keep all local and remote versions" then
-				--checkout master
-			else if choice is "open all local versions" then
-				--checkout --ours *
-				--tell finder to open unmerged_file
-			else if choice is "open all remote versions" then
-				--checkout --theirs *
-				--tell finder to open unmerged_file
-			else if choice is "open all local and remote versions" then
-				--checkout --ours master
-				--tell finder to open unmerged_file
+		set last_selected_action to first item in options--you may want to make this a property to store the last item more permenantly
+		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file&":" default items {last_selected_action} cancel button name "Exit"--promt user with list of options, title: Merge conflict in: unmerged_file
+		handle_action_choice(the_action)
+		on handle_merge_conflict_dialog()
+			if action is false then --exit
+				--error number -128 -- User canceled
+			else
+				set selected_item to item 1 of the_action
+				set last_selected_action to selected_item
+				if selected_item is item 1 of options then
+					GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
+				else if selected_item is item 2 of optionsthen
+					GitUtil's check_out(local_repo_path,"--theirs", unmerged_file)
+				else if selected_item is item 3 of options then
+					GitUtil's check_out(local_repo_path,"master", unmerged_file)
+				else if selected_item is item 4 of options then
+					GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
+					FileUtil's open_file(local_repo_path & unmerged_file)
+				else if selected_item is item 5 of options then
+					GitUtil's check_out(local_repo_path,"--theirs", unmerged_file)
+					FileUtil's open_file(local_repo_path & unmerged_file)
+				else if selected_item is item 6 of options then
+					GitUtil's check_out(local_repo_path,"master", unmerged_file)
+					FileUtil's open_file(local_repo_path & unmerged_file)
+				else if selected_item is item 7 of options then
+					GitUtil's check_out(local_repo_path,"--ours", "*")
+				else if selected_item is item 8 of options then
+					GitUtil's check_out(local_repo_path,"--theirs", "*")
+				else if selected_item is item 9 of options then
+					GitUtil's check_out(local_repo_path,"master", "*")
+				else if selected_item is item 10 of options then
+					GitUtil's check_out(local_repo_path,"--ours", "*")
+					FileUtil's open_files(local_repo_path & unmerged_files)
+				else if selected_item is item 11 of options then
+					GitUtil's check_out(local_repo_path,"--theirs", "*")
+					FileUtil's open_files(local_repo_path & unmerged_files)
+				else if selected_item is item 12 of options then
+					GitUtil's check_out(local_repo_path,"master", "*")
+					FileUtil's open_files(local_repo_path & unmerged_files)
+				end if
 			end if
 		end handle_merge_conflict_dialog
 	end repeat	
