@@ -1,8 +1,9 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
 --TODO: test the bellow import first
-property GitSync : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "GitSync.applescript"))
-property FileUtil : my ScriptLoader's load_script(alias ((path to parent folder of me as text) & "file:FileUtil.applescript"))
+
+property GitSync : my ScriptLoader's load(path to me, "GitSync.applescript")
+
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
@@ -57,45 +58,7 @@ on resolve_merge_conflicts(local_repo_path,branch,unmerged_files)
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options--you may want to make this a property to store the last item more permenantly
 		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file&":" default items {last_selected_action} cancel button name "Exit"--promt user with list of options, title: Merge conflict in: unmerged_file
-		handle_action_choice(the_action)
-		on handle_merge_conflict_dialog()
-			if action is false then --exit
-				--error number -128 -- User canceled
-			else
-				set selected_item to item 1 of the_action
-				set last_selected_action to selected_item
-				if selected_item is item 1 of options then
-					GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
-				else if selected_item is item 2 of optionsthen
-					GitUtil's check_out(local_repo_path,"--theirs", unmerged_file)
-				else if selected_item is item 3 of options then
-					GitUtil's check_out(local_repo_path,"master", unmerged_file)
-				else if selected_item is item 4 of options then
-					GitUtil's check_out(local_repo_path,"--ours", unmerged_file)
-					FileUtil's open_file(local_repo_path & unmerged_file)
-				else if selected_item is item 5 of options then
-					GitUtil's check_out(local_repo_path,"--theirs", unmerged_file)
-					FileUtil's open_file(local_repo_path & unmerged_file)
-				else if selected_item is item 6 of options then
-					GitUtil's check_out(local_repo_path,"master", unmerged_file)
-					FileUtil's open_file(local_repo_path & unmerged_file)
-				else if selected_item is item 7 of options then
-					GitUtil's check_out(local_repo_path,"--ours", "*")
-				else if selected_item is item 8 of options then
-					GitUtil's check_out(local_repo_path,"--theirs", "*")
-				else if selected_item is item 9 of options then
-					GitUtil's check_out(local_repo_path,"master", "*")
-				else if selected_item is item 10 of options then
-					GitUtil's check_out(local_repo_path,"--ours", "*")
-					FileUtil's open_files(local_repo_path & unmerged_files)
-				else if selected_item is item 11 of options then
-					GitUtil's check_out(local_repo_path,"--theirs", "*")
-					FileUtil's open_files(local_repo_path & unmerged_files)
-				else if selected_item is item 12 of options then
-					GitUtil's check_out(local_repo_path,"master", "*")
-					FileUtil's open_files(local_repo_path & unmerged_files)
-				end if
-			end if
-		end handle_merge_conflict_dialog
+		--handle_action_choice(the_action)
+		
 	end repeat	
 end resolve_merge_conflicts
