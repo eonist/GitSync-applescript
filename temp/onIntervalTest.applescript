@@ -51,6 +51,7 @@ on manual_merge(local_path, remote_path, branch)
 		log "try"
 		GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
 	on error errMsg --merge conflicts
+		log "error"
 		set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
 		log unmerged_files
 		resolve_merge_conflicts(local_path, branch, unmerged_files) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
