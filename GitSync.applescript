@@ -90,7 +90,7 @@ on handle_push_interval(repo_item)
 		set remote_account_name to account_name of keychain_data
 		log "remote_account_name: " & remote_account_name
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password,"master")
+		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password, "master")
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
@@ -234,15 +234,16 @@ script StatusUtil
  	 * Returns a list with records that contain staus type, file name and state
  	 * NOTE: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * NOTE: the space infront of the capetalized char indicates Changes not staged for commit:
- 	 * NOTE: Returns = renamed M = modified, A = addedto index, D = deleted, ?? = untracked file
+ 	 * NOTE: Returns = renamed, M = modified, A = addedto index, D = deleted, ?? = untracked file
 	 * NOTE: the state can be:  "Changes not staged for commit" , "Untracked files" , "Changes to be committed"
 	 * @Param: the_status_list is a list with status messages like: {"?? test.txt"," M index.html","A home.html"}
+	 * NOTE: can also be "UU" unmerged paths
  	 *)
 	on transform_status_list(the_status_list)
 		set transformed_list to {}
 		repeat with the_status_item in the_status_list
 			log "the_status_item: " & the_status_item
-			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARD?]{1,2}) (.+)$") --returns 3 capturing groups
+			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARDU?]{1,2}) (.+)$") --returns 3 capturing groups
 			log "length of the_status_parts: " & (length of the_status_parts)
 			log the_status_parts
 			if ((second item in the_status_parts) = " ") then
