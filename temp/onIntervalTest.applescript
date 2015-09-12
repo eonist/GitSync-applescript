@@ -41,7 +41,7 @@ on push_interval_test(local_path, remote_path, branch)
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
 	log "has_local_commits: " & has_local_commits
 	if has_local_commits then --only push if there is something to push
-		set keychain_data to KeychainParser's keychain_data("github eonist")
+		set keychain_data to KeychainParser's keychain_data("github")
 		set keychain_password to the_password of keychain_data
 		set remote_account_name to account_name of keychain_data
 		log "start pushing"
