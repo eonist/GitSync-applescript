@@ -246,7 +246,7 @@ script StatusUtil
 			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARDU?]{1,2}) (.+)$") --returns 3 capturing groups
 			log "length of the_status_parts: " & (length of the_status_parts)
 			log the_status_parts
-			if ((second item in the_status_parts) = " ") then
+			if ((second item in the_status_parts) = " ") then --aka " M"
 				set cmd to third item in the_status_parts --Changes not staged for commit:
 				set state to "Changes not staged for commit"-- you need to add them
 			else -- Changes to be committed
