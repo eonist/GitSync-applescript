@@ -75,13 +75,13 @@ on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
 		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
-		handle_merge_conflict_dialog(the_action, local_repo_path, branch, unmerged_files)
+		handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 	end repeat
 end resolve_merge_conflicts
 (*
  * 
  *)
-on handle_merge_conflict_dialog(the_action, local_repo_path, branch, unmerged_files)
+on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 	log "handle_merge_conflict_dialog()"
 	if the_action is false then --exit
 		--error number -128 -- User canceled
@@ -89,34 +89,34 @@ on handle_merge_conflict_dialog(the_action, local_repo_path, branch, unmerged_fi
 		set selected_item to item 1 of the_action
 		set last_selected_action to selected_item
 		if selected_item is item 1 of options then --keep local version
-			GitUtil's check_out(local_repo_path, "--ours", unmerged_file)
+			GitModifier's check_out(local_repo_path, "--ours", unmerged_file)
 		else if selected_item is item 2 of optionsthen then --keep remote version
-			GitUtil's check_out(local_repo_path, "--theirs", unmerged_file)
+			GitModifier's check_out(local_repo_path, "--theirs", unmerged_file)
 		else if selected_item is item 3 of options then --keep mix of both versions
-			GitUtil's check_out(local_repo_path, branch, unmerged_file)
+			GitModifier's check_out(local_repo_path, branch, unmerged_file)
 		else if selected_item is item 4 of options then --open local version
-			GitUtil's check_out(local_repo_path, "--ours", unmerged_file)
+			GitModifier's check_out(local_repo_path, "--ours", unmerged_file)
 			FileUtil's open_file(local_repo_path & unmerged_file)
 		else if selected_item is item 5 of options then --open remote version
-			GitUtil's check_out(local_repo_path, "--theirs", unmerged_file)
+			GitModifier's check_out(local_repo_path, "--theirs", unmerged_file)
 			FileUtil's open_file(local_repo_path & unmerged_file)
 		else if selected_item is item 6 of options then --open mix of both versions
-			GitUtil's check_out(local_repo_path, branch, unmerged_file)
+			GitModifier's check_out(local_repo_path, branch, unmerged_file)
 			FileUtil's open_file(local_repo_path & unmerged_file)
 		else if selected_item is item 7 of options then --keep all local versions
-			GitUtil's check_out(local_repo_path, "--ours", "*")
+			GitModifier's check_out(local_repo_path, "--ours", "*")
 		else if selected_item is item 8 of options then --keep all remote versions
-			GitUtil's check_out(local_repo_path, "--theirs", "*")
+			GitModifier's check_out(local_repo_path, "--theirs", "*")
 		else if selected_item is item 9 of options then --keep all local and remote versions
-			GitUtil's check_out(local_repo_path, branch, "*")
+			GitModifier's check_out(local_repo_path, branch, "*")
 		else if selected_item is item 10 of options then --open all local versions
-			GitUtil's check_out(local_repo_path, "--ours", "*")
+			GitModifier's check_out(local_repo_path, "--ours", "*")
 			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		else if selected_item is item 11 of options then --open all remote versions
-			GitUtil's check_out(local_repo_path, "--theirs", "*")
+			GitModifier's check_out(local_repo_path, "--theirs", "*")
 			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		else if selected_item is item 12 of options then --open all mixed versions
-			GitUtil's check_out(local_repo_path, branch, "*")
+			GitModifier's check_out(local_repo_path, branch, "*")
 			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		end if
 	end if
