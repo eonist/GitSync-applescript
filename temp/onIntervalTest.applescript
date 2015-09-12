@@ -61,7 +61,7 @@ on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 	end repeat
 end resolve_merge_conflicts
 (*
- * 
+ * TODO: add comment to each option for easier debugging later
  *)
 on handle_merge_conflict_dialog()
 	if action is false then --exit
