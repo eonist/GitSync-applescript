@@ -90,7 +90,7 @@ on handle_push_interval(repo_item)
 		set remote_account_name to account_name of keychain_data
 		log "remote_account_name: " & remote_account_name
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
+		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password,"master")
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval

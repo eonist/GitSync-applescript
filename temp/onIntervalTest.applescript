@@ -34,7 +34,7 @@ on push_interval_test(local_path, remote_path, branch)
 		set keychain_data to KeychainParser's keychain_data("github eonist")
 		set keychain_password to the_password of keychain_data
 		set remote_account_name to account_name of keychain_data
-		set push_call_back to GitUtil's push(local_path, remote_path, remote_account_name, keychain_password) --TODO: add branch 
+		set push_call_back to GitUtil's push(local_path, remote_path, remote_account_name, keychain_password,"master")
 	end if
 end push_interval_test
 (*
