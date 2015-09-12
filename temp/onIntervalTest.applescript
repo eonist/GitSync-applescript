@@ -4,7 +4,7 @@ property GitParser : my ScriptLoader's load(path to scripts folder from user dom
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 
-GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
+GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
