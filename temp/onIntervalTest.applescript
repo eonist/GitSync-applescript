@@ -1,26 +1,18 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
+property GitAsserter : my ScriptLoader's load(path to scripts folder from user domain, "git:GitAsserter.applescript")
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 
 --TODO: you need to resolve conflicts if there are files marked "UU", remember that you may cancel a resolve merge dialog, and then the next time you try to commit these will show up
-
+log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
  *
  *)
-on has_unresolved_paths()
-	set the_status to GitParser's status(local_repo_path, "-s")
-	
-	repeat with status_item in paragraphs of the_status
-		log status_item
-		--if (status_item starts with "UU")
-	end repeat
-	
-	--TODO:try to get every item that statrs with "UU"
-end has_unresolved_paths
+
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
