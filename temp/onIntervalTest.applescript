@@ -8,7 +8,7 @@ interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
  * NOTE: you only need to merge if you are ready to push
  *)
 on interval_test(local_path, remote_path, branch)
-	commit_interval_test(local_path, branch)
+	--commit_interval_test(local_path, branch)
 	push_interval_test(local_path, remote_path, branch)
 end interval_test
 (*
@@ -39,9 +39,12 @@ end push_interval_test
  * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  *)
 on manual_merge(local_path, remote_path, into_branch, from_branch)
+
+	log "manual_merge"
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
-		manual_pull(local_path, remote_path, from_branch) --manual clone down files
+		
+		GitUtil's manual_pull(local_path, remote_path, from_branch) --manual clone down files
 		error errMsg --merge conflicts
 		set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
 		OnIntervalTest's resolve_merge_conflicts(local_path) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
