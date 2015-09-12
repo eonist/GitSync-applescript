@@ -13,9 +13,13 @@ interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
  *)
 on has_unresolved_paths()
 	set the_status to GitParser's status(local_repo_path, "-s")
+	
 	repeat with status_item in paragraphs of the_status
+		log status_item
 		--if (status_item starts with "UU")
 	end repeat
+	
+	--TODO:try to get every item that statrs with "UU"
 end has_unresolved_paths
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
