@@ -253,6 +253,8 @@ script StatusUtil
 				set cmd to third item in the_status_parts --rename cmd to type
 				if (cmd = "??") then
 					set state to "Untracked files"
+				else if(cmd = "UU")--Unmerged path
+					--continue
 				else
 					set state to "Changes to be committed"
 				end if
