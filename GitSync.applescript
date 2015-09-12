@@ -248,7 +248,7 @@ script StatusUtil
 			log the_status_parts
 			if ((second item in the_status_parts) = " ") then
 				set cmd to third item in the_status_parts --Changes not staged for commit:
-				set state to "Changes not staged for commit"
+				set state to "Changes not staged for commit"-- you need to add them
 			else -- Changes to be committed
 				set cmd to third item in the_status_parts --rename cmd to type
 				log "cmd: " & cmd
