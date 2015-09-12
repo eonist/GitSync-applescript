@@ -112,10 +112,10 @@ on do_commit(local_repo_path)
 	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
 	log "commit_msg_desc: " & commit_msg_desc
 	try --try to make a git commit
-		--set commit_result to GitModifier's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
-		--log "commit_result: " & commit_result
+		set commit_result to GitModifier's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
+		log "commit_result: " & commit_result
 	on error errMsg
-		--log "----------------ERROR:-----------------" & errMsg
+		log "----------------ERROR:-----------------" & errMsg
 	end try
 	return true --return true to indicate that the commit completed
 end do_commit
