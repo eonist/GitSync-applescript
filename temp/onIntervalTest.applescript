@@ -10,10 +10,6 @@ log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
- *
- *)
-
-(*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
  *)
