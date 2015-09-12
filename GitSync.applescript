@@ -290,7 +290,7 @@ script StatusUtil
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
 				log "3. " --do nothing here
-			else if state = "Unmerged path" then --This is when you have files that have to be resolved by a "merge conflict resolvment"
+			else if state = "Unmerged path" then --This is when you have files that have to be resolved first, but eventually added aswell
 				log "4. " --do nothing here
 			end if
 		end repeat
