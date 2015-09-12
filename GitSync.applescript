@@ -257,9 +257,8 @@ script StatusUtil
 				if (cmd = "??") then
 					set state to "Untracked files"
 				else if (cmd = "UU") then --Unmerged path
-					--continue
 					log "Unmerged path"
-					set state to "Changes to be committed"
+					set state to "Unmerged path"
 				else
 					set state to "Changes to be committed" --this is when the file is ready to be commited
 				end if
