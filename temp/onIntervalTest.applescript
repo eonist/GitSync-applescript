@@ -4,7 +4,7 @@ property GitParser : my ScriptLoader's load(path to scripts folder from user dom
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 
-log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git","master","master")
+log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
