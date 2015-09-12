@@ -40,11 +40,10 @@ end push_interval_test
  * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  *)
 on manual_merge(local_path, remote_path, into_branch, from_branch)
-	
 	log "manual_merge"
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
-		
+		log "try"
 		GitUtil's manual_pull(local_path, remote_path, from_branch) --manual clone down files
 		error errMsg --merge conflicts
 		set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
