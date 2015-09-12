@@ -1,6 +1,7 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
-property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript",-1)
+property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
+property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
@@ -91,13 +92,13 @@ on handle_merge_conflict_dialog()
 			GitUtil's check_out(local_repo_path, "master", "*")
 		else if selected_item is item 10 of options then
 			GitUtil's check_out(local_repo_path, "--ours", "*")
-			FileUtil's open_files(local_repo_path & unmerged_files)
+			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		else if selected_item is item 11 of options then
 			GitUtil's check_out(local_repo_path, "--theirs", "*")
-			FileUtil's open_files(local_repo_path & unmerged_files)
+			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		else if selected_item is item 12 of options then
 			GitUtil's check_out(local_repo_path, "master", "*")
-			FileUtil's open_files(local_repo_path & unmerged_files)
+			FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
 		end if
 	end if
 end handle_merge_conflict_dialog
