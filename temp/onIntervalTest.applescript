@@ -4,8 +4,8 @@ property GitParser : my ScriptLoader's load(path to scripts folder from user dom
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 
-log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
---interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
+--log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
+interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 
 (*
@@ -13,8 +13,8 @@ log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "m
  * NOTE: you only need to merge if you are ready to push
  *)
 on interval_test(local_path, remote_path, branch)
-	--commit_interval_test(local_path, branch)
-	push_interval_test(local_path, remote_path, branch)
+	commit_interval_test(local_path, branch)
+	--push_interval_test(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files

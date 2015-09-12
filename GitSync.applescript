@@ -2,7 +2,9 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property TextParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "text:TextParser.applescript"))
 property ListModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "list:ListModifier.applescript"))
-property GitUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitUtil.applescript"))
+property GitParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitParser.applescript"))
+property GitAsserter : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitAsserter.applescript"))
+property GitModifier : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "git:GitModifier.applescript"))
 property XMLParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "xml:XMLParser.applescript"))
 property ShellUtil : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:ShellUtil.applescript"))
 property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
@@ -75,8 +77,8 @@ end handle_commit_interval
  *)
 on handle_push_interval(repo_item)
 	--TODO: use GitAsserter's is_local_branch_ahead instead of the bellow code
-	log GitUtil's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
-	set cherry_result to GitUtil's cherry(local_path of repo_item, "", "")
+	log GitModifier's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
+	set cherry_result to GitParser's cherry(local_path of repo_item, "", "")
 	log "cherry_result: " & cherry_result
 	set has_commits to length of cherry_result > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
@@ -88,7 +90,7 @@ on handle_push_interval(repo_item)
 		set remote_account_name to account_name of keychain_data
 		log "remote_account_name: " & remote_account_name
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitUtil's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
+		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password)
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
@@ -110,7 +112,7 @@ on do_commit(local_repo_path)
 	set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
 	log "commit_msg_desc: " & commit_msg_desc
 	try --try to make a git commit
-		set commit_result to GitUtil's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
+		set commit_result to GitModifier's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
 		log "commit_result: " & commit_result
 	on error errMsg
 		log "----------------ERROR:-----------------" & errMsg
@@ -214,7 +216,7 @@ script StatusUtil
 	 * NOTE: you may use short staus, but you must interpret the message if the state has an empty space infront of it
 	 *)
 	on generate_status_list(local_repo_path)
-		set the_status to GitUtil's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
+		set the_status to GitParser's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
 		log "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as items in a list
 		set transformed_list to {}
@@ -275,10 +277,10 @@ script StatusUtil
 			set file_name to file_name of status_item
 			if state = "Untracked files" then --this is when there exists a new file
 				log "1. " & file_name
-				GitUtil's add(local_repo_path, file_name) --add the file to the next commit
+				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes not staged for commit" then --this is when you have not added a file that has changed to the next commit
 				log "2. " & file_name
-				GitUtil's add(local_repo_path, file_name) --add the file to the next commit
+				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
 				log "3. " --do nothing here
 			end if
