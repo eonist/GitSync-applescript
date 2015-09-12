@@ -9,7 +9,7 @@ property FileParser : my ScriptLoader's load(path to scripts folder from user do
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 
---TODO: you need to resolve conflicts if there are files marked "UU", remember that you may cancel a resolve merge dialog, and then the next time you try to commit these will show up
+--TODO: the problem lay in the commit message not comming through when you have UU, resolve this and it will all work
 log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 
 interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
