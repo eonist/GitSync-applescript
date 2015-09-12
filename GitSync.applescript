@@ -251,10 +251,12 @@ script StatusUtil
 				set state to "Changes not staged for commit"
 			else -- Changes to be committed
 				set cmd to third item in the_status_parts --rename cmd to type
+				log "cmd: " & cmd
 				if (cmd = "??") then
 					set state to "Untracked files"
-				else if(cmd = "UU")--Unmerged path
+				else if (cmd = "UU") then --Unmerged path
 					--continue
+					log "Unmerged path"
 				else
 					set state to "Changes to be committed"
 				end if

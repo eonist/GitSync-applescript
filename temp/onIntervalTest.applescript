@@ -12,8 +12,8 @@ interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
  * NOTE: you only need to merge if you are ready to push
  *)
 on interval_test(local_path, remote_path, branch)
-	--commit_interval_test(local_path, branch)
-	push_interval_test(local_path, remote_path, branch)
+	commit_interval_test(local_path, branch)
+	--push_interval_test(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files
