@@ -9,6 +9,12 @@ property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescr
 interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
+ *
+ *)
+on has_unresolved_paths()
+	
+end has_unresolved_paths
+(*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
  *)
