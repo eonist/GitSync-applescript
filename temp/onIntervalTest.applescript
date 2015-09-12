@@ -75,7 +75,7 @@ on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
 		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
-		handle_action_choice(the_action)
+		handle_merge_conflict_dialog(the_action)
 	end repeat
 end resolve_merge_conflicts
 (*
