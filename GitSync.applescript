@@ -245,10 +245,10 @@ script StatusUtil
 		set transformed_list to {}
 		repeat with the_status_item in the_status_list
 			log "the_status_item: " & the_status_item
-			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARDU?]{1,2}) (.+)$") --returns 3 capturing groups
+			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARDU?]{1,2}) (.+)$") --returns 3 capturing groups, 
 			log "length of the_status_parts: " & (length of the_status_parts)
 			log the_status_parts
-			if ((second item in the_status_parts) = " ") then --aka " M"
+			if ((second item in the_status_parts) = " ") then --aka " M", remember that the second item is the first capturing group
 				set cmd to third item in the_status_parts --Changes not staged for commit:
 				set state to "Changes not staged for commit" -- you need to add them
 			else -- Changes to be committed--aka "M " or  "??" or "UU"
