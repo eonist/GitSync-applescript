@@ -3,6 +3,7 @@ property GitUtil : my ScriptLoader's load(path to scripts folder from user domai
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 property GitAsserter : my ScriptLoader's load(path to scripts folder from user domain, "git:GitAsserter.applescript")
 property GitModifier : my ScriptLoader's load(path to scripts folder from user domain, "git:GitModifier.applescript")
+property KeychainParser : my ScriptLoader's load_script(alias ((path to scripts folder from user domain as text) & "shell:KeychainParser.applescript"))
 
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
