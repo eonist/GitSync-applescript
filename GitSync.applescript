@@ -208,7 +208,7 @@ script DescUtil
 	end description_paragraph
 end script
 
-my StatusUtil's generate_status_list("~/fox1/")
+
 (*
  * Utils for paraing the git status list
  *)
