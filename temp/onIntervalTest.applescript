@@ -42,6 +42,7 @@ end push_interval_test
 on manual_merge(local_path, remote_path, into_branch, from_branch)
 	log "manual_merge"
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
+	GitUtil's status(local_path, "-s")
 	try
 		log "try"
 		GitUtil's manual_pull(local_path, remote_path, from_branch) --manual clone down files
