@@ -7,6 +7,7 @@ property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescr
 log GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
+
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
