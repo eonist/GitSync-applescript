@@ -9,7 +9,7 @@ interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
  *)
 on interval_test(local_path, remote_path, branch)
 	commit_interval_test(local_path, branch)
-	--push_interval_test(local_path, remote_path, branch)
+	push_interval_test(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files
@@ -23,6 +23,7 @@ end commit_interval_test
  *)
 on push_interval_test(local_file_path, remote_path, branch)
 	manual_merge(local_path, remote_path, branch, branch) --commits, merges with promts
+	return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_file_path, branch)
 	if has_local_commits then --only push if there is something to push
 		set keychain_data to KeychainParser's keychain_data("github eonist")
