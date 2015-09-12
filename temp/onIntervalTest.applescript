@@ -1,8 +1,10 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
+property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
-interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
+log GitParser's origin_url("~/fox1/")
+--interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
