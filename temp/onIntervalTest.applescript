@@ -7,14 +7,14 @@ interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
  *)
-on interval_test(local_file_path, remote_path, branch)
-	commit_interval_test(local_file_path, branch)
-	--push_interval_test(local_file_path, remote_path, branch)
+on interval_test(local_path, remote_path, branch)
+	commit_interval_test(local_path, branch)
+	--push_interval_test(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files
  *)
-on commit_interval_test(local_file_path, branch)
+on commit_interval_test(local_path, branch)
 	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
