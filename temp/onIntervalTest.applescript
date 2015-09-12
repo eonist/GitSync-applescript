@@ -34,7 +34,8 @@ on push_interval_test(local_path, remote_path, branch)
 		set keychain_data to KeychainParser's keychain_data("github eonist")
 		set keychain_password to the_password of keychain_data
 		set remote_account_name to account_name of keychain_data
-		set push_call_back to GitUtil's push(local_path, remote_path, remote_account_name, keychain_password,"master")
+		log "start pushing"
+		set push_call_back to GitUtil's push(local_path, remote_path, remote_account_name, keychain_password, "master")
 	end if
 end push_interval_test
 (*
@@ -51,7 +52,7 @@ on manual_merge(local_path, remote_path, into_branch, from_branch)
 		GitUtil's manual_pull(local_path, remote_path, from_branch) --manual clone down files
 	on error errMsg --merge conflicts
 		set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
-		OnIntervalTest's resolve_merge_conflicts(local_path) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
+		resolve_merge_conflicts(local_path) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
 		GitSync's do_commit(local_path) --add,commit if any files has an altered status
 	end try
 end manual_merge
@@ -61,6 +62,7 @@ end manual_merge
  * TODO: move to GitSync.applescript when testing is complete
  *)
 on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
+	log "resolve_merge_conflicts()"
 	set options to {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
