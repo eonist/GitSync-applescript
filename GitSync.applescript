@@ -258,7 +258,7 @@ script StatusUtil
 					--continue
 					log "Unmerged path"
 				else
-					set state to "Changes to be committed"
+					set state to "Changes to be committed"--this is when the file is ready to be commited
 				end if
 			end if
 			set file_name to the fourth item in the_status_parts
