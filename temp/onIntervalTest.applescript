@@ -21,15 +21,15 @@ end commit_interval_test
  * We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval 
  *)
-on push_interval_test(local_file_path, remote_path, branch)
+on push_interval_test(local_path, remote_path, branch)
 	manual_merge(local_path, remote_path, branch, branch) --commits, merges with promts
 	return --faux break
-	set has_local_commits to GitAsserter's has_local_commits(local_file_path, branch)
+	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
 	if has_local_commits then --only push if there is something to push
 		set keychain_data to KeychainParser's keychain_data("github eonist")
 		set keychain_password to the_password of keychain_data
 		set remote_account_name to account_name of keychain_data
-		set push_call_back to GitUtil's push(local_file_path, remote_path, remote_account_name, keychain_password) --TODO: add branch 
+		set push_call_back to GitUtil's push(local_path, remote_path, remote_account_name, keychain_password) --TODO: add branch 
 	end if
 end push_interval_test
 (*
@@ -39,7 +39,7 @@ end push_interval_test
  * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  *)
 on manual_merge(local_path, remote_path, into_branch, from_branch)
-
+	
 	log "manual_merge"
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
