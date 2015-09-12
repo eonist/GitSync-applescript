@@ -78,7 +78,7 @@ end handle_commit_interval
 on handle_push_interval(repo_item)
 	--TODO: use GitAsserter's is_local_branch_ahead instead of the bellow code
 	log GitModifier's git_remote_update(local_path of repo_item) --in order for the cherry to work with "git add" that uses https, we need to call this method
-	set cherry_result to GitParser's cherry(local_path of repo_item,"master", "", "")
+	set cherry_result to GitParser's cherry(local_path of repo_item,"master")
 	log "cherry_result: " & cherry_result
 	set has_commits to length of cherry_result > 0
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
