@@ -24,9 +24,10 @@ end interval_test
  *)
 on commit_interval_test(local_path, branch)
 	set unmerged_files to GitParser's unmerged_files(local_path)
-	if (length of GitParser's unmerged_files(local_path) > 0) then --Asserts if there are unmerged paths that needs resolvment
-		GitSync's do_commit(local_path, branch)
+	if (GitAsserter's has_unmerged_paths("~/fox1/")) then --Asserts if there are unmerged paths that needs resolvment
+		
 	end if
+	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
  * We must always merge the remote branch into the local branch before we push our changes. 
