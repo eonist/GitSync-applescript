@@ -3,8 +3,8 @@ property GitUtil : my ScriptLoader's load(path to scripts folder from user domai
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
-log GitParser's origin_url("~/fox1/")
---interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
+
+interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
@@ -44,7 +44,7 @@ end push_interval_test
 on manual_merge(local_path, remote_path, into_branch, from_branch)
 	log "manual_merge"
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
-	GitUtil's status(local_path, "-s")
+	log GitParser's origin_url("~/fox1/")
 	try
 		log "try"
 		GitUtil's manual_pull(local_path, remote_path, from_branch) --manual clone down files
