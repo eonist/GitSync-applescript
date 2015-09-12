@@ -73,8 +73,9 @@ end resolve_merge_conflicts
 (*
  * 
  *)
-on handle_merge_conflict_dialog()
-	if action is false then --exit
+on handle_merge_conflict_dialog(the_action)
+	log "handle_merge_conflict_dialog()"
+	if the_action is false then --exit
 		--error number -128 -- User canceled
 	else
 		set selected_item to item 1 of the_action
