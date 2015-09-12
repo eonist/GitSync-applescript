@@ -3,8 +3,8 @@ property GitUtil : my ScriptLoader's load(path to scripts folder from user domai
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
-log length of paragraphs of ""
---GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
+
+GitUtil's manual_pull("~/fox1/", "https://github.com/eonist/testing.git", "master", "master")
 --interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
