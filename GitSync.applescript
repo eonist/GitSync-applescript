@@ -207,8 +207,6 @@ script DescUtil
 		return desc_text
 	end description_paragraph
 end script
-
-
 (*
  * Utils for paraing the git status list
  *)
