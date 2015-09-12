@@ -1,8 +1,6 @@
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
---TODO: test the bellow import first
-
---property GitSync : my ScriptLoader's load(path to me, "GitSync.applescript")
+property GitSync : my ScriptLoader's load(path to me, "GitSync.applescript")
 
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
