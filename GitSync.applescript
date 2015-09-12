@@ -148,7 +148,7 @@ script CommitUtil
 			else if (cmd = "??") then --untracked files,
 				set num_of_new_files to num_of_new_files + 1
 			else if (cmd = "UU") then --unmerged files,
-				set num_of_new_files to num_of_new_files + 1
+				set num_of_modified_files to num_of_modified_files + 1
 			end if
 		end repeat
 		set commit_msg to ""
@@ -186,6 +186,7 @@ script DescUtil
 			if (cmd of status_item is "D") then set deleted_items to ListModifier's add_list(deleted_items, status_item) --add a record to a list
 			if (cmd of status_item is "M") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 			if (cmd of status_item is "??") then set added_items to ListModifier's add_list(added_items, status_item) --add a record to a list
+			if (cmd of status_item is "UU") then set modified_items to ListModifier's add_list(modified_items, status_item) --add a record to a list
 		end repeat
 		set desc_text to desc_text & description_paragraph(added_items, "Added ") & return --add an extra line break at the end "paragraph like"
 		set desc_text to desc_text & description_paragraph(deleted_items, "Deleted ") & return
