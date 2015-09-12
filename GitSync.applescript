@@ -21,7 +21,7 @@ property repo_file_path : ""
 
 log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
-initialize()
+--initialize()
 (*
  * Initialize the app, toggles between debug and deploy mode depending fromwhich file type it is run from
  *)
@@ -207,6 +207,8 @@ script DescUtil
 		return desc_text
 	end description_paragraph
 end script
+
+interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 (*
  * Utils for paraing the git status list
  *)
@@ -248,8 +250,8 @@ script StatusUtil
 			log the_status_parts
 			if ((second item in the_status_parts) = " ") then --aka " M"
 				set cmd to third item in the_status_parts --Changes not staged for commit:
-				set state to "Changes not staged for commit"-- you need to add them
-			else -- Changes to be committed
+				set state to "Changes not staged for commit" -- you need to add them
+			else -- Changes to be committed--aka "M " or  "??" or "UU"
 				set cmd to third item in the_status_parts --rename cmd to type
 				log "cmd: " & cmd
 				if (cmd = "??") then
@@ -258,7 +260,7 @@ script StatusUtil
 					--continue
 					log "Unmerged path"
 				else
-					set state to "Changes to be committed"--this is when the file is ready to be commited
+					set state to "Changes to be committed" --this is when the file is ready to be commited
 				end if
 			end if
 			set file_name to the fourth item in the_status_parts
