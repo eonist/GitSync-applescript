@@ -8,8 +8,7 @@ property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescr
 --TODO: you need to resolve conflicts if there are files marked "UU", remember that you may cancel a resolve merge dialog, and then the next time you try to commit these will show up
 log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 
---now do merge resolvment
---interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
+interval_test("~/fox1/", "https://github.com/eonist/testing.git", "master")
 
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
