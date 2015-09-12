@@ -147,6 +147,8 @@ script CommitUtil
 				set num_of_renamed_files to num_of_renamed_files + 1
 			else if (cmd = "??") then --untracked files,
 				set num_of_new_files to num_of_new_files + 1
+			else if (cmd = "UU") then --unmerged files,
+				set num_of_new_files to num_of_new_files + 1
 			end if
 		end repeat
 		set commit_msg to ""
