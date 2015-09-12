@@ -24,9 +24,7 @@ end interval_test
  *)
 on commit_interval_test(local_path, branch)
 	set unmerged_files to GitParser's unmerged_files(local_path)
-	if (GitAsserter's has_unmerged_paths("~/fox1/")) then --Asserts if there are unmerged paths that needs resolvment
-		resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path))
-	end if
+	if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
@@ -54,6 +52,7 @@ end push_interval_test
  *)
 on manual_merge(local_path, remote_path, branch)
 	log "manual_merge"
+	if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
 		log "try"
