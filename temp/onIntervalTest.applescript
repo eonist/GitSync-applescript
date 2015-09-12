@@ -4,6 +4,7 @@ property GitParser : my ScriptLoader's load(path to scripts folder from user dom
 property GitAsserter : my ScriptLoader's load(path to scripts folder from user domain, "git:GitAsserter.applescript")
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
+property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 
 --TODO: you need to resolve conflicts if there are files marked "UU", remember that you may cancel a resolve merge dialog, and then the next time you try to commit these will show up
 log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
@@ -71,7 +72,6 @@ end manual_merge
  *)
 on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 	log "resolve_merge_conflicts()"
-	set options to {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
 		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
