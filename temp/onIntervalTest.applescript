@@ -26,7 +26,7 @@ end interval_test
  * Commit un-commited files
  *)
 on commit_interval_test(local_path, branch)
-	if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	--if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
