@@ -28,7 +28,7 @@ end commit_interval_test
 on push_interval_test(local_path, remote_path, branch)
 	log "push_interval_test()"
 	GitUtil's manual_merge(local_path, remote_path, branch) --commits, merges with promts
-	return --faux break
+	--return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
 	if has_local_commits then --only push if there is something to push
 		set keychain_data to KeychainParser's keychain_data("github eonist")
