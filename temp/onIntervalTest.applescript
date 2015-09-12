@@ -2,6 +2,8 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 property GitAsserter : my ScriptLoader's load(path to scripts folder from user domain, "git:GitAsserter.applescript")
+property GitModifier : my ScriptLoader's load(path to scripts folder from user domain, "git:GitModifier.applescript")
+
 property FileParser : my ScriptLoader's load(path to scripts folder from user domain, "file:FileParser.applescript")
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
