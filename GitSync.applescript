@@ -276,6 +276,7 @@ script StatusUtil
 	 * Iterates over the status items and "git add" the item unless it's already added (aka "staged for commit")
 	 * NOTE: if the status list is empty then there is nothing to process
 	 * NOTE: even if a file is removed, its status needs to be added to the next commit
+	 * TODO: squoash some of the states together if or or or etc
 	 *)
 	on process_status_list(local_repo_path, status_list)
 		log "process_status_list()"
@@ -293,7 +294,7 @@ script StatusUtil
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
 				log "3. " --do nothing here
 			else if state = "Unmerged path" then --This is when you have files that have to be resolved first, but eventually added aswell
-				log "4. " --do nothing here
+				log "4. " & file_name
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			end if
 		end repeat
