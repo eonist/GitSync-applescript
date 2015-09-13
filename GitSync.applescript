@@ -106,7 +106,9 @@ on do_commit(local_repo_path)
 	if (length of status_list > 0) then
 		log tab & "there is something to add or commit"
 		log tab & "length of status_list: " & (length of status_list)
+		display alert ("halt 1")
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
+		display alert ("halt 2")
 		set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status, so that we can create a more descriptiv commit message, since the unstaged files are now in a different state
 		log tab & "length of status_list after processing: " & (length of status_list)
 		set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
