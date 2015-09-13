@@ -23,7 +23,7 @@ property options : {"keep local version", "keep remote version", "keep mix of bo
 
 --log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
---initialize()
+initialize()
 (*
  * Initialize the app, toggles between debug and deploy mode depending fromwhich file type it is run from
  *)
