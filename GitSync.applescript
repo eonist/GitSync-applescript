@@ -293,15 +293,15 @@ script StatusUtil
 			--set cmd to cmd of status_item
 			set file_name to file_name of status_item
 			if state = "Untracked files" then --this is when there exists a new file
-				log tab & "1. " & file_name
+				log tab & "1. " & "Untracked files"
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes not staged for commit" then --this is when you have not added a file that has changed to the next commit
-				log tab & "2. " & file_name
+				log tab & "2. " & "Changes not staged for commit"
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
-				log tab & "3. " --do nothing here
+				log tab & "3. " & "Changes to be committed" --do nothing here
 			else if state = "Unmerged path" then --This is when you have files that have to be resolved first, but eventually added aswell
-				log tab & "4. " & file_name
+				log tab & "4. " & "Unmerged path"
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			end if
 		end repeat
