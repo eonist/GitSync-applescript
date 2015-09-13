@@ -70,10 +70,7 @@ end handle_interval
  * Handles the process of making a commit for a single repository
  *)
 on handle_commit_interval(repo_item, branch)
-	log (length of repo_item)
-	log (remote_path of repo_item)
-	log "handle_commit_interval() a repo with remote path: " & (remote_path of repo_item) & " local path: " & (local_path of repo_item)
-	
+	log "GitSync's handle_commit_interval() a repo with remote path: " & (remote_path of repo_item) & " local path: " & (local_path of repo_item)
 	if (GitAsserter's has_unmerged_paths(local_path of repo_item)) then --Asserts if there are unmerged paths that needs resolvment
 		log tab & "has unmerged paths to resolve"
 		my MergeUtil's resolve_merge_conflicts(local_path of repo_item, branch, GitParser's unmerged_files(local_path of repo_item)) --Asserts if there are unmerged paths that needs resolvment
@@ -88,6 +85,7 @@ end handle_commit_interval
  * NOTE: this method performs a "manual pull" on every interval
  *)
 on handle_push_interval(repo_item, branch)
+	log ("GitSync's handle_push_interval()")
 	my MergeUtil's manual_merge((local_path of repo_item), (remote_path of repo_item), branch) --commits, merges with promts
 	set has_local_commits to GitAsserter's has_local_commits((local_path of repo_item), branch) --TODO: maybe use GitAsserter's is_local_branch_ahead instead of this line
 	if (has_local_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
