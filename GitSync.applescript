@@ -88,10 +88,10 @@ end handle_commit_interval
  * NOTE: this method performs a "manual pull" on every interval
  *)
 on handle_push_interval(repo_item, branch)
-	--my MergeUtil's manual_merge(local_path of repo_item, remote_path of repo_item, branch) --commits, merges with promts
-	set has_local_commits to GitAsserter's has_local_commits(local_path of repo_item, branch) --TODO: maybe use GitAsserter's is_local_branch_ahead instead of this line
+	my MergeUtil's manual_merge((local_path of repo_item), (remote_path of repo_item), branch) --commits, merges with promts
+	set has_local_commits to GitAsserter's has_local_commits((local_path of repo_item), branch) --TODO: maybe use GitAsserter's is_local_branch_ahead instead of this line
 	if (has_local_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
-		set the_keychain_item_name to keychain_item_name of repo_item
+		set the_keychain_item_name to (keychain_item_name of repo_item)
 		log "the_keychain_item_name: " & the_keychain_item_name
 		set keychain_data to KeychainParser's keychain_data(keychain_item_name of repo_item)
 		set keychain_password to the_password of keychain_data
