@@ -38,7 +38,7 @@ end handle_commit_interval
  * NOTE: this method performs a "manual pull" on every interval 
  *)
 on handle_push_interval(local_path, remote_path, branch)
-	log ("Test's push_interval()")
+	log ("Test's handle_push_interval()")
 	manual_merge(local_path, remote_path, branch) --commits, merges with promts
 	--return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
