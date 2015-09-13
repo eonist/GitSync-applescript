@@ -18,6 +18,8 @@ property current_time : 0 --keeps track of the time passed, remember to reset th
 property the_interval : 60 --static value, increases the time by this value on every interval--TODO: rename to "frequncy"
 property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 property repo_file_path : ""
+property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
+
 
 --log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
@@ -58,8 +60,8 @@ on handle_interval()
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
 	repeat with repo_item in repo_list --iterate over every repo item
-		if (current_time_in_min mod (interval of repo_item) = 0) then handle_commit_interval(repo_item) --is true every time spesified by the user
-		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item) --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_commit_interval(repo_item,"master") --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item,"master") --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 	
@@ -67,11 +69,11 @@ end handle_interval
 (*
  * Handles the process of making a commit for a single repository
  *)
-on handle_commit_interval(repo_item)
+on handle_commit_interval(repo_item,branch)
 	log "handle_commit_interval() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
-	if (GitAsserter's has_unmerged_paths(local_path)) then --Asserts if there are unmerged paths that needs resolvment
+	if (GitAsserter's has_unmerged_paths(local_path of repo_item)) then --Asserts if there are unmerged paths that needs resolvment
 		log tab & "has unmerged paths to resolve"
-		my MergeUtil's resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+		my MergeUtil's resolve_merge_conflicts(local_path of repo_item, branch, GitParser's unmerged_files(local_path of repo_item)) --Asserts if there are unmerged paths that needs resolvment
 	end if
 	log do_commit(local_path of repo_item) --if there were no commits false will be returned
 	--log "has_commited: " & has_commited
@@ -81,9 +83,9 @@ end handle_commit_interval
  * NOTE: We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval
  *)
-on handle_push_interval(repo_item)
+on handle_push_interval(repo_item,branch)
 	--TODO: maybe use GitAsserter's is_local_branch_ahead instead of the bellow code
-	my MergeUtil's manual_merge(local_path, remote_path, branch) --commits, merges with promts
+	my MergeUtil's manual_merge(local_path of repo_item, remote_path of repo_item, branch) --commits, merges with promts
 	set has_local_commits to GitAsserter's has_local_commits(local_path of repo_item, "master")
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
 		set the_keychain_item_name to keychain_item_name of repo_item
@@ -362,4 +364,87 @@ script RepoUtil
 		set the_repo_xml to the_repo_xml & "</repositories>" --end
 		return the_repo_xml
 	end repo_xml
+end script
+--Utility methods for merging branches
+script MergeUtil
+	(*
+ 	 * Manual merge
+ 	 * NOTE: tries to merge a remote branch into a local branch
+ 	 * NOTE: promts users if merge conflicts occure
+ 	 * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
+ 	 *)
+	on manual_merge(local_path, remote_path, branch)
+		--log "manual_merge"
+		log ("Test's manual_merge()")
+		handle_commit_interval(local_path, branch) --you must commit your local changes before you attempt to merge
+		try
+			--log "try"
+			GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
+		on error errMsg --merge conflicts
+			--log "error"
+			set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
+			--log unmerged_files
+			resolve_merge_conflicts(local_path, branch, unmerged_files) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
+			GitSync's do_commit(local_path) --add,commit if any files has an altered status
+		end try
+	end manual_merge
+	(*
+ 	 * Promts the user with a list of options to aid in resolving merge conflicts
+ 	 * @param branch: the branch you tried to merge into
+ 	 * TODO: move to GitSync.applescript when testing is complete
+ 	 *)
+	on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
+		--log "resolve_merge_conflicts()"
+		log ("Test's resolve_merge_conflicts()")
+		repeat with unmerged_file in unmerged_files
+			set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
+			set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
+			handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
+		end repeat
+	end resolve_merge_conflicts
+	(*
+ 	 * 
+ 	 *)
+	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
+		--log "handle_merge_conflict_dialog()"
+		log ("Test's handle_merge_conflict_dialog(): " & (item 1 of the_action))
+		if the_action is false then --exit
+			--error number -128 -- User canceled
+			--TODO: do the git merge --abort here to revert to the state you were in before the merge attempt
+		else
+			set selected_item to item 1 of the_action
+			set last_selected_action to selected_item
+			if selected_item is item 1 of options then --keep local version
+				GitModifier's check_out(local_repo_path, "--ours", unmerged_file)
+			else if selected_item is item 2 of options then --keep remote version
+				GitModifier's check_out(local_repo_path, "--theirs", unmerged_file)
+			else if selected_item is item 3 of options then --keep mix of both versions
+				GitModifier's check_out(local_repo_path, branch, unmerged_file)
+			else if selected_item is item 4 of options then --open local version
+				GitModifier's check_out(local_repo_path, "--ours", unmerged_file)
+				FileUtil's open_file(local_repo_path & unmerged_file)
+			else if selected_item is item 5 of options then --open remote version
+				GitModifier's check_out(local_repo_path, "--theirs", unmerged_file)
+				FileUtil's open_file(local_repo_path & unmerged_file)
+			else if selected_item is item 6 of options then --open mix of both versions
+				GitModifier's check_out(local_repo_path, branch, unmerged_file)
+				FileUtil's open_file(local_repo_path & unmerged_file)
+			else if selected_item is item 7 of options then --keep all local versions
+				GitModifier's check_out(local_repo_path, "--ours", "*")
+			else if selected_item is item 8 of options then --keep all remote versions
+				GitModifier's check_out(local_repo_path, "--theirs", "*")
+			else if selected_item is item 9 of options then --keep all local and remote versions
+				GitModifier's check_out(local_repo_path, branch, "*")
+			else if selected_item is item 10 of options then --open all local versions
+				GitModifier's check_out(local_repo_path, "--ours", "*")
+				FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
+			else if selected_item is item 11 of options then --open all remote versions
+				GitModifier's check_out(local_repo_path, "--theirs", "*")
+				FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
+			else if selected_item is item 12 of options then --open all mixed versions
+				GitModifier's check_out(local_repo_path, branch, "*")
+				FileUtil's open_files(FileParser's full_hsf_paths(local_repo_path, unmerged_files))
+			end if
+		end if
+	end handle_merge_conflict_dialog
 end script
