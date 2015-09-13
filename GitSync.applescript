@@ -104,7 +104,7 @@ on do_commit(local_repo_path)
 	--log "do_commit"
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list > 0) then
-		log tab & "there is something to commit"
+		log tab & "there is something to add or commit"
 		--log "length of status_list: " & (length of status_list)
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 		set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status, so that we can create a more descriptiv commit message, since the unstaged files are now in a different state
@@ -121,6 +121,7 @@ on do_commit(local_repo_path)
 		end try
 		return true --return true to indicate that the commit completed
 	else
+		log tab & "nothing to add or commit"
 		return false --break the flow since there is nothing to commit or process
 	end if
 end do_commit
