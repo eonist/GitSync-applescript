@@ -286,15 +286,15 @@ script StatusUtil
 			set cmd to cmd of status_item
 			set file_name to file_name of status_item
 			if state = "Untracked files" then --this is when there exists a new file
-				log "1. " & file_name
+				--log "1. " & file_name
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes not staged for commit" then --this is when you have not added a file that has changed to the next commit
-				log "2. " & file_name
+				--log "2. " & file_name
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			else if state = "Changes to be committed" then --this is when you have added a file to the next commit, but not commited it
-				log "3. " --do nothing here
+				--log "3. " --do nothing here
 			else if state = "Unmerged path" then --This is when you have files that have to be resolved first, but eventually added aswell
-				log "4. " & file_name
+				--log "4. " & file_name
 				GitModifier's add(local_repo_path, file_name) --add the file to the next commit
 			end if
 		end repeat
@@ -310,7 +310,7 @@ script RepoUtil
  	 * TODO: if the interval values is not set, then use default values
  	 *)
 	on compile_repo_list(file_path) -- rename to generate_repo_list?
-		log "file_path: " & file_path
+		--log "file_path: " & file_path
 		set theXMLRoot to XMLParser's root(file_path)
 		set num_children to length of XMLParser's every_element(theXMLRoot) --number of xml children in xml root element
 		set the_repo_list to {}
@@ -322,7 +322,7 @@ script RepoUtil
 			if is_full_url = true then
 				set remote_path to text 9 thru (length of remote_path) of remote_path --strip away the https://, since this will be added later
 			end if
-			log remote_path
+			--log remote_path
 			set keychain_item_name to XMLParser's attribute_value_by_name(theXMLChild, "keychain-item-name")
 			--set commit_int to XMLParser's attribute_value_by_name(theXMLChild, "commit-interval-in-minutes") --defualt is 5min
 			--set push_int to XMLParser's attribute_value_by_name(theXMLChild, "push-interval-in-minutes") --defualt is 10min
