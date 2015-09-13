@@ -29,7 +29,7 @@ end interval_test
  * Commit un-commited files
  *)
 on handle_commit_interval(local_path, branch)
-	log ("Test's handle_commit_interval()")
+	log "Test's handle_commit_interval()"
 	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
 end handle_commit_interval
