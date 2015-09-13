@@ -100,7 +100,7 @@ end handle_push_interval
  * NOTE: this a purly local method, does not need to communicate with remote servers etc
  *)
 on do_commit(local_repo_path)
-	log (tab&"GitSync's do_commit()")
+	log (tab & "GitSync's do_commit()")
 	--log "do_commit"
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list > 0) then
@@ -115,13 +115,13 @@ on do_commit(local_repo_path)
 		--log "commit_msg_desc: " & commit_msg_desc
 		try --try to make a git commit
 			set commit_result to GitModifier's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
-			log "commit_result: " & commit_result
+			log tab & tab & "commit_result: " & commit_result
 		on error errMsg
-			log "----------------ERROR:-----------------" & errMsg
+			log tab & tab & "----------------ERROR:-----------------" & errMsg
 		end try
 		return true --return true to indicate that the commit completed
 	else
-		log tab & "nothing to add or commit"
+		log tab & tab & "nothing to add or commit"
 		return false --break the flow since there is nothing to commit or process
 	end if
 end do_commit
