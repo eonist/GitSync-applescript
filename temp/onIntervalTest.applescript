@@ -102,7 +102,7 @@ on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, bran
 		set last_selected_action to selected_item
 		if selected_item is item 1 of options then --keep local version
 			GitModifier's check_out(local_repo_path, "--ours", unmerged_file)
-		else if selected_item is item 2 of optionsthen then --keep remote version
+		else if selected_item is item 2 of options then --keep remote version
 			GitModifier's check_out(local_repo_path, "--theirs", unmerged_file)
 		else if selected_item is item 3 of options then --keep mix of both versions
 			GitModifier's check_out(local_repo_path, branch, unmerged_file)
