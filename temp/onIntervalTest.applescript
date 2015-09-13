@@ -13,7 +13,7 @@ property options : {"keep local version", "keep remote version", "keep mix of bo
 --TODO: here is the issue: if you use git remote update in conjunction with git cherry, you sort of fetch before you should fetch
 --TODO: or it could be that you use: has_local_commits in conjunction with git cherry and accidentily trigger an fetch before you should
 --TODO: use dialog boxes to pause the proces, and figurenout break points, also clear out some of the logging, and make them clearer
-log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
+--log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 
 interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
 
@@ -38,7 +38,7 @@ end commit_interval_test
  *)
 on push_interval_test(local_path, remote_path, branch)
 	--log "push_interval_test()"
-	display alert ("push_interval()")
+	display alert ("Test's push_interval()")
 	manual_merge(local_path, remote_path, branch) --commits, merges with promts
 	--return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
@@ -59,7 +59,7 @@ end push_interval_test
  *)
 on manual_merge(local_path, remote_path, branch)
 	--log "manual_merge"
-	display alert ("manual_merge()")
+	display alert ("Test's manual_merge()")
 	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
@@ -79,7 +79,8 @@ end manual_merge
  * TODO: move to GitSync.applescript when testing is complete
  *)
 on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
-	log "resolve_merge_conflicts()"
+	--log "resolve_merge_conflicts()"
+	display alert ("Test's resolve_merge_conflicts()")
 	repeat with unmerged_file in unmerged_files
 		set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
 		set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
@@ -90,7 +91,8 @@ end resolve_merge_conflicts
  * 
  *)
 on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
-	log "handle_merge_conflict_dialog()"
+	--log "handle_merge_conflict_dialog()"
+	display alert ("Test's handle_merge_conflict_dialog()")
 	if the_action is false then --exit
 		--error number -128 -- User canceled
 	else
