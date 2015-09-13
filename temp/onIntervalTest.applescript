@@ -63,7 +63,7 @@ end handle_push_interval
 on manual_merge(local_path, remote_path, branch)
 	--log "manual_merge"
 	log ("Test's manual_merge()")
-	if (GitAsserter's has_unmerged_paths(local_path)) then 
+	if (GitAsserter's has_unmerged_paths(local_path)) then
 		log tab & "has unmerged paths to resolve"
 		resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	end if
