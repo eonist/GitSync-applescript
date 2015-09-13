@@ -22,21 +22,22 @@ interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
  * NOTE: you only need to merge if you are ready to push
  *)
 on interval_test(local_path, remote_path, branch)
-	commit_interval_test(local_path, branch)
-	push_interval_test(local_path, remote_path, branch)
+	handle_commit_interval(local_path, branch)
+	handle_push_interval(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files
  *)
-on commit_interval_test(local_path, branch)
+on handle_commit_interval(local_path, branch)
+	log ("Test's handle_commit_interval()")
 	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
-end commit_interval_test
+end handle_commit_interval
 (*
  * We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval 
  *)
-on push_interval_test(local_path, remote_path, branch)
+on handle_push_interval(local_path, remote_path, branch)
 	log ("Test's push_interval()")
 	manual_merge(local_path, remote_path, branch) --commits, merges with promts
 	--return --faux break
@@ -49,7 +50,7 @@ on push_interval_test(local_path, remote_path, branch)
 		log "start pushing"
 		set push_call_back to GitModifier's push(local_path, remote_path, remote_account_name, keychain_password, branch)
 	end if
-end push_interval_test
+end handle_push_interval
 (*
  * Manual merge
  * NOTE: tries to merge a remote branch into a local branch
