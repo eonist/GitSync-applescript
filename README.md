@@ -65,7 +65,7 @@
  - [ ] OSX icon in illustrator, OSX app header in paper (do more doodles first)
  - [ ] Set the interval to every 10 seconds so that we can do more fine-grained intervals
  - [ ] Add Num of Lines modified to the commit message [here](https://github.com/eonist/GitSync/issues/32) 
- - [x] Sync GitSync wiki
+ - [x] Sync GitSync wikis
  - [ ] Check if GitSync has internet connection, if not then skip interval
  - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
  - [x] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
