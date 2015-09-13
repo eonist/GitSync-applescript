@@ -290,7 +290,7 @@ script StatusUtil
 		repeat with status_item in status_list
 			--log "len of status_item: " & (length of status_item)
 			set state to state of status_item
-			set cmd to cmd of status_item
+			--set cmd to cmd of status_item
 			set file_name to file_name of status_item
 			if state = "Untracked files" then --this is when there exists a new file
 				log tab & "1. " & file_name
