@@ -30,7 +30,10 @@ end interval_test
  *)
 on handle_commit_interval(local_path, branch)
 	log "Test's handle_commit_interval()"
-	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	if (GitAsserter's has_unmerged_paths(local_path)) then 
+		log tab & "has unmerged paths to resolve"
+		resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	end if
 	GitSync's do_commit(local_path, branch)
 end handle_commit_interval
 (*
