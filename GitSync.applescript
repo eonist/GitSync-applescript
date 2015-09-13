@@ -100,24 +100,24 @@ end handle_push_interval
  * NOTE: this a purly local method, does not need to communicate with remote servers etc
  *)
 on do_commit(local_repo_path)
-	log ( "GitSync's do_commit()")
+	log ("GitSync's do_commit()")
 	--log "do_commit"
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list > 0) then
-		log tab  & "there is something to add or commit"
-		--log "length of status_list: " & (length of status_list)
+		log tab & "there is something to add or commit"
+		log tab & "length of status_list: " & (length of status_list)
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 		set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status, so that we can create a more descriptiv commit message, since the unstaged files are now in a different state
-		--log "length of status_list after processing: " & (length of status_list)
+		log tab & "length of status_list after processing: " & (length of status_list)
 		set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
-		--log "commit_msg_title: " & commit_msg_title
+		log tab & "commit_msg_title: " & commit_msg_title
 		set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
-		--log "commit_msg_desc: " & commit_msg_desc
+		log tab & "commit_msg_desc: " & commit_msg_desc
 		try --try to make a git commit
 			set commit_result to GitModifier's commit(local_repo_path, commit_msg_title, commit_msg_desc) --commit
 			log tab & "commit_result: " & commit_result
 		on error errMsg
-			log  tab & "----------------ERROR:-----------------" & errMsg
+			log tab & "----------------ERROR:-----------------" & errMsg
 		end try
 		return true --return true to indicate that the commit completed
 	else
