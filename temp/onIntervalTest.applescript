@@ -94,7 +94,7 @@ end resolve_merge_conflicts
  *)
 on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 	--log "handle_merge_conflict_dialog()"
-	log ("Test's handle_merge_conflict_dialog(): " &  (item 1 of the_action))
+	log ("Test's handle_merge_conflict_dialog(): " & (item 1 of the_action))
 	if the_action is false then --exit
 		--error number -128 -- User canceled
 	else
