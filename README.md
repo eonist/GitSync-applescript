@@ -69,7 +69,7 @@
  - [ ] Check if GitSync has internet connection, if not then skip interval
  - [ ] Add an optional branch attribute to the repo.xml, so that you can target other branches with GitSync
  - [x] Do a git merge test, try to merge a feature branch, try to merge a non-fastforward branch
- - [ ] Try to rebase
+ - [ ] Try to rebase two branches
  - [x] Try to manually clone into a populated folder
  - [ ] If you commit without a message, a message is generated for you in vim, can you get to this msg?
  - [ ] Add support for ssh authentication
