@@ -70,7 +70,7 @@ end handle_interval
  * Handles the process of making a commit for a single repository
  *)
 on handle_commit_interval(repo_item, branch)
-	log "handle_commit_interval() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
+	log "handle_commit_interval() a repo with remote path: " & (remote_path of repo_item) & " local path: " & (local_path of repo_item)
 	if (GitAsserter's has_unmerged_paths(local_path of repo_item)) then --Asserts if there are unmerged paths that needs resolvment
 		log tab & "has unmerged paths to resolve"
 		my MergeUtil's resolve_merge_conflicts(local_path of repo_item, branch, GitParser's unmerged_files(local_path of repo_item)) --Asserts if there are unmerged paths that needs resolvment
@@ -375,7 +375,7 @@ script MergeUtil
  	 *)
 	on manual_merge(local_path, remote_path, branch)
 		--log "manual_merge"
-		log ("Test's manual_merge()")
+		log ("MergeUtil's manual_merge()")
 		handle_commit_interval(local_path, branch) --you must commit your local changes before you attempt to merge
 		try
 			--log "try"
@@ -394,7 +394,7 @@ script MergeUtil
  	 *)
 	on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 		--log "resolve_merge_conflicts()"
-		log ("Test's resolve_merge_conflicts()")
+		log ("MergeUtil's resolve_merge_conflicts()")
 		repeat with unmerged_file in unmerged_files
 			set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
 			set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
@@ -406,7 +406,7 @@ script MergeUtil
  	 *)
 	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		--log "handle_merge_conflict_dialog()"
-		log ("Test's handle_merge_conflict_dialog(): " & (item 1 of the_action))
+		log ("MergeUtil's handle_merge_conflict_dialog(): " & (item 1 of the_action))
 		if the_action is false then --exit
 			--error number -128 -- User canceled
 			--TODO: do the git merge --abort here to revert to the state you were in before the merge attempt
