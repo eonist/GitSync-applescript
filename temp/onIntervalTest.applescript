@@ -29,7 +29,7 @@ end interval_test
  * Commit un-commited files
  *)
 on commit_interval_test(local_path, branch)
-	--if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	--if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
@@ -38,7 +38,7 @@ end commit_interval_test
  *)
 on push_interval_test(local_path, remote_path, branch)
 	--log "push_interval_test()"
-	display alert ("push interval")
+	display alert ("push_interval()")
 	manual_merge(local_path, remote_path, branch) --commits, merges with promts
 	--return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
@@ -58,8 +58,9 @@ end push_interval_test
  * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  *)
 on manual_merge(local_path, remote_path, branch)
-	log "manual_merge"
-	if (GitAsserter's has_unmerged_paths("~/fox1/")) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	--log "manual_merge"
+	display alert ("manual_merge()")
+	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
 		log "try"
