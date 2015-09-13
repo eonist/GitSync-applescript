@@ -100,7 +100,7 @@ end handle_push_interval
  * NOTE: this a purly local method, does not need to communicate with remote servers etc
  *)
 on do_commit(local_repo_path)
-	display alert ("GitSync's do_commit()")
+	log ("GitSync's do_commit()")
 	--log "do_commit"
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list = 0) then return false --break the flow since there is nothing to commit or process
