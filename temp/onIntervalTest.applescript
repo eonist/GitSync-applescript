@@ -51,7 +51,7 @@ on handle_push_interval(local_path, remote_path, branch)
 		set keychain_password to the_password of keychain_data
 		set remote_account_name to account_name of keychain_data
 		set push_call_back to GitModifier's push(local_path, remote_path, remote_account_name, keychain_password, branch)
-		log tab & "push_call_back: " & push_call_back
+		--log tab & "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
 (*
