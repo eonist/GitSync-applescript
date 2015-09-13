@@ -246,27 +246,27 @@ script StatusUtil
 	on transform_status_list(the_status_list)
 		set transformed_list to {}
 		repeat with the_status_item in the_status_list
-			log "the_status_item: " & the_status_item
+			--log "the_status_item: " & the_status_item
 			set the_status_parts to RegExpUtil's match(the_status_item, "^( )*([MARDU?]{1,2}) (.+)$") --returns 3 capturing groups, 
-			log "length of the_status_parts: " & (length of the_status_parts)
-			log the_status_parts
+			--log "length of the_status_parts: " & (length of the_status_parts)
+			--log the_status_parts
 			if ((second item in the_status_parts) = " ") then --aka " M", remember that the second item is the first capturing group
 				set cmd to third item in the_status_parts --Changes not staged for commit:
 				set state to "Changes not staged for commit" -- you need to add them
 			else -- Changes to be committed--aka "M " or  "??" or "UU"
 				set cmd to third item in the_status_parts --rename cmd to type
-				log "cmd: " & cmd
+				--log "cmd: " & cmd
 				if (cmd = "??") then
 					set state to "Untracked files"
 				else if (cmd = "UU") then --Unmerged path
-					log "Unmerged path"
+					--log "Unmerged path"
 					set state to "Unmerged path"
 				else
 					set state to "Changes to be committed" --this is when the file is ready to be commited
 				end if
 			end if
 			set file_name to the fourth item in the_status_parts
-			log "state: " & state & ", cmd: " & cmd & ", file_name: " & file_name --logs the file named added changed etc
+			--log "state: " & state & ", cmd: " & cmd & ", file_name: " & file_name --logs the file named added changed etc
 			set status_item to {state:state, cmd:cmd, file_name:file_name} --store the individual parts in an accociative
 			set transformed_list to ListModifier's add_list(transformed_list, status_item) --add a record to a list
 		end repeat
@@ -279,7 +279,7 @@ script StatusUtil
 	 * TODO: squoash some of the states together if or or or etc
 	 *)
 	on process_status_list(local_repo_path, status_list)
-		log "process_status_list()"
+		--log "process_status_list()"
 		repeat with status_item in status_list
 			--log "len of status_item: " & (length of status_item)
 			set state to state of status_item
