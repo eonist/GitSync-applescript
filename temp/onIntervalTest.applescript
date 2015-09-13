@@ -29,7 +29,7 @@ end interval_test
  * Commit un-commited files
  *)
 on commit_interval_test(local_path, branch)
-	--if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path, branch)
 end commit_interval_test
 (*
@@ -63,12 +63,12 @@ on manual_merge(local_path, remote_path, branch)
 	if (GitAsserter's has_unmerged_paths(local_path)) then resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 	GitSync's do_commit(local_path) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 	try
-		log "try"
+		--log "try"
 		GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
 	on error errMsg --merge conflicts
-		log "error"
+		--log "error"
 		set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
-		log unmerged_files
+		--log unmerged_files
 		resolve_merge_conflicts(local_path, branch, unmerged_files) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
 		GitSync's do_commit(local_path) --add,commit if any files has an altered status
 	end try
