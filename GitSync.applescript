@@ -37,7 +37,6 @@ on initialize()
 		set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
 		if (FileAsserter's does_file_exist(repo_file_path) = false) then --if the xml is empty, add some static values to it
 			set the_repo_xml to my RepoUtil's repo_xml()
-			
 			FileModifier's write_data(the_repo_xml, repo_file_path, false) --create the repo.xml file inside the GitSync.app
 		end if --else do nothing, the repo.xml already exists
 	end if
