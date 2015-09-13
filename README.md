@@ -34,13 +34,14 @@
  - [x] Self awareness when in debugging / production
  - [x] The GitSync.app should a self contained a repo.xml [here](https://github.com/eonist/GitSync/issues/31)
  - [x] Toggle repo.xml path depending on debug/deploy mode
-- [ ] v.0.9.5
- - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33) 
+- [x] v.0.9.5
+ - [x] Auto synchronising if the remote is ahead, resolve conflict via wizard [here](https://github.com/eonist/GitSync/issues/17)
  - [x] Do research around log layouts, check the logs that stream2me and air-video
  - [x] Sketch out the log format in the issue section
  - [x] ignore repo.xml with gitignore
  - [x] Create a "Git notes" doc in the wiki section, with more in depth analysis of git
 - [ ] v.0.9.6
+ - [ ] Create a LogEngine script that logs what GitSync has been up to log.txt [here](https://github.com/eonist/GitSync/issues/33) 
  - [ ] **Add empty items to the repo.xml, and the wizzard will help to populate them!!!**
  - [ ] If there is some missinformation in the repo.xml the wizzard will help
  - [ ] **Auto Init repo items that are not inited** [here](https://github.com/eonist/GitSync/issues/30)
@@ -56,7 +57,6 @@
  - [x] Research how to overiding the remote file when local and remote files have both changed
  - [ ] Optional custom commit and push intervals
  - [ ] Display dialog boxes when errors occur [here](https://github.com/eonist/GitSync/issues/24)  
- - [ ] Auto synchronising if the remote is ahead, resolve conflict via wizard [here](https://github.com/eonist/GitSync/issues/17)
  - [ ] Research if you can change an applescript icon with an applescript
  - [x] Add more description to the GitUtils.applescript methods
 - [ ] v.0.9.7
