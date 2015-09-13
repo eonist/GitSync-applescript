@@ -403,7 +403,7 @@ script MergeUtil
 		end repeat
 	end resolve_merge_conflicts
 	(*
- 	 * 
+ 	 * handle the choice made in the merge conflict dialog
  	 *)
 	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		--log "handle_merge_conflict_dialog()"
