@@ -226,7 +226,7 @@ script StatusUtil
 	 *)
 	on generate_status_list(local_repo_path)
 		set the_status to GitParser's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		--log "the_status: " & the_status
+		log tab & "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as items in a list
 		set transformed_list to {}
 		if (length of the_status_list > 0) then
