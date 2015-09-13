@@ -215,7 +215,6 @@ script DescUtil
 			repeat with the_item in the_list
 				set desc_text to desc_text & (file_name of the_item) & return
 			end repeat
-			
 		end if
 		return desc_text
 	end description_paragraph
