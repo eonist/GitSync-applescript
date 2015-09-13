@@ -379,7 +379,11 @@ script MergeUtil
 	on manual_merge(local_path, remote_path, branch)
 		--log "manual_merge"
 		log ("MergeUtil's manual_merge()")
-		handle_commit_interval(local_path, branch) --you must commit your local changes before you attempt to merge
+		if (GitAsserter's has_unmerged_paths(local_path)) then --Asserts if there are unmerged paths that needs resolvment
+			log tab & "has unmerged paths to resolve"
+			my MergeUtil's resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
+		end if
+		do_commit(local_path)
 		try
 			--log "try"
 			GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
