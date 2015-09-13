@@ -221,16 +221,16 @@ script StatusUtil
 	 *)
 	on generate_status_list(local_repo_path)
 		set the_status to GitParser's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		log "the_status: " & the_status
+		--log "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as items in a list
 		set transformed_list to {}
 		if (length of the_status_list > 0) then
 			set transformed_list to my transform_status_list(the_status_list)
 		else
-			log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
+			--log "nothing to commit, working directory clean" --this is the status msg if there has happened nothing new since last, but also if you have commits that are ready for push to origin
 		end if
-		log "len of the_status_list: " & (length of the_status_list)
-		log transformed_list
+		--log "len of the_status_list: " & (length of the_status_list)
+		--log transformed_list
 		return transformed_list
 	end generate_status_list
 	(*
@@ -337,6 +337,7 @@ script RepoUtil
 	end compile_repo_list
 	(*
  	 * Returns xml data, for the debug mode
+	 *TODO: remove this, gitignore should work now
  	 *)
 	on repo_xml()
 		set the_repo_xml to "<repositories>" & return --beginning
