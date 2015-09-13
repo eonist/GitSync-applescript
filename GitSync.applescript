@@ -105,13 +105,13 @@ on do_commit(local_repo_path)
 	set status_list to my StatusUtil's generate_status_list(local_repo_path) --get current status
 	if (length of status_list > 0) then
 		log tab & "there is something to add or commit"
-		log tab & "length of status_list: " & (length of status_list)
+		--log tab & "length of status_list: " & (length of status_list)
 		
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
 		
 		--set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status, so that we can create a more descriptiv commit message, since the unstaged files are now in a different state
 		
-		log tab & "length of status_list after processing: " & (length of status_list)
+		--log tab & "length of status_list after processing: " & (length of status_list)
 		set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
 		log tab & "commit_msg_title: " & commit_msg_title
 		set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
@@ -229,7 +229,7 @@ script StatusUtil
 	 *)
 	on generate_status_list(local_repo_path)
 		set the_status to GitParser's status(local_repo_path, "-s") -- the -s stands for short message, and returns a short version of the status message, the short stauslist is used because it is easier to parse than the long status list
-		log tab & "the_status: " & the_status
+		--log tab & "the_status: " & the_status
 		set the_status_list to TextParser's every_paragraph(the_status) --store each line as items in a list
 		set transformed_list to {}
 		if (length of the_status_list > 0) then
