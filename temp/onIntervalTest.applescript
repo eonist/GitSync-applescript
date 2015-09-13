@@ -12,7 +12,7 @@ property options : {"keep local version", "keep remote version", "keep mix of bo
 --TODO: the problem lay in the commit message not comming through when you have UU, resolve this and it will all work
 --TODO: here is the issue: if you use git remote update in conjunction with git cherry, you sort of fetch before you should fetch
 --TODO: or it could be that you use: has_local_commits in conjunction with git cherry and accidentily trigger an fetch before you should
-
+--TODO: use dialog boxes to pause the proces, and figurenout break points, also clear out some of the logging, and make them clearer
 log "has_unmerged_paths: " & GitAsserter's has_unmerged_paths("~/fox1/")
 
 interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
