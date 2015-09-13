@@ -9,9 +9,7 @@ property FileParser : my ScriptLoader's load(path to scripts folder from user do
 property GitSync : my ScriptLoader's relative_load(path to me, "GitSync.applescript", -2)
 property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 
-
 interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
-
 (*
  * NOTE: we may not want to push on every interval, thats why this method works like a deligator
  * NOTE: you only need to merge if you are ready to push
@@ -37,7 +35,7 @@ end handle_commit_interval
  *)
 on handle_push_interval(local_path, remote_path, branch)
 	log ("Test's handle_push_interval()")
-	manual_merge(local_path, remote_path, branch) --commits, merges with promts
+	my MergeUtil's manual_merge(local_path, remote_path, branch) --commits, merges with promts
 	--return --faux break
 	set has_local_commits to GitAsserter's has_local_commits(local_path, branch)
 	--log "has_local_commits: " & has_local_commits
