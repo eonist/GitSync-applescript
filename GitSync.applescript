@@ -21,10 +21,10 @@ property repo_list : null --Stores all values the in repositories.xml, remember 
 property repo_file_path : ""
 property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
 
-
 --log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 initialize()
+
 (*
  * Initialize the app, toggles between debug and deploy mode depending fromwhich file type it is run from
  *)
@@ -36,7 +36,8 @@ on initialize()
 	else --deploy mode
 		set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
 		if (FileAsserter's does_file_exist(repo_file_path) = false) then --if the xml is empty, add some static values to it
-			set the_repo_xml to RepoUtil's repo_xml()
+			set the_repo_xml to my RepoUtil's repo_xml()
+			
 			FileModifier's write_data(the_repo_xml, repo_file_path, false) --create the repo.xml file inside the GitSync.app
 		end if --else do nothing, the repo.xml already exists
 	end if
@@ -84,6 +85,7 @@ end handle_commit_interval
  * Handles the process of making a push for a single repository
  * NOTE: We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval
+ * TODO: contemplate implimenting a fetch call after the pull call, to update the status, whats the diff between git fetch and git remote update again?
  *)
 on handle_push_interval(repo_item, branch)
 	log ("GitSync's handle_push_interval()")
