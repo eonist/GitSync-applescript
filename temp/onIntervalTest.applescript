@@ -19,7 +19,8 @@ on interval_test(local_path, remote_path, branch)
 	handle_push_interval(local_path, remote_path, branch)
 end interval_test
 (*
- * Commit un-commited files
+ * Handles the process of making a commit for a single repository
+ * NOTE: Commit un-commited files
  *)
 on handle_commit_interval(local_path, branch)
 	log "Test's handle_commit_interval()"
@@ -30,7 +31,8 @@ on handle_commit_interval(local_path, branch)
 	GitSync's do_commit(local_path, branch) --adds unstaged files, creates a commit msg w/ description and then commits it, you have to commit your local changes before you try to merge with a remote branch
 end handle_commit_interval
 (*
- * We must always merge the remote branch into the local branch before we push our changes. 
+ * Handles the process of making a push for a single repository
+ * NOTE: We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval 
  *)
 on handle_push_interval(local_path, remote_path, branch)
