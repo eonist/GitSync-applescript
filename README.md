@@ -1,4 +1,4 @@
-[Download GitSync 0.9.4](https://github.com/eonist/GitSync/releases/download/0.9.4/GitSync.app.zip)
+[Download GitSync 0.9.5](https://github.com/eonist/GitSync/releases/download/0.9.5/GitSync.app.zip)
 
 ###Todo's:
 - [x] v.0.9.0
