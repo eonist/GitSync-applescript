@@ -60,8 +60,8 @@ on handle_interval()
 	set current_time_in_min to (current_time / 60) --divide the seconds by 60 seconds to get minutes
 	log "current_time_in_min: " & current_time_in_min
 	repeat with repo_item in repo_list --iterate over every repo item
-		if (current_time_in_min mod (interval of repo_item) = 0) then handle_commit_interval(repo_item,"master") --is true every time spesified by the user
-		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item,"master") --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_commit_interval(repo_item, "master") --is true every time spesified by the user
+		if (current_time_in_min mod (interval of repo_item) = 0) then handle_push_interval(repo_item, "master") --is true every time spesified by the user
 	end repeat
 	set current_time to current_time + the_interval --increment the interval (in seconds)
 	
@@ -69,7 +69,7 @@ end handle_interval
 (*
  * Handles the process of making a commit for a single repository
  *)
-on handle_commit_interval(repo_item,branch)
+on handle_commit_interval(repo_item, branch)
 	log "handle_commit_interval() a repo with remote path: " & remote_path of repo_item & " local path: " & local_path of repo_item
 	if (GitAsserter's has_unmerged_paths(local_path of repo_item)) then --Asserts if there are unmerged paths that needs resolvment
 		log tab & "has unmerged paths to resolve"
@@ -83,10 +83,10 @@ end handle_commit_interval
  * NOTE: We must always merge the remote branch into the local branch before we push our changes. 
  * NOTE: this method performs a "manual pull" on every interval
  *)
-on handle_push_interval(repo_item,branch)
+on handle_push_interval(repo_item, branch)
 	--TODO: maybe use GitAsserter's is_local_branch_ahead instead of the bellow code
 	my MergeUtil's manual_merge(local_path of repo_item, remote_path of repo_item, branch) --commits, merges with promts
-	set has_local_commits to GitAsserter's has_local_commits(local_path of repo_item, "master")
+	set has_local_commits to GitAsserter's has_local_commits(local_path of repo_item, branch)
 	if (has_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
 		set the_keychain_item_name to keychain_item_name of repo_item
 		log "the_keychain_item_name: " & the_keychain_item_name
@@ -96,7 +96,7 @@ on handle_push_interval(repo_item,branch)
 		set remote_account_name to account_name of keychain_data
 		log "remote_account_name: " & remote_account_name
 		log "PUSH() a repo with remote path: " & remote_path of repo_item
-		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password, "master")
+		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password, branch)
 		log "push_call_back: " & push_call_back
 	end if
 end handle_push_interval
@@ -385,13 +385,12 @@ script MergeUtil
 			set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
 			--log unmerged_files
 			resolve_merge_conflicts(local_path, branch, unmerged_files) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
-			GitSync's do_commit(local_path) --add,commit if any files has an altered status
+			do_commit(local_path) --add,commit if any files has an altered status
 		end try
 	end manual_merge
 	(*
  	 * Promts the user with a list of options to aid in resolving merge conflicts
  	 * @param branch: the branch you tried to merge into
- 	 * TODO: move to GitSync.applescript when testing is complete
  	 *)
 	on resolve_merge_conflicts(local_repo_path, branch, unmerged_files)
 		--log "resolve_merge_conflicts()"
