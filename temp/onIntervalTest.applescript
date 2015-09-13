@@ -23,7 +23,7 @@ interval_test("~/fox1/", "github.com/eonist/testing.git", "master")
  *)
 on interval_test(local_path, remote_path, branch)
 	handle_commit_interval(local_path, branch)
-	handle_push_interval(local_path, remote_path, branch)
+	--handle_push_interval(local_path, remote_path, branch)
 end interval_test
 (*
  * Commit un-commited files
