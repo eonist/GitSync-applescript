@@ -86,7 +86,8 @@ end handle_commit_interval
  *)
 on handle_push_interval(repo_item, branch)
 	log ("GitSync's handle_push_interval()")
-	my MergeUtil's manual_merge((local_path of repo_item), (remote_path of repo_item), branch) --commits, merges with promts
+	
+	my MergeUtil's manual_merge((local_path of repo_item), (remote_path of repo_item), branch) --commits, merges with promts, (this method also test if a merge is needed or not, and skips it if needed)
 	set has_local_commits to GitAsserter's has_local_commits((local_path of repo_item), branch) --TODO: maybe use GitAsserter's is_local_branch_ahead instead of this line
 	if (has_local_commits) then --only push if there are commits to be pushed, hence the has_commited flag, we check if there are commits to be pushed, so we dont uneccacerly push if there are no local commits to be pushed, we may set the commit interval and push interval differently so commits may stack up until its ready to be pushed, read more about this in the projects own FAQ
 		set the_keychain_item_name to (keychain_item_name of repo_item)
@@ -381,12 +382,12 @@ script MergeUtil
 			log tab & "has unmerged paths to resolve"
 			my MergeUtil's resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 		end if
-		do_commit(local_path)
+		do_commit(local_path) --TODO: why is this here?
 		try
 			--log "try"
 			GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
 		on error errMsg --merge conflicts
-			--log "error"
+			log tab & "error: " & errMsg
 			set unmerged_files to GitParser's unmerged_files(local_path) --compile a list of conflicting files somehow
 			--log unmerged_files
 			resolve_merge_conflicts(local_path, branch, unmerged_files) --promt user, merge conflicts occured, resolve by a list of options, title: conflict in file text.txt: use local, use remote, use a mix (opens it up in textedit), use all local, use all remote, use all mix 
