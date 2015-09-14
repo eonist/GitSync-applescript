@@ -393,20 +393,21 @@ script MergeUtil
 		--log "resolve_merge_conflicts()"
 		log ("MergeUtil's resolve_merge_conflicts()")
 		repeat with unmerged_file in unmerged_files
-			set last_selected_action to first item in options --you may want to make this a property to store the last item more permenantly
+			set last_selected_action to first item in options --you may want to make this a "property" to store the last item more permenantly
 			set the_action to choose from list options with title "Resolve merge conflict in:" with prompt unmerged_file & ":" default items {last_selected_action} cancel button name "Exit" --promt user with list of options, title: Merge conflict in: unmerged_file
 			handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		end repeat
 	end resolve_merge_conflicts
 	(*
  	 * Handles the choice made in the merge conflict dialog
+ 	 * TODO: test the open file clauses
  	 *)
 	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		--log "handle_merge_conflict_dialog()"
 		log ("MergeUtil's handle_merge_conflict_dialog(): " & (item 1 of the_action))
 		if the_action is false then --exit
 			--error number -128 -- User canceled
-			--TODO: do the git merge --abort here to revert to the state you were in before the merge attempt
+			--TODO: do the git merge --abort here to revert to the state you were in before the merge attempt, you may also want to display a dialog to informnthe user in which state the files are now.
 		else
 			set selected_item to item 1 of the_action
 			set last_selected_action to selected_item
