@@ -364,7 +364,7 @@ script MergeUtil
  	 * Manual merge
  	 * NOTE: tries to merge a remote branch into a local branch
  	 * NOTE: prompts the users if a merge conflicts occure
- 	 * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
+ 	 * TODO: we should use two branch params here since its entirly possible to merge from a different remote branch
  	 *)
 	on manual_merge(local_path, remote_path, branch)
 		--log "manual_merge"
@@ -399,7 +399,7 @@ script MergeUtil
 		end repeat
 	end resolve_merge_conflicts
 	(*
- 	 * handle the choice made in the merge conflict dialog
+ 	 * Handle the choice made in the merge conflict dialog
  	 *)
 	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		--log "handle_merge_conflict_dialog()"
