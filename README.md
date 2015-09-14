@@ -5,5 +5,4 @@
 - Works with both GitHub and Bitbucket. 
 - Automatically creates commit messages, based on the file change.
 
-More information:  
 [Wiki](https://github.com/eonist/GitSync/wiki/)
