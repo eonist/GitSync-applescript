@@ -115,7 +115,7 @@ on do_commit(local_repo_path)
 		log tab & "there is something to add or commit"
 		--log tab & "length of status_list: " & (length of status_list)
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
-		set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
+		set commit_msg_title to my CommitUtil's sequence_commit_msg_title(status_list) --sequence commit msg title for the commit
 		log tab & "commit_msg_title: " & commit_msg_title
 		set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
 		log tab & "commit_msg_desc: " & commit_msg_desc
@@ -133,16 +133,16 @@ on do_commit(local_repo_path)
 end do_commit
 --log "end of the script"
 (*
- * utility methods for parsing the the "git status message" 
+ * Utility methods for parsing the the "git status message" 
  *)
 script CommitUtil
 	(*
-	 * Returns a a text "commit message" derived from @param status_list
+	 * Returns a a text "commit message title" derived from @param status_list
 	 * @param status_list: a list with records that contain staus type, file name and state
 	 * NOTE: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED,
 	 * NOTE: In place of Renamed, Git first deletes the file then says its untracked
     *)
-	on sequence_commit_msg(status_list)
+	on sequence_commit_msg_title(status_list)
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
 		set num_of_deleted_files to 0
@@ -180,7 +180,7 @@ script CommitUtil
 			set commit_msg to commit_msg & "Files renamed: " & num_of_renamed_files
 		end if
 		return commit_msg
-	end sequence_commit_msg
+	end sequence_commit_msg_title
 end script
 (*
  * Utility methods for generating the "Git Commit Message Description"
