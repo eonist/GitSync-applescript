@@ -8,6 +8,7 @@ property OnIntervalTest : my ScriptLoader's load_script(alias ((path to parent f
  * Automatically creates a local git repo based on the remote repo, if a local repo already exists, it is unharmfully merged into
  * TODO: this method is complete except merge_conflict_file_list needs to be generated somehow
  * @param branch: the branch you want to use as origin branch
+ * TODO: when you impliment this method into GitSync.applescript you should add it to an internal Class AutoInitUtil's auto_init()
  *)
 on auto_init(local_path,remote_path,branch)
 	set does_path_exist to FileAsserter's does_path_exist(local_path)
