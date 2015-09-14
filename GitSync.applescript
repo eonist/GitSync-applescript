@@ -347,7 +347,7 @@ script RepoUtil
 	end compile_repo_list
 	(*
  	 * Returns xml data, for the debug mode
-	 * TODO: remove this, gitignore should work now
+	 * NOTE: the purpose of this method is to make compiling the .app easier, with this method you can insert some working repos into the repo.xml file inside the GitSync.app
  	 *)
 	on repo_xml()
 		set the_repo_xml to "<repositories>" & return --beginning
