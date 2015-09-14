@@ -373,7 +373,7 @@ script MergeUtil
 			log tab & "has unmerged paths to resolve"
 			my MergeUtil's resolve_merge_conflicts(local_path, branch, GitParser's unmerged_files(local_path)) --Asserts if there are unmerged paths that needs resolvment
 		end if
-		do_commit(local_path) --TODO: why is this here?
+		do_commit(local_path) --its best practice to always commit any uncommited files before you attempt to pull. 
 		try
 			--log "try"
 			GitUtil's manual_pull(local_path, remote_path, branch) --manual clone down files
@@ -399,7 +399,7 @@ script MergeUtil
 		end repeat
 	end resolve_merge_conflicts
 	(*
- 	 * Handle the choice made in the merge conflict dialog
+ 	 * Handles the choice made in the merge conflict dialog
  	 *)
 	on handle_merge_conflict_dialog(the_action, unmerged_file, local_repo_path, branch, unmerged_files)
 		--log "handle_merge_conflict_dialog()"
