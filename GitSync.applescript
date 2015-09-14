@@ -95,7 +95,6 @@ on handle_push_interval(repo_item, branch)
 		log "keychain_password: " & keychain_password
 		set remote_account_name to account_name of keychain_data
 		log "remote_account_name: " & remote_account_name
-		log "PUSH() a repo with remote path: " & remote_path of repo_item
 		set push_call_back to GitModifier's push(local_path of repo_item, remote_path of repo_item, remote_account_name, keychain_password, branch)
 		log "push_call_back: " & push_call_back
 	end if
@@ -116,8 +115,6 @@ on do_commit(local_repo_path)
 		log tab & "there is something to add or commit"
 		--log tab & "length of status_list: " & (length of status_list)
 		my StatusUtil's process_status_list(local_repo_path, status_list) --process current status by adding files, now the status has changed, some files may have disapared, some files now have status as renamed that prev was set for adding and del
-		--set status_list to my StatusUtil's generate_status_list(local_repo_path) --get the new status, so that we can create a more descriptiv commit message, since the unstaged files are now in a different state
-		--log tab & "length of status_list after processing: " & (length of status_list)
 		set commit_msg_title to my CommitUtil's sequence_commit_msg(status_list) --sequence commit msg title for the commit
 		log tab & "commit_msg_title: " & commit_msg_title
 		set commit_msg_desc to my DescUtil's sequence_description(status_list) --sequence commit msg description for the commit
@@ -136,7 +133,7 @@ on do_commit(local_repo_path)
 end do_commit
 --log "end of the script"
 (*
- * A collection of utility methods for parsing the the "git status message" and a method for processing
+ * utility methods for parsing the the "git status message" 
  *)
 script CommitUtil
 	(*
@@ -145,7 +142,7 @@ script CommitUtil
 	 * NOTE: C,I,R seems to never be triggered, COPIED,IGNORED,REMOVED,
 	 * NOTE: In place of Renamed, Git first deletes the file then says its untracked
     *)
-	on sequence_commit_msg(status_list) --rename to generate_commit_msg
+	on sequence_commit_msg(status_list)
 		set num_of_new_files to 0
 		set num_of_modified_files to 0
 		set num_of_deleted_files to 0
