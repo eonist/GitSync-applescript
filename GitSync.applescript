@@ -311,7 +311,7 @@ script StatusUtil
 	end process_status_list
 end script
 (*
- * A collection of utility methods for parsing the repository.xml file
+ * Utility methods for parsing the repository.xml file
  *)
 script RepoUtil
 	(*
