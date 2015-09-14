@@ -1,3 +1,5 @@
+--this file can now be deleted, since it is now implimented in GitSync.applescript
+
 property ScriptLoader : load script alias ((path to scripts folder from user domain as text) & "file:ScriptLoader.scpt") --prerequisite for loading .applescript files
 property GitUtil : my ScriptLoader's load(path to scripts folder from user domain, "git:GitUtil.applescript")
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
