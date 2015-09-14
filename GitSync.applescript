@@ -363,7 +363,7 @@ script MergeUtil
 	(*
  	 * Manual merge
  	 * NOTE: tries to merge a remote branch into a local branch
- 	 * NOTE: promts users if merge conflicts occure
+ 	 * NOTE: prompts the users if a merge conflicts occure
  	 * NOTE: we use two branch params here since its entirly possible to merge from a different remote branch
  	 *)
 	on manual_merge(local_path, remote_path, branch)
