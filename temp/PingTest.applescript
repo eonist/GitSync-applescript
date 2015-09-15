@@ -5,3 +5,12 @@ log temp_var
 log ("apples" contains "apple")
 --log "Toggle: " & (temp_var & contains "100% packet loss")
 log "end of script"
+
+
+repeat while false
+  log "no internet connection"
+  delay 5
+end repeat
+
+log "has internet connection"
+log "end of script"
