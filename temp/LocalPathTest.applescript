@@ -2,3 +2,4 @@ property ScriptLoader : load script alias ((path to scripts folder from user dom
 property GitParser : my ScriptLoader's load(path to scripts folder from user domain, "git:GitParser.applescript")
 log "hello world"
 do shell script("echo hello world 2;")
+GitParser's status("~/_projects/_code/_active/applescript/GitSync","")
