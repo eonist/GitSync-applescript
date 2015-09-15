@@ -15,11 +15,11 @@ set the_path to "'~/_projects/_code/_active/applescript/Git Sync'"
 --original="$(echo $safename | sed s'/_-_/ /g')"
 
 set the_shell_script to "#!/bin/bash
-		someString='Git Sync'
+		someString=" & the_path & "
 		echo $someString | sed s'/ /\\ /g'" 
 	--log the_shell_script
 
-do shell script the_shell_script
+do shell script "cd " & the_shell_script & ";"
 
 
 --Use echo with sed to replace the space char with backslash and space. Or do more research on google on how to do this, maybe read some shell books in chapters about file name and shell
