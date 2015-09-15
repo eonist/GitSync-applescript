@@ -19,10 +19,10 @@ set the_path to "~/_projects/_code/_active/applescript/test tidy"
 
 --original="$(echo $safename | sed s'/_-_/ /g')"
 set the_shell_script to "#!/bin/bash 
-					cd " & the_path & ";" & git_path & "git status" & " " & ""
---return do shell script the_shell_script
-set the_result to do shell script "echo " & quoted form of the_path & " | sed 's/ /\\\\ /g'"
-log the_result
+					cd " & quoted form of the_path & " | sed 's/ /\\\\ /g'" & ";" & git_path & "git status" & " " & ""
+return do shell script the_shell_script
+--set the_result to do shell script "echo " & quoted form of the_path & " | sed 's/ /\\\\ /g'"
+--log the_result
 --set the_shell_script to "someVar=echo " & the_path & " | sed s'/ /\\ /g'" & " echo $someVar"
 --log the_shell_script
 
