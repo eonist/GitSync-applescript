@@ -4,6 +4,6 @@
 - Automatically creates commit messages, based on the file change.
 - Now Works with ICloud 
 
-[Download GitSync 0.9.5.1](https://github.com/eonist/GitSync/releases/download/0.9.5.1/GitSync.app.zip) 
+[Download GitSync 0.9.5.2](https://github.com/eonist/GitSync/releases/download/0%2C9%2C5.2/GitSync.app.zip) 
 
 [Wiki](https://github.com/eonist/GitSync/wiki/)
