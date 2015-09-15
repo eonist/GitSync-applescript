@@ -15,8 +15,8 @@ set the_path to "'~/_projects/_code/_active/applescript/Git Sync'"
 --original="$(echo $safename | sed s'/_-_/ /g')"
 
 	set the_shell_script to "#!/bin/bash
-		someString=testing
-    printf $someString" 
+		someString='Git Sync'
+		echo $someString | sed s'/_-_/ /g'" 
 	--log the_shell_script
 	return do shell script the_shell_script
 
