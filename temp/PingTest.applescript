@@ -1,15 +1,10 @@
 log "start of script"
 
-repeat
-  set ping_result to (do shell script "ping -c 1 www.apple.com")
-  log ping_result
- if (ping_result contains "100% packet loss") then
-   log "no internet connection"
-   delay 5
- else 
-   log "has internet connection"
-   exit repeat
- end if
+
+repeat while (do shell script "ping -c 1 www.apple.com") contains "100% packet loss"
+  log "no internet connection"
+  delay 5
 end repeat
 
+log "has internet connection"
 log "end of script"
