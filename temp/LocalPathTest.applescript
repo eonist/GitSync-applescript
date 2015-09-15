@@ -17,8 +17,8 @@ set the_path to "~/_projects/_code/_active/applescript/test tidy"
 --do shell script("cd " & "echo " & the_path & ";")
 --
 
-set the_shell_script to "cd " & quoted form of the_path & " | sed 's/ /\\\\ /g'" & ";" & git_path & "git status" & " " & ""
-return do shell script the_shell_script
+--set the_shell_script to "cd " & quoted form of the_path & " | sed 's/ /\\\\ /g'" & ";" & git_path & "git status" & " " & ""
+--return do shell script the_shell_script
 --set the_result to do shell script "echo " & quoted form of the_path & " | sed 's/ /\\\\ /g'"
 --log the_result
 --set the_shell_script to "someVar=echo " & the_path & " | sed s'/ /\\ /g'" & " echo $someVar"
@@ -34,6 +34,6 @@ return do shell script the_shell_script
 
 --log "the_value: " & the_value
 --return do shell script "cd " & the_shell_script & ";" & git_path & "git status" & " " & ""
---log GitParser's status(the_value, "")
+log GitParser's status(the_path, "")
 
 --Use echo with sed to replace the space char with backslash and space. Or do more research on google on how to do this, maybe read some shell books in chapters about file name and shell
