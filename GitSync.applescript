@@ -352,6 +352,7 @@ script RepoUtil
 		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/_projects/_code/_active/applescript/GitSync\" remote-path=\"https://github.com/eonist/GitSync.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
 		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/_projects/_code/_active/applescript/SqliteEdit/repo\" remote-path=\"github.com/eonist/SqliteEdit.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
 		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/Library/Scripts\" remote-path=\"github.com/eonist/applescripts.git\" interval=\"1\" keychain-item-name=\"github\"/>" & return
+		set the_repo_xml to the_repo_xml & tab & "<repository local-path=\"~/Documents/wiki/GitSync.wiki\" remote-path=\"github.com/eonist/GitSync.wiki\" interval=\"1\" keychain-item-name=\"github\"/>" & return
 		set the_repo_xml to the_repo_xml & "</repositories>" --end
 		return the_repo_xml
 	end repo_xml
