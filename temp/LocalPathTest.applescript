@@ -1,2 +1,2 @@
 log "hello world"
-do shell("hello world 2;")
+do shell script("echo hello world 2;")
