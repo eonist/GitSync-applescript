@@ -20,11 +20,8 @@ property the_interval : 60 --static value, increases the time by this value on e
 property repo_list : null --Stores all values the in repositories.xml, remember to reset this value pn every init
 property repo_file_path : ""
 property options : {"keep local version", "keep remote version", "keep mix of both versions", "open local version", "open remote version", "open mix of both versions", "keep all local versions", "keep all remote versions", "keep all local and remote versions", "open all local versions", "open all remote versions", "open all mixed versions"}
-
---log "beginning of the script"
 set current_time to 0 --always reset this value on init, applescript has persistent values
 initialize()
-
 (*
  * Initialize the app, toggles between debug and deploy mode depending fromwhich file type it is run from
  *)
@@ -131,7 +128,6 @@ on do_commit(local_repo_path)
 		return false --break the flow since there is nothing to commit or process
 	end if
 end do_commit
---log "end of the script"
 (*
  * Utility methods for parsing the the "git status message" 
  *)
