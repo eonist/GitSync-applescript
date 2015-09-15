@@ -1,4 +1,4 @@
-
+log "start of script"
 
 repeat
   set ping_result to (do shell script "ping -c 1 www.apple.com")
@@ -7,4 +7,7 @@ repeat
    delay 5
  else 
    exit repeat
+ end if
 end repeat
+
+log "end of script"
