@@ -318,6 +318,7 @@ script RepoUtil
  	 * Returns a repo_list with values derived from an XML file
  	 * @param file_path is in HSF not POSIX
  	 * TODO: if the interval values is not set, then use default values
+	 * TODO: test if the full/partly file path still works?
  	 *)
 	on compile_repo_list(file_path) -- rename to generate_repo_list?
 		--log "file_path: " & file_path
@@ -327,6 +328,7 @@ script RepoUtil
 		repeat with i from 1 to num_children
 			set theXMLChild to XMLParser's element_at(theXMLRoot, i)
 			set local_path to XMLParser's attribute_value_by_name(theXMLChild, "local-path") --this is the path to the local repository (we need to be in this path to execute git commands on this repo)
+			set local_path to do shell script "echo " & quoted form of local_path & " | sed 's/ /\\\\ /g'" --Shell doesnt handle file paths with space chars very well. So all space chars are replaced with a backslash and space, so that shell can read the paths. 
 			set remote_path to XMLParser's attribute_value_by_name(theXMLChild, "remote-path")
 			set is_full_url to RegExpUtil's has_match(remote_path, "^https://.+$") --support for partial and full url
 			if is_full_url = true then

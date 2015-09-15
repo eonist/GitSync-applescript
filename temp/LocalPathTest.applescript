@@ -8,7 +8,9 @@ property git_path : "/usr/local/git/bin/" --to execute git commands we need to c
 set the_path to "~/_projects/_code/_active/applescript/test tidy"
 --set the_path to TextModifier's replace_text(the_path," ","\\ ")
 
---log do shell script "echo " & quoted form of the_path & " | sed 's/ /\\\\ /g'"
+set new_path to do shell script "echo " & quoted form of the_path & " | sed 's/ /\\\\ /g'"
+log new_path
 
+do shell script "cd " & new_path & ";" & git_path & "git status" & " " & ""
 
-log GitParser's status(the_path, "")
+--log GitParser's status(the_path, "")
