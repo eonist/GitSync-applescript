@@ -43,7 +43,7 @@ end initialize
  * NOTE: this will only be called from an .app mode aka "deploy mode" / "production mode"
  *)
 on idle {}
-	handle_interval()
+	if(ShellUtil's has_internet_connection) then handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
