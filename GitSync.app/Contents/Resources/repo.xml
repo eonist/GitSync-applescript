@@ -5,4 +5,5 @@
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/applescript/Scripts" remote-path="github.com/eonist/applescripts.git" interval="1" keychain-item-name="github"/>
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/wiki/GitSync.wiki" remote-path="github.com/eonist/GitSync.wiki.git" interval="1" keychain-item-name="github"/>
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/wiki/Element.wiki" remote-path="github.com/eonist/Element.wiki.git" interval="1" keychain-item-name="github"/>
+	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/wiki/GitSyncOSX.wiki" remote-path="github.com/eonist/GitSyncOSX.wiki.git" interval="1" keychain-item-name="github"/>
 </repositories>
