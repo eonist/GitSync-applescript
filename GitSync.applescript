@@ -311,7 +311,7 @@ end script
  *)
 script RepoUtil
 	(*
- 	 * Returns a repo_list with values derived from an XML file
+ 	 * Returns a list with repo values derived from an XML file
  	 * @param file_path is in HSF not POSIX
  	 * TODO: if the interval values is not set, then use default values
 	 * TODO: test if the full/partly file path still works?
