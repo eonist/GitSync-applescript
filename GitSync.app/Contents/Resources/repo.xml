@@ -8,4 +8,5 @@
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/wiki/GitSyncOSX.wiki" remote-path="github.com/eonist/GitSyncOSX.wiki.git" interval="1" keychain-item-name="github"/>
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/swift/GitSyncOSX" remote-path="https://github.com/eonist/GitSyncOSX.git" interval="1" keychain-item-name="github"/>
 	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/swift/utils" remote-path="https://github.com/eonist/swift-utils.git" interval="1" keychain-item-name="github"/>
+	<repository local-path="~/Library/Mobile Documents/M6HJR9W95L~com~textasticapp~textastic/Documents/wiki/swift-utils.wiki " remote-path="https://github.com/eonist/swift-utils.wiki.git" interval="1" keychain-item-name="github"/>
 </repositories>
