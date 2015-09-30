@@ -47,7 +47,7 @@ on idle {}
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
- * Handles the process of comitting, pushing for multiple repositories
+ * Handles the process of comitting and pushing for multiple repositories
  * This is called on every interval
  * NOTE: while testing you can call this manually, since idle will only work when you run it from an .app
  *)
