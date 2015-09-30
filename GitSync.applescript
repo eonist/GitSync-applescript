@@ -102,7 +102,7 @@ end handle_push_interval
  * NOTE: checks git staus, then adds changes to the index, then compiles a commit message, then commits the changes, and is now ready for a push
  * NOTE: only commits if there is something to commit
  * TODO: add branch parameter to this call
- * NOTE: this a purly local method, does not need to communicate with remote servers etc
+ * NOTE: this a purly local method, does not need to communicate with remote servers etc..
  *)
 on do_commit(local_repo_path)
 	log ("GitSync's do_commit()")
