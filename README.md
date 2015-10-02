@@ -1,3 +1,5 @@
+Finaly a solution for cpding from many devices efficiently.
+
 **Live code** on your iPad directly to GitHub and vis-versa (without clicking button)  
 Ipad -> iCloud -> **GitSync** -> GitHub  
 GitHub -> **GitSync** -> iCloud -> Ipad
