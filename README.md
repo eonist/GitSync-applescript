@@ -1,4 +1,4 @@
-Finally a solution for coding from many devices efficiently.
+Finally a solution for coding efficiently from many devices.
 
 **Live code** on your iPad directly to GitHub and vis-versa (without clicking button)  
 Ipad -> iCloud -> **GitSync** -> GitHub  
