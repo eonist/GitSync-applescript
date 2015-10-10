@@ -8,6 +8,6 @@ GitHub -> **GitSync** -> iCloud -> Ipad
 
 **Save directly** from your Mac to GitHub and vis-versa
 
-[Download GitSync v0.9.5.3](https://github.com/eonist/GitSync/releases/tag/0.9.5.3) 
+[Download GitSync v0.9.54](https://github.com/eonist/GitSync/releases/tag/0.9.54) 
 
 [Wiki](https://github.com/eonist/GitSync/wiki/)
