@@ -29,7 +29,7 @@ on initialize()
 	if (FileParser's file_name(path to me) = "GitSync.applescript") then --debug mode
 		set repo_file_path to FileParser's hfs_parent_path(path to me) & "repo.xml"
 		log repo_file_path
-		handle_interval()
+		if (ShellUtil's wait_for_internet()) then handle_interval()
 	else --deploy mode
 		set repo_file_path to ((path to me) & "Contents" & ":" & "Resources" & ":" & "repo.xml") as text
 		if (FileAsserter's does_file_exist(repo_file_path) = false) then --if the xml is empty, add some static values to it
@@ -43,7 +43,7 @@ end initialize
  * NOTE: this will only be called from an .app mode aka "deploy mode" / "production mode"
  *)
 on idle {}
-	if (ShellUtil's has_internet_connection()) then handle_interval()
+	if (ShellUtil's wait_for_internet()) then handle_interval()
 	return the_interval --the_interval --return new idle time in seconds
 end idle
 (*
