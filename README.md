@@ -11,4 +11,5 @@ GitHub -> **GitSync** -> iCloud -> Ipad
 [Download GitSync v0.9.54](https://github.com/eonist/GitSync/releases/tag/0.9.54) 
 
 [Vimeo](https://vimeo.com/gitsync)  
-[Wiki](https://github.com/eonist/GitSync/wiki/)
+[Wiki](https://github.com/eonist/GitSync/wiki/)  
+[Utils](https://github.com/eonist/applescripts) 
