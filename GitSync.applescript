@@ -240,7 +240,7 @@ script StatusUtil
 		return transformed_list
 	end generate_status_list
 	(*
- 	 * Transforms the "compact git status list" by adding more context to each item (a list with acociative lists, aka records)
+ 	 * Transforms the "compact git status list" by adding more context to each item (a list with associative lists, aka records)
  	 * Returns a list with records that contain staus type, file name and state
  	 * NOTE: the short status msg format is like: "M" " M", "A", " A", "R", " R" etc
  	 * NOTE: the space infront of the capetalized char indicates Changes not staged for commit:
