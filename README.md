@@ -12,4 +12,7 @@ GitHub -> **GitSync** -> iCloud -> Ipad
 
 [Vimeo](https://vimeo.com/gitsync)  
 [Wiki](https://github.com/eonist/GitSync/wiki/)  
-[Utils](https://github.com/eonist/applescripts) 
+[Utils](https://github.com/eonist/applescripts)  
+
+
+[License](http://opensource.org/licenses/MIT) 
