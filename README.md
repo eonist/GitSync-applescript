@@ -15,4 +15,4 @@ GitHub -> **GitSync** -> iCloud -> Ipad
 [Utils](https://github.com/eonist/applescripts)  
 
 
-[License](http://opensource.org/licenses/MIT) 
+[MIT License](http://opensource.org/licenses/MIT) 
