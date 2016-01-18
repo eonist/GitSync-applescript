@@ -2,7 +2,7 @@
 
 Finally a solution for coding efficiently from many devices:
 
-![gitsync_logo_128](https://cloud.githubusercontent.com/assets/11816788/10293816/eba3231c-6bb6-11e5-9e0b-6aec9cc165c5.png)
+<img width="512" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Icon1024.png">
 
 **Live code** on your iPad directly to GitHub and vice-versa    
 Ipad -> iCloud -> **GitSync** -> GitHub  
