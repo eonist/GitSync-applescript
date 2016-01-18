@@ -2,7 +2,7 @@
 
 Finally a solution for coding efficiently from many devices:
 
-<img width="256" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Icon1024.png">
+<img width="256" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Icon512.png">
 
 **Live code** on your iPad directly to GitHub and vice-versa    
 Ipad -> iCloud -> **GitSync** -> GitHub  
