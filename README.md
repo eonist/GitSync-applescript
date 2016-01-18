@@ -1,3 +1,5 @@
+[DM me on twitter for installation help](https://twitter.com/GitSyncApp) 
+
 Finally a solution for coding efficiently from many devices:
 
 ![gitsync_logo_128](https://cloud.githubusercontent.com/assets/11816788/10293816/eba3231c-6bb6-11e5-9e0b-6aec9cc165c5.png)
