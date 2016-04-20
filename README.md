@@ -1,5 +1,7 @@
  GitSync is basically just 1 applescript compiled as an app. In theory you can use GitSync without installing it. Security is handled through https and passwords are handled by apples own keychain. All code can be inspected here on github. [DM me on twitter if you need help setting it up](https://twitter.com/GitSyncApp)
 
+And one more thing. GitSync really works. 26.000 commits and counting. 
+
 <img width="256" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Icon512.png">
 
 **Live code** on your iPad directly to GitHub and vice-versa    
