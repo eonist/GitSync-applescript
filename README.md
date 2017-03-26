@@ -2,7 +2,7 @@
 
 And one more thing. GitSync really works. **26.000 commits and counting.**
 
-<img width="256" alt="img" src="https://dl.dropboxusercontent.com/u/2559476/Icon512.png">
+<img width="256" alt="img" src="https://raw.githubusercontent.com/stylekit/img/master/Icon512.png">
 
 **Live code** on your iPad directly to GitHub and vice-versa    
 Ipad -> iCloud -> **GitSync** -> GitHub  
